@@ -1,0 +1,4130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Calculadora de Materiales</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<style>
+    label {
+        font-weight: bold;
+        /* Hace que el texto sea más grueso, para resaltarlo como etiqueta */
+        margin-bottom: 5px;
+        /* Añade un pequeño espacio en la parte inferior para separar la etiqueta del siguiente elemento */
+        display: block;
+        /* Hace que la etiqueta sea un bloque, ocupando toda la anchura disponible */
+    }
+
+    #area40 {
+        /* Puedes agregar estilos específicos para el input con el id "area40" si es necesario */
+    }
+
+    body {
+        background-color: #ffffff;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%25' gradientTransform='rotate(360,680,311)'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='1' stop-color='%23F2FF56'/%3E%3C/linearGradient%3E%3Cpattern patternUnits='userSpaceOnUse' id='b' width='393' height='327.5' x='0' y='0' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.08'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect x='0' y='0' fill='url(%23b)' width='100%25' height='100%25'/%3E%3C/svg%3E");
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .container-custom {
+        margin-bottom: 10px;
+        font-size: 25px;
+        background-color: rgb(226, 245, 250);
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+
+
+
+
+    h4 {
+        font-size: 12px;
+        ;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: rgba(95, 158, 160, 0.376);
+        color: rgb(89, 22, 8);
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    #materiales,
+    #materiales1,
+    #materiales2,
+    #materiales3,
+    #materiales4,
+    #materiales5,
+    #materiales6,
+    #materiales7,
+    #materiales8,
+    #materiales9,
+    #materiales10,
+    #materiales11,
+    #materiales12,
+    #materiales13,
+    #materiales14,
+    #materiales15,
+    #materiales16,
+    #materiales17,
+    #materiales18,
+    #materiales19,
+    #materiales20,
+    #materiales21,
+    #materiales22,
+    #materiales23,
+    #materiales24,
+    #materiales25,
+    #materiales26,
+    #materiales27,
+    #materiales28,
+    #materiales29,
+    #materiales30,
+    #materiales31,
+    #materiales32,
+    #materiales33,
+    #materiales34,
+    #materiales35,
+    #materiales36,
+    #materiales37,
+    #materiales38,
+    #materiales39,
+    #materiales40,
+    #materiales41,
+    #materiales42,
+    #materiales43,
+    #materiales44,
+    #materiales45,
+    #materiales46 {
+        color: rgb(24, 13, 13);
+        font-weight: bold;
+        background: rgba(220, 241, 238, 0.644);
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    }
+
+    #resultado,
+    #resultado1,
+    #resultado2,
+    #resultado3,
+    #resultado4,
+    #resultado5,
+    #resultado6,
+    #resultado7,
+    #resultado8,
+    #resultado9,
+    #resultado10,
+    #resultado11,
+    #resultado12,
+    #resultado13,
+    #resultado14,
+    #resultado15,
+    #resultado16,
+    #resultado17,
+    #resultado18,
+    #resultado19,
+    #resultado20,
+    #resultado21,
+    #resultado22,
+    #resultado23,
+    #resultado24,
+    #resultado25,
+    #resultado26,
+    #resultado27,
+    #resultado28,
+    #resultado29,
+    #resultado30,
+    #resultado31,
+    #resultado32,
+    #resultado33,
+    #resultado34,
+    #resultado35,
+    #resultado36,
+    #resultado37,
+    #resultado38,
+    #resultado39,
+    #resultado40,
+    #resultado41,
+    #resultado42,
+    #resultado43,
+    #resultado44,
+    #resultado45,
+    #resultado46 {
+        font-size: 14px;
+        padding: 10px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    }
+
+
+    h3 {
+        font-size: 18px;
+        color: rgb(0, 165, 211);
+        padding: 15px;
+        background-color: rgb(255, 255, 255);
+
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    #codigoInput {
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    #codigoInput:focus {
+        outline: none;
+        border-color: #bccee1;
+        /* Cambiar el color del borde al enfocar */
+    }
+
+    #codigoInput::placeholder {
+        text-align: center;
+        color: #5ea8bd;
+        /* Color del texto de marcador de posición */
+    }
+
+    #verificarButton {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: rgb(22, 172, 199);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #verificarButton:hover {
+        background-color: #0056b3;
+        /* Cambiar el color de fondo al pasar el mouse */
+    }
+
+    #login {
+        box-shadow: rgba(33, 33, 62, 0.401) 0px 50px 100px -20px, rgba(0, 0, 0, 0.534) 0px 30px 60px -30px;
+        margin: 10%;
+        background-color: #ffffff56;
+        text-align: center;
+        padding: 2px;
+        border-radius: 10px;
+        border: 2px solid rgb(200, 219, 241);
+    }
+
+
+    /* CSS */
+    .button-6 {
+        align-items: center;
+        background-color: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: rgb(16, 139, 197);
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: auto;
+    }
+
+    .button-6:hover,
+    .button-6:focus {
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        color: rgba(0, 0, 0, 0.65);
+    }
+
+    .button-6:hover {
+        transform: translateY(-1px);
+    }
+
+    .button-6:active {
+        background-color: #F0F0F1;
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+        color: rgba(0, 0, 0, 0.65);
+        transform: translateY(0);
+    }
+
+
+    img {
+        display: block;
+        /* Asegura que la imagen se comporte como un bloque */
+        margin: 25px auto;
+        /* Centra la imagen horizontalmente */
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        max-width: 50%;
+        height: auto;
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+
+
+
+    .task {
+    border-radius: 8px;
+    border: 2px solid #11253678; /* Reducido el grosor del borde */
+    padding: 15px;
+    background-color: #e6e9ff3a; /* Un tono más claro y suave */
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más sutil y moderna */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Transiciones suaves */
+    cursor: pointer; /* Indica que es interactivo */
+}
+
+.task-title {
+    text-align: center;
+    color: #2828af; /* Tono de azul más legible */
+    font-weight: 600; /* Ligeramente más grueso para destacar */
+    margin-bottom: 5px; /* Espacio entre el título y el resto del contenido */
+}
+
+
+    .info-btn {
+        background-color: #494985;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+
+    .centered-popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: rgb(51, 54, 96);
+        padding: 20px;
+        z-index: 9999;
+    }
+
+    .popup-content {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+        text-align: center;
+    }
+
+    .close-btn {
+        background-color: #ffffff;
+        color: #494985;
+        border: 1px solid #494985;
+
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    /* Estilo para el contenedor principal */
+    #main-container {
+        position: relative;
+    }
+    .carousel-item img {
+  border-radius: 0; /* Anula los bordes redondeados */
+}
+    /* Estilo para el contenedor del carrusel */
+    #carousel-container {
+        display: none;
+        position: fixed;
+        width: 90%;
+        height: 60%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(53, 66, 71, 0.97);
+        padding: 10px;
+        border-radius: 10px;
+        z-index: 9999;
+    }
+    #carouselExampleControls .carousel-inner {
+  
+  margin: 0 auto; /* Centra horizontalmente el contenedor */
+ 
+        padding: 5px;
+}
+
+    /* Estilo para el botón de cerrar */
+    .close-btn {
+    
+       
+        background-color: #0977f5;
+        color: rgb(255, 255, 255);
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    p {
+        padding: 3px;
+    border-radius: 3px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    BACKGROUND: #ffffff;
+}
+/* From Uiverse.io by Maximinodotpy */ 
+.inputGroup {
+    
+  font-family: 'Segoe UI', sans-serif;
+  margin: 1em 0 1em 0;
+  max-width: 190px;
+  position: relative;
+}
+
+.inputGroup input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 5px solid rgb(82, 97, 133);
+  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.inputGroup label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgb(42, 46, 105);
+}
+
+.inputGroup :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: #ffffff00;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+  border-color: rgb(41, 41, 226);
+}
+       
+       .mezcla{
+
+        background-image: linear-gradient(to top, #a2b6c2 0%, #e2ebf0 100%);
+       }
+</style>
+
+<body>
+
+  
+
+    <div id="login">
+        <img src="https://www.metroapp.site/metrologo.jpg" alt="">
+        <h2
+        style="
+    background-color: #ffffffce;
+    color: #6c94be;;
+    box-shadow: rgba(0, 0, 0, 0.452) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.422) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;">
+        calculadora de materiales</h2>
+
+      
+        <br>
+        <br>
+        <div style="display: flex; justify-content: center;">
+     
+            <div class="inputGroup">
+                <input type="text" id="codigoInput" required="" autocomplete="off" style=" font-size: 25px; background-color: #edf0f4;  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;">
+                <label for="name">introduce tu código</label>
+                <br>
+                <br>
+                    
+            </div>
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" style="box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;" role="button" onclick="verificarCodigo()" >Ingresar</button>
+        <button id="desactivarBtn"  onclick="ejecutarAccionPrincipal()" style="box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;"   class="btn btn-primary btn-lg btn-block" >PROBAR</button>
+
+        <script>
+function ejecutarAccionPrincipal() {
+
+    let intentos = localStorage.getItem('intentosProbarGratis');
+            intentos = intentos ? parseInt(intentos, 10) : 0; // Inicializar a 0 si no existe
+
+            if (intentos >= 3) {
+                const desactivarBtn = document.getElementById('desactivarBtn');
+                desactivarBtn.disabled = true;
+                desactivarBtn.textContent = "Desactivado";
+                return; // Salir de la función si ya se alcanzó el límite
+            }
+
+            intentos++;
+            localStorage.setItem('intentosProbarGratis', intentos);
+
+
+    // 1. Ocultar y mostrar elementos (funcionalidad de probargratis())
+    const loginElement = document.getElementById("login");
+    const mensajeDivElement = document.getElementById("mensajeDiv");
+
+    if (loginElement) {
+        loginElement.style.display = "none";
+    } else {
+        console.error("No se encontró el elemento con ID 'login'");
+    }
+
+    if (mensajeDivElement) {
+        mensajeDivElement.style.display = "block";
+    } else {
+        console.error("No se encontró el elemento con ID 'mensajeDiv'");
+    }
+
+
+
+
+
+
+
+
+    const botones = document.querySelectorAll('.container-custom button[data-titulo]');
+            const numBotonesActivos = 3;
+            const botonesArray = Array.from(botones); // Convertir NodeList a Array
+
+            if (botonesArray.length <= numBotonesActivos) {
+                console.warn("Hay menos botones que la cantidad a activar.");
+                return; // No hacer nada si hay menos botones de los que se quieren activar
+            }
+
+            // Mezclar el array de botones (Fisher-Yates shuffle)
+            for (let i = botonesArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [botonesArray[i], botonesArray[j]] = [botonesArray[j], botonesArray[i]];
+            }
+
+            const botonesActivos = botonesArray.slice(0, numBotonesActivos);
+            const botonesInactivos = botonesArray.slice(numBotonesActivos);
+
+            const contenedorBotonesActivos = document.getElementById("contenedorBotonesActivos");
+            contenedorBotonesActivos.innerHTML = ""; // Limpiar el contenedor
+
+            botonesActivos.forEach(boton => {
+                boton.disabled = false;
+                const titulo = boton.dataset.titulo;
+                const nuevoElemento = document.createElement("p");
+                const nuevoElemento2 = document.createElement("hr");
+                nuevoElemento.textContent = `Tarea gratis: ${titulo}`;
+                nuevoElemento.setAttribute('style', 'color: black ; margin-top: 10px;background-color: rgba(255, 255, 255, 0.5); padding: 5px; border-radius: 8px; margin: 5%;margin-bottom: 5%;');
+
+                contenedorBotonesActivos.appendChild(nuevoElemento);
+                contenedorBotonesActivos.appendChild(nuevoElemento2);
+            });
+
+            botonesInactivos.forEach(boton => {
+                boton.disabled = true;
+            });
+        }
+
+   // Comprobar al cargar la página si el botón debe estar desactivado
+   window.addEventListener('load', () => {
+            let intentos = localStorage.getItem('intentosProbarGratis');
+            intentos = intentos ? parseInt(intentos, 10) : 0;
+            const desactivarBtn = document.getElementById('desactivarBtn');
+            if (intentos >= 3) {
+                desactivarBtn.disabled = true;
+                desactivarBtn.textContent = "Desactivado";
+            }
+        });
+
+        // Reiniciar el contador al día siguiente (ejemplo con 24 horas)
+        setInterval(() => {
+            localStorage.removeItem('intentosProbarGratis');
+            const desactivarBtn = document.getElementById('desactivarBtn');
+            desactivarBtn.disabled = false;
+            desactivarBtn.textContent = "PROBAR";
+        }, 24 * 60 * 60 * 1000); // 24 horas en milisegundos
+
+
+
+        const botonActivar = document.getElementById("botonActivar");
+        if (botonActivar) {
+            botonActivar.addEventListener("click", activarPruebas);
+        } else {
+            console.error("No se encontró el botón con ID 'botonActivar'");
+        }
+
+
+
+            
+
+        function verificarCodigo() {
+    var codigoInput = document.getElementById("codigoInput").value;
+
+    fetch('materiales.json')
+        .then(response => response.json())
+        .then(data => {
+            if (data.codigos.includes(codigoInput)) {
+                localStorage.setItem("savedCode", codigoInput);
+                document.getElementById("login").style.display = "none";
+                document.getElementById("mensajeDiv").style.display = "block";
+            } else {
+                alert("Código inválido. Inténtalo de nuevo.");
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar el JSON:', error);
+            alert("Error al verificar el código. Por favor, inténtalo más tarde."); // Alerta al usuario en caso de error de fetch
+        });
+}
+            
+            
+            </script>
+
+        <div id="main-container">
+            <br>
+
+            
+            <div id="carousel-container">
+
+
+
+              </div>
+
+        </div>
+
+     
+        
+        <br>
+        <p style=" margin-bottom: 10px; margin-bottom:auto; border-radius: 5px; background-color: #168f1ce0; color:rgb(255, 255, 255); padding:15px ; font-size: 14px;"
+            onclick="openWebsite()"> comprá tu código por whatsapp
+        </p>
+        <br>
+
+        <br>
+    </div>
+
+
+    <script>
+        function openWebsite() {
+            var websiteUrl = "https://wa.link/9lbeyq"; // Coloca tu enlace de sitio web aquí
+            window.open(websiteUrl);
+        }
+        // Cargar el código guardado en localStorage, si existe
+        window.onload = function () {
+            var savedCode = localStorage.getItem("savedCode");
+            if (savedCode) {
+                document.getElementById("codigoInput").value = savedCode;
+            }
+        };
+
+
+    </script>
+
+<div id="mensajeDiv" style="display: none;">
+       
+        <div class="containerbanner"
+        style="
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+       background-color: #f3f7ff0f;
+       background-image: linear-gradient(225deg, #cedcfb84 2%, #32798fae 42%, #ffffff6d 100%);
+
+        border-radius: 8px;
+        
+        
+        
+        "
+        
+        >
+        <hr>
+            <img style="max-width: 25%;" src="https://www.metroapp.site/metrologo.jpg" alt="">
+           
+            <hr>
+            <div id="contenedorBotonesActivos" class="mt-4"></div>
+            <div class="centered-popup" id="popup">
+                <div class="popup-content">
+                    <!-- Aquí va el texto descriptivo -->
+                    <p>Texto descriptivo aquí</p>
+                    <button class="close-btn" onclick="closePopup()">Cerrar</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function openPopup() {
+                document.getElementById("popup").style.display = "block";
+            }
+
+            function closePopup() {
+                document.getElementById("popup").style.display = "none";
+            }
+
+            document.querySelector('.info-btn').addEventListener('click', openPopup);
+
+        </script>
+
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA1" class="mb-0" data-toggle="collapse" data-target="#resultado1" aria-expanded="false"
+                aria-controls="resultado">CIMIENTOS, hormigon, ripio (piedra partida)</h3>
+            <h4 class="mezcla">Mezcla 1:12</h4>
+            <div class="collapse" id="resultado1">
+                <form>
+                    <div class="form-group">
+                        <label for="area">Área (m³):</label>
+                        <input type="number" class="form-control" id="area" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular" type="button" class="btn btn-primary btn-block mt-3 "
+                        onclick="calcularMateriales()" data-titulo="CIMIENTOS, hormigon, ripio (piedra partida) " >Calcular</button>
+                </form>
+
+                <div id="materiales" class="mt-4"></div>
+                <button type="button" id="borrarBtn" class="btn btn-danger btn-block mt-3"
+                    onclick="borrarResultado()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales = [
+    { nombre: 'Cemento (KG)', valor: 133, icono: 'fas fa-industry' },
+    { nombre: 'Ripio Bruto, piedra partida (M3)', valor: 1.20, icono: 'fas fa-mountain' },
+];
+
+        
+            function calcularMateriales() {
+    const areaInput = document.getElementById('area');
+    const area = parseFloat(areaInput.value);
+
+    if (isNaN(area)) {
+        alert('Por favor, ingrese un valor numérico válido para el área.');
+        return;
+    }
+
+    const materialesDiv = document.getElementById('materiales');
+    materialesDiv.innerHTML = '';
+
+    for (let i = 0; i < materiales.length; i++) {
+        const material = materiales[i];
+        const cantidad = material.valor * area;
+
+        const pElement = document.createElement('p');
+        pElement.innerHTML = `<i class="${material.icono}"></i> ${material.nombre}: ${cantidad.toFixed(2)}`;
+        materialesDiv.appendChild(pElement);
+
+        // Calcular el número de bolsas de cemento si el material es cemento
+        if (material.nombre === 'Cemento (KG)') {
+            const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+            const bolsasElement = document.createElement('p');
+            bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+            materialesDiv.appendChild(bolsasElement);
+        }
+    }
+}
+        
+            function borrarResultado() {
+                const areaInput = document.getElementById('area');
+                areaInput.value = '';
+        
+                const materialesDiv = document.getElementById('materiales');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+        <!--divisiona=======================================================================-->
+
+        <div class="container mt-5 container-custom">
+
+            <h3 id="TAREA2" class="mb-0" data-toggle="collapse" data-target="#resultado2" aria-expanded="false"
+                aria-controls="resultado1">CIMIENTOS, hormigon ciclopeo (con piedra grusa o canto rodado)</h3>
+            <h4 class="mezcla">mezcla 1:5:8</h4>
+
+            <div class="collapse" id="resultado2">
+                <form>
+                    <div class="form-group">
+                        <label for="area">Área (m²):</label>
+                        <input type="number" class="form-control" id="area1" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular1" type="button" class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales1()" data-titulo="CIMIENTOS, hormigon ciclopeo (con piedra grusa o canto rodado)">Calcular</button>
+                </form>
+
+                <div id="materiales1" class="mt-4"></div>
+                <button type="button" id="borrarBtn1" class="btn btn-danger btn-block mt-3"
+                    onclick="borrarResultado1()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+
+        <script>
+            const materiales1 = [
+                { nombre: 'Cemento (KG)', valor: 126 },
+                { nombre: 'Piedra bola, canto rodado (M3)', valor: 0.50 },
+                { nombre: 'Ripio bruto, piedra partida(M3)', valor: 0.75 },
+                { nombre: 'Hrs Oficial', valor: 0.80 },
+                { nombre: 'Hrs Ayudante', valor: 3.50 },
+
+            ];
+
+
+            function calcularMateriales1() {
+                const areaInput = document.getElementById('area1');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales1');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales1.length; i++) {
+                    const material = materiales1[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+
+                    // Calcular el número de bolsas de cemento si el material es cemento
+                    if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado1() {
+                const areaInput = document.getElementById('area1');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales1');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+        <!--divisiona=======================================================================-->
+
+        <div class="container mt-5 container-custom">
+
+            <h3 id="TAREA3" class="mb-0" data-toggle="collapse" data-target="#resultado3" aria-expanded="false"
+                aria-controls="resultado2">CAPA AISLADORA - Horizontal (espesor: 2 cm)</h3>
+            <h4 class="mezcla">mezcla 1:2</h4>
+
+
+            <div class="collapse" id="resultado3">
+                <form>
+                    <div class="form-group">
+                        <label for="area">Área (m²):</label>
+                        <input type="number" class="form-control" id="area2" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular2" type="button" class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales2()" data-titulo="CAPA AISLADORA - Horizontal (espesor: 2 cm) " >Calcular</button>
+                </form>
+
+                <div id="materiales2" class="mt-4"></div>
+                <button type="button" id="borrarBtn2" class="btn btn-danger btn-block mt-3"
+                    onclick="borrarResultado2()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+
+        <script>
+            const materiales2 = [
+                { nombre: 'Cemento (KG)', valor: 16 },
+                { nombre: 'Arena media (M3)', valor: 0.03 },
+                { nombre: 'Hidrófugo (KG)', valor: 0.50 },
+                { nombre: 'Pintura asfaltica (L)', valor: 1 },
+                { nombre: 'Hrs Oficial', valor: 0.30 },
+                { nombre: 'Hrs Ayudante', valor: 0.15 },
+            ];
+
+            function calcularMateriales2() {
+                const areaInput = document.getElementById('area2');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales2');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales2.length; i++) {
+                    const material = materiales2[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado2() {
+                const areaInput = document.getElementById('area2');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales2');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+        <!--divisiona=======================================================================-->
+
+
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA4" class="mb-0" data-toggle="collapse" data-target="#resultado4" aria-expanded="false"
+                aria-controls="resultado4">CAPA AISLADORA - Vertical (espesor: 2 cm)</h3>
+
+            <div class="collapse" id="resultado4">
+                <form>
+                    <div class="form-group">
+                        <label for="area4">Área (m²):</label>
+                        <input type="number" class="form-control" id="area4" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular4" type="button" data-titulo="CAPA AISLADORA - Vertical (espesor: 2 cm)" class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales4()">Calcular</button>
+                </form>
+
+                <div id="materiales4" class="mt-4"></div>
+                <button type="button" id="borrarBtn4" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado4()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+
+        <script>
+
+            const materiales4 = [
+                { nombre: 'Cemento (KG)', valor: 16 },
+                { nombre: 'Arena mediana (M3)', valor: 0.03 },
+                { nombre: 'Pintura asfaltica (L)', valor: 1 },
+                { nombre: 'Membrana (M2)', valor: 1.10 },
+                { nombre: 'Hrs Oficial', valor: 1.20 },
+                { nombre: 'Hrs Ayudante', valor: 0.90 },
+            ];
+
+            function calcularMateriales4() {
+                const areaInput = document.getElementById('area4');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales4');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales4.length; i++) {
+                    const material = materiales4[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado4() {
+                const areaInput = document.getElementById('area4');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales4');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA5" class="mb-0" data-toggle="collapse" data-target="#resultado5" aria-expanded="false"
+                aria-controls="resultado5">MAMPOSTERIA 0,30 - Ladrillos comunes - En submuración (m2)</h3>
+            <h4 class="mezcla">mezcla 1:1:4</h4>
+
+            <div class="collapse" id="resultado5">
+                <form>
+                    <div class="form-group">
+                        <label for="area5">Área (m²):</label>
+                        <input type="number" class="form-control" id="area5" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular5" type="button" data-titulo="MAMPOSTERIA 0,30 - Ladrillos comunes - En submuración (m2) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales5()">Calcular</button>
+                </form>
+
+                <div id="materiales5" class="mt-4"></div>
+                <button type="button" id="borrarBtn5" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado5()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales5 = [
+                { nombre: 'Cemento (KG)', valor: 42 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.13 },
+                { nombre: 'Cal (KG)', valor: 14 },
+                { nombre: 'Ladrillos comunes', valor: 105 },
+                { nombre: 'Hrs Oficial', valor: 1.95 },
+                { nombre: 'Hrs Ayudante', valor: 2.20 },
+            ];
+
+            function calcularMateriales5() {
+                const areaInput = document.getElementById('area5');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales5');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales5.length; i++) {
+                    const material = materiales5[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                    if (material.nombre === 'Cemento (KG)') {
+    const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+    const bolsasElement = document.createElement('p');
+    bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+    materialesDiv.appendChild(bolsasElement);
+} else if (material.nombre === 'Cal (KG)' || material.nombre === 'Yeso Negro (KG)') {
+    const bolsasYeso = Math.ceil(cantidad / 25); // para yeso en bolsas de 25 kg
+    const bolsasYesoElement = document.createElement('p');
+    bolsasYesoElement.textContent = `Bolsas de ${material.nombre} (25 kg): ${bolsasYeso} bolsas`;
+    materialesDiv.appendChild(bolsasYesoElement);
+}
+                }
+            }
+
+            function borrarResultado5() {
+                const areaInput = document.getElementById('area5');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales5');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA6" class="mb-0" data-toggle="collapse" data-target="#resultado6" aria-expanded="false"
+                aria-controls="resultado6">MAMPOSTERIA 0,30 - Ladrillos comunes - En elevación (m2)</h3>
+            <h4 class="mezcla">mezcla 1/8 : 1 : 4</h4>
+
+            <div class="collapse" id="resultado6">
+                <form>
+                    <div class="form-group">
+                        <label for="area6">Área (m²):</label>
+                        <input type="number" class="form-control" id="area6" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular6" type="button" data-titulo="MAMPOSTERIA 0,30 - Ladrillos comunes - En elevación (m2)" class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales6()">Calcular</button>
+                </form>
+
+                <div id="materiales6" class="mt-4"></div>
+                <button type="button" id="borrarBtn6" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado6()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales6 = [
+                { nombre: 'Cemento (KG)', valor: 6 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.14 },
+                { nombre: 'Cal (KG)', valor: 16 },
+                { nombre: 'Ladrillos comunes', valor: 105 },
+                { nombre: 'Hrs Oficial', valor: 1.95 },
+                { nombre: 'Hrs Ayudante', valor: 2.20 },
+
+            ];
+
+            function calcularMateriales6() {
+                const areaInput = document.getElementById('area6');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales6');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales6.length; i++) {
+                    const material = materiales6[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+    const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+    const bolsasElement = document.createElement('p');
+    bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+    materialesDiv.appendChild(bolsasElement);
+} else if (material.nombre === 'Cal (KG)' || material.nombre === 'Yeso Negro (KG)') {
+    const bolsasYeso = Math.ceil(cantidad / 25); // para yeso en bolsas de 25 kg
+    const bolsasYesoElement = document.createElement('p');
+    bolsasYesoElement.textContent = `Bolsas de ${material.nombre} (25 kg): ${bolsasYeso} bolsas`;
+    materialesDiv.appendChild(bolsasYesoElement);
+}
+                }
+            }
+
+            function borrarResultado6() {
+                const areaInput = document.getElementById('area6');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales6');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA7" class="mb-0" data-toggle="collapse" data-target="#resultado7" aria-expanded="false"
+                aria-controls="resultado7">MAMPOSTERIA 0,30 - Ladrillos comunes seleccionados a la vista - En elevación
+                (m2)
+            </h3>
+            <h4 class="mezcla">mezcla 1/8 : 1 : 4 comun</h4>
+            <h4>mezcla 1 : 1 : 4 reforzada</h4>
+
+            <div class="collapse" id="resultado7">
+                <form>
+                    <div class="form-group">
+                        <label for="area7">Área (m²):</label>
+                        <input type="number" class="form-control" id="area7" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular7" type="button" data-titulo=" MAMPOSTERIA 0,30 - Ladrillos comunes seleccionados a la vista - En elevación
+                    (m2) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales7()">Calcular</button>
+                </form>
+
+                <div id="materiales7" class="mt-4"></div>
+                <button type="button" id="borrarBtn7" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado7()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales7 = [
+                { nombre: 'Cemento (KG)', valor: 14 },
+                { nombre: 'Cal (kg)', valor: 15 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.13 },
+                { nombre: 'Ladrillos Comunes', valor: 105 },
+                { nombre: 'Hrs Oficial', valor: 1.65 },
+                { nombre: 'Hrs Ayudante', valor: 1.80 },
+            ];
+
+            function calcularMateriales7() {
+                const areaInput = document.getElementById('area7');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales7');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales7.length; i++) {
+                    const material = materiales7[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                       // Calcular el número de bolsas de cemento si el material es cemento
+                       if (material.nombre === 'Cemento (KG)') {
+    const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+    const bolsasElement = document.createElement('p');
+    bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+    materialesDiv.appendChild(bolsasElement);
+} else if (material.nombre === 'Cal (KG)' || material.nombre === 'Yeso Negro (KG)') {
+    const bolsasYeso = Math.ceil(cantidad / 25); // para yeso en bolsas de 25 kg
+    const bolsasYesoElement = document.createElement('p');
+    bolsasYesoElement.textContent = `Bolsas de ${material.nombre} (25 kg): ${bolsasYeso} bolsas`;
+    materialesDiv.appendChild(bolsasYesoElement);
+}
+                    
+                }
+            }
+
+            function borrarResultado7() {
+                const areaInput = document.getElementById('area7');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales7');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA8" class="mb-0" data-toggle="collapse" data-target="#resultado8" aria-expanded="false"
+                aria-controls="resultado8">MAMPOSTERIA 0,15 - Ladrillos comunes - En elevación (m2)</h3>
+            <h4 class="mezcla">mezcla 1/8 : 1 : 4 </h4>
+
+            <div class="collapse" id="resultado8">
+                <form>
+                    <div class="form-group">
+                        <label for="area8">Área (m²):</label>
+                        <input type="number" class="form-control" id="area8" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular8" type="button" data-titulo="MAMPOSTERIA 0,15 - Ladrillos comunes - En elevación (m2) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales8()">Calcular</button>
+                </form>
+
+                <div id="materiales8" class="mt-4"></div>
+                <button type="button" id="borrarBtn8" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado8()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales8 = [
+                { nombre: 'Cemento (KG)', valor: 3 },
+                { nombre: 'Cal (KG)', valor: 8 },
+                { nombre: 'Arena Gruesa (M3)', valor: 0.07 },
+                { nombre: 'Ladrillos comúnes', valor: 55 },
+                { nombre: 'Hrs Oficial', valor: 0.93 },
+                { nombre: 'Hrs Ayudante', valor: 0.93 },
+            ];
+
+            function calcularMateriales8() {
+                const areaInput = document.getElementById('area8');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales8');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales8.length; i++) {
+                    const material = materiales8[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+    const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+    const bolsasElement = document.createElement('p');
+    bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+    materialesDiv.appendChild(bolsasElement);
+} else if (material.nombre === 'Cal (KG)' || material.nombre === 'Yeso Negro (KG)') {
+    const bolsasYeso = Math.ceil(cantidad / 25); // para yeso en bolsas de 25 kg
+    const bolsasYesoElement = document.createElement('p');
+    bolsasYesoElement.textContent = `Bolsas de ${material.nombre} (25 kg): ${bolsasYeso} bolsas`;
+    materialesDiv.appendChild(bolsasYesoElement);
+}
+                }
+            }
+
+            function borrarResultado8() {
+                const areaInput = document.getElementById('area8');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales8');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA9" class="mb-0" data-toggle="collapse" data-target="#resultado9" aria-expanded="false"
+                aria-controls="resultado9">MAMPOSTERIA 0,15 - Ladrillos comunes seleccionados a la vista - En elevación
+                (m2)
+                <h4 class="mezcla">mezcla 1/8 : 1 : 4</h4>
+                <h4 class="mezcla">mezcla 1 : 1 : 4</h4>
+                <div class="collapse" id="resultado9">
+                    <form>
+                        <div class="form-group">
+                            <label for="area9">Área (m²):</label>
+                            <input type="number" class="form-control" id="area9" placeholder="Ingrese el área">
+                        </div>
+                        <button id="calcular9" type="button" data-titulo="MAMPOSTERIA 0,15 - Ladrillos comunes seleccionados a la vista - En elevación
+                        (m2) " class="btn btn-primary btn-block mt-3"
+                            onclick="calcularMateriales9()">Calcular</button>
+                    </form>
+
+                    <div id="materiales9" class="mt-4"></div>
+                    <button type="button" id="borrarBtn9" class="btn btn-danger  btn-block mt-3"
+                        onclick="borrarResultado9()">Borrar
+                        Resultado</button>
+                </div>
+        </div>
+
+        <script>
+            const materiales9 = [
+                { nombre: 'Cemento (KG)', valor: 1.5 },
+                { nombre: 'Cal(KG)', valor: 4 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.03 },
+                { nombre: 'Ladrillo común', valor: 55 },
+                { nombre: 'Hrs Oficial', valor: 1.30 },
+                { nombre: 'Hrs Ayudante', valor: 0.93 },
+
+            ];
+
+            function calcularMateriales9() {
+                const areaInput = document.getElementById('area9');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales9');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales9.length; i++) {
+                    const material = materiales9[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+    const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+    const bolsasElement = document.createElement('p');
+    bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+    materialesDiv.appendChild(bolsasElement);
+} else if (material.nombre === 'Cal (KG)' || material.nombre === 'Yeso Negro (KG)') {
+    const bolsasYeso = Math.ceil(cantidad / 25); // para yeso en bolsas de 25 kg
+    const bolsasYesoElement = document.createElement('p');
+    bolsasYesoElement.textContent = `Bolsas de ${material.nombre} (25 kg): ${bolsasYeso} bolsas`;
+    materialesDiv.appendChild(bolsasYesoElement);
+}
+                }
+            }
+
+            function borrarResultado9() {
+                const areaInput = document.getElementById('area9');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales9');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--10divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA10" class="mb-0" data-toggle="collapse" data-target="#resultado10" aria-expanded="false"
+                aria-controls="resultado10">MAMPOSTERIA 0,10 - Ladrillos huecos 8x18x25 - En elevación (m2)</h3>
+            <h4>Mezcla 1/2 : 1 : 4 </h4>
+            <div class="collapse" id="resultado10">
+                <form>
+                    <div class="form-group">
+                        <label for="area10">Área (m²):</label>
+                        <input type="number" class="form-control" id="area10" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular10" type="button" data-titulo="MAMPOSTERIA 0,10 - Ladrillos huecos 8x18x25 - En elevación (m2) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales10()">Calcular</button>
+                </form>
+
+                <div id="materiales10" class="mt-4"></div>
+                <button type="button" id="borrarBtn10" class="btn btn-danger  btn-block  mt-3"
+                    onclick="borrarResultado10()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales10 = [
+                { nombre: 'Cemento (KG)', valor: 1.83 },
+                { nombre: 'Cal (KG)', valor: 2 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.01 },
+                { nombre: 'Ladrillos huecos 8x18x25', valor: 21 },
+                { nombre: 'Hrs Oficial', valor: 0.80 },
+                { nombre: 'Hrs Ayudante', valor: 0.60 },
+            ];
+
+            function calcularMateriales10() {
+                const areaInput = document.getElementById('area10');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales10');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales10.length; i++) {
+                    const material = materiales10[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+    const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+    const bolsasElement = document.createElement('p');
+    bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+    materialesDiv.appendChild(bolsasElement);
+} else if (material.nombre === 'Cal (KG)' || material.nombre === 'Yeso Negro (KG)') {
+    const bolsasYeso = Math.ceil(cantidad / 25); // para yeso en bolsas de 25 kg
+    const bolsasYesoElement = document.createElement('p');
+    bolsasYesoElement.textContent = `Bolsas de ${material.nombre} (25 kg): ${bolsasYeso} bolsas`;
+    materialesDiv.appendChild(bolsasYesoElement);
+}
+                }
+            }
+
+            function borrarResultado10() {
+                const areaInput = document.getElementById('area10');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales10');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--11divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA11" class="mb-0" data-toggle="collapse" data-target="#resultado11" aria-expanded="false"
+                aria-controls="resultado11">MAMPOSTERIA 0,10 - Ladrillos huecos 8x18x33 - En elevación (m2)</h3>
+            <h4>Mezcla 1/2 : 1 : 4</h4>
+            <div class="collapse" id="resultado11">
+                <form>
+                    <div class="form-group">
+                        <label for="area11">Área (m²):</label>
+                        <input type="number" class="form-control" id="area11" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular11" type="button"  data-titulo="MAMPOSTERIA 0,10 - Ladrillos huecos 8x18x33 - En elevación (m2) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales11()">Calcular</button>
+                </form>
+
+                <div id="materiales11" class="mt-4"></div>
+                <button type="button" id="borrarBtn11" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado11()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales11 = [
+                { nombre: 'Cemento (KG)', valor: 1.83 },
+                { nombre: 'Cal (KG)', valor: 2 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.0100 },
+                { nombre: 'Ladrillos huecos 8x12x33', valor: 16 },
+                { nombre: 'Hrs Oficial', valor: 0.77 },
+                { nombre: 'Hrs Ayudante', valor: 0.58 },
+            ];
+
+            function calcularMateriales11() {
+                const areaInput = document.getElementById('area11');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales11');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales11.length; i++) {
+                    const material = materiales11[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado11() {
+                const areaInput = document.getElementById('area11');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales11');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA12" class="mb-0" data-toggle="collapse" data-target="#resultado12" aria-expanded="false"
+                aria-controls="resultado12">MAMPOSTERIA 0,15 - Ladrillos huecos 12x18x25 - En elevación (m2)</h3>
+            <h4>Mezcla 1/2 : 1 : 4</h4>
+            <div class="collapse" id="resultado12">
+                <form>
+                    <div class="form-group">
+                        <label for="area12">Área (m²):</label>
+                        <input type="number" class="form-control" id="area12" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular12" type="button" data-titulo=" MAMPOSTERIA 0,15 - Ladrillos huecos 12x18x25 - En elevación (m2) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales12()">Calcular</button>
+                </form>
+
+                <div id="materiales12" class="mt-4"></div>
+                <button type="button" id="borrarBtn12" class="btn btn-danger  btn-block  mt-3"
+                    onclick="borrarResultado12()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales12 = [
+                { nombre: 'Cemento (KG)', valor: 2.66 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.02 },
+                { nombre: 'Cal (KG)', valor: 3 },
+                { nombre: 'Ladrillos huecos 12x18x25', valor: 21 },
+                { nombre: 'Hrs Oficial', valor: 1.02 },
+                { nombre: 'Hrs Ayudante', valor: 0.76 },
+            ];
+
+            function calcularMateriales12() {
+                const areaInput = document.getElementById('area12');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales12');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales12.length; i++) {
+                    const material = materiales12[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado12() {
+                const areaInput = document.getElementById('area12');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales12');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA13" class="mb-0" data-toggle="collapse" data-target="#resultado13" aria-expanded="false"
+                aria-controls="resultado13">MAMPOSTERIA 0,15 - Ladrillos huecos 12x18x33 - En elevación (m2)</h3>
+            <h4>Mezcla 1/2 : 1 : 4</h4>
+            <div class="collapse" id="resultado13">
+                <form>
+                    <div class="form-group">
+                        <label for="area13">Área (m²):</label>
+                        <input type="number" class="form-control" id="area13" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular13" type="button" data-titulo=" MAMPOSTERIA 0,15 - Ladrillos huecos 12x18x33 - En elevación (m2) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales13()">Calcular</button>
+                </form>
+
+                <div id="materiales13" class="mt-4"></div>
+                <button type="button" id="borrarBtn13" class="btn btn-danger btn-block  mt-3"
+                    onclick="borrarResultado13()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales13 = [
+                { nombre: 'Cemento (KG)', valor: 2.66 },
+                { nombre: 'Cal (KG)', valor: 3 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.02 },
+                { nombre: 'Ladrillos huecos 12x18x33', valor: 16 },
+                { nombre: 'Hrs Oficial', valor: 0.92 },
+                { nombre: 'Hrs Ayudante', valor: 0.69 },
+
+
+
+            ];
+
+            function calcularMateriales13() {
+                const areaInput = document.getElementById('area13');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales13');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales13.length; i++) {
+                    const material = materiales13[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado13() {
+                const areaInput = document.getElementById('area13');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales13');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA14" class="mb-0" data-toggle="collapse" data-target="#resultado14" aria-expanded="false"
+                aria-controls="resultado14">MAMPOSTERIA 0,20 - Ladrillos huecos 18x18x33 - En elevación (m2)</h3>
+            <h4>Mezcla 1/2 : 1 : 4</h4>
+            <div class="collapse" id="resultado14">
+                <form>
+                    <div class="form-group">
+                        <label for="area14">Área (m²):</label>
+                        <input type="number" class="form-control" id="area14" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular14" type="button" data-titulo=" MAMPOSTERIA 0,20 - Ladrillos huecos 18x18x33 - En elevación (m2) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales14()">Calcular</button>
+                </form>
+
+                <div id="materiales14" class="mt-4"></div>
+                <button type="button" id="borrarBtn14" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado14()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales14 = [
+                { nombre: 'Cemento (KG)', valor: 4 },
+                { nombre: 'Cal (KG)', valor: 4.5 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.03 },
+                { nombre: 'Ladrillos huecos 18x18x33', valor: 16 },
+                { nombre: 'Hrs Oficial', valor: 1.07 },
+                { nombre: 'Hrs Ayudante', valor: 0.80 },
+            ];
+
+            function calcularMateriales14() {
+                const areaInput = document.getElementById('area14');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales14');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales14.length; i++) {
+                    const material = materiales14[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado14() {
+                const areaInput = document.getElementById('area14');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales14');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA15" class="mb-0" data-toggle="collapse" data-target="#resultado15" aria-expanded="false"
+                aria-controls="resultado15">MAMPOSTERIA 0,20 - Ladrillos huecos (Portante) 18x19x33 - En elevación (m2)
+            </h3>
+            <h4>Mezcla 1/2 : 1 : 4</h4>
+            <div class="collapse" id="resultado15">
+                <form>
+                    <div class="form-group">
+                        <label for="area15">Área (m²):</label>
+                        <input type="number" class="form-control" id="area15" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular15" type="button" data-titulo="MAMPOSTERIA 0,20 - Ladrillos huecos (Portante) 18x19x33 - En elevación (m2) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales15()">Calcular</button>
+                </form>
+
+                <div id="materiales15" class="mt-4"></div>
+                <button type="button" id="borrarBtn15" class="btn btn-danger  btn-block  mt-3"
+                    onclick="borrarResultado15()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales15 = [
+                { nombre: 'Cemento (KG)', valor: 2.50 },
+                { nombre: 'Cal (KG)', valor: 2.80 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.02 },
+                { nombre: 'Ladrillos huecos (Portante) 18x19x33', valor: 15 },
+                { nombre: 'Hrs Oficial', valor: 1.15 },
+                { nombre: 'Hrs Ayudante', valor: 0.86 },
+            ];
+
+            function calcularMateriales15() {
+                const areaInput = document.getElementById('area15');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales15');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales15.length; i++) {
+                    const material = materiales15[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado15() {
+                const areaInput = document.getElementById('area15');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales15');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <!-- Código para Área 16 -->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA16" class="mb-0" data-toggle="collapse" data-target="#resultado16" aria-expanded="false"
+                aria-controls="resultado16">MAMPOSTERIA 0,20 - Bloques de Hormigón 20x20x40 - En elevación (m2)</h3>
+            <h4>Mezcla 1/2 : 1 : 4</h4>
+            <div class="collapse" id="resultado16">
+                <form>
+                    <div class="form-group">
+                        <label for="area16">Área (m²):</label>
+                        <input type="number" class="form-control" id="area16" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular16" type="button" data-titulo=" MAMPOSTERIA 0,20 - Bloques de Hormigón 20x20x40 - En elevación (m2) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales16()">Calcular</button>
+                </form>
+
+                <div id="materiales16" class="mt-4"></div>
+                <button type="button" id="borrarBtn16" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado16()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales16 = [
+                { nombre: 'Cemento (KG)', valor: 6 },
+                { nombre: 'Cal (KG)', valor: 3.5 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.02 },
+                { nombre: 'Bloques de Hormigón 20x20x40', valor: 13 },
+                { nombre: 'Hrs Oficial', valor: 1 },
+                { nombre: 'Hrs Ayudante', valor: 1 },
+            ];
+
+            function calcularMateriales16() {
+                const areaInput = document.getElementById('area16');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales16');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales16.length; i++) {
+                    const material = materiales16[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado16() {
+                const areaInput = document.getElementById('area16');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales16');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA17" class="mb-0" data-toggle="collapse" data-target="#resultado17" aria-expanded="false"
+                aria-controls="resultado17">MAMPOSTERIA 0,20 - Bloques de Hormigón 20x20x40 - En elevación (m2)</h3>
+            <h4>Mezcla 1/2 : 1 : 4</h4>
+
+            <div class="collapse" id="resultado17">
+                <form>
+                    <div class="form-group">
+                        <label for="area17">Área (m²):</label>
+                        <input type="number" class="form-control" id="area17" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular17" type="button" data-titulo=" MAMPOSTERIA 0,20 - Bloques de Hormigón 20x20x40 - En elevación (m2) " class="btn btn-primary 3"
+                        onclick="calcularMateriales17()">Calcular</button>
+                </form>
+
+                <div id="materiales17" class="mt-4"></div>
+                <button type="button" id="borrarBtn17" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado17()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales17 = [
+                { nombre: 'Cemento (KG)', valor: 3 },
+                { nombre: 'Cal (KG)', valor: 1.75 },
+                { nombre: 'Arena gruesa (m3)', valor: 0.02 },
+                { nombre: 'Bloques de Hormigón 20x20x40', valor: 13 },
+                { nombre: 'Hrs Oficial', valor: 0.65 },
+                { nombre: 'Hrs Ayudante', valor: 0.50, }
+            ];
+
+            function calcularMateriales17() {
+                const areaInput = document.getElementById('area17');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales17');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales17.length; i++) {
+                    const material = materiales17[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado17() {
+                const areaInput = document.getElementById('area17');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales17');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA18" class="mb-0" data-toggle="collapse" data-target="#resultado18" aria-expanded="false"
+                aria-controls="resultado18">ESTRUCTURAS - Hormigón armado - ZAPATAS</h3>
+            <H4>Mezcla 3/4 : 2 : 3</H4>
+            <div class="collapse" id="resultado18">
+                <form>
+                    <div class="form-group">
+                        <label for="area18">Área (m3):</label>
+                        <input type="number" class="form-control" id="area18" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular18" type="button" data-titulo=" ESTRUCTURAS - Hormigón armado - ZAPATAS " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales18()">Calcular</button>
+                </form>
+
+                <div id="materiales18" class="mt-4"></div>
+                <button type="button" id="borrarBtn18" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado18()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales18 = [
+                { nombre: 'Cemento (KG)', valor: 250 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.50 },
+                { nombre: 'Ripio (1:3)', valor: 0.75 },
+                { nombre: 'Hierro torsionado (KG)', valor: 30 },
+                { nombre: 'Alambre N°16  (KG)', valor: 0.25 },
+                { nombre: 'Hrs Oficial', valor: 3.50 },
+                { nombre: 'Hrs Ayudante', valor: 7.20, }
+
+            ];
+
+            function calcularMateriales18() {
+                const areaInput = document.getElementById('area18');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales18');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales18.length; i++) {
+                    const material = materiales18[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado18() {
+                const areaInput = document.getElementById('area18');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales18');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA19" class="mb-0" data-toggle="collapse" data-target="#resultado19" aria-expanded="false"
+                aria-controls="resultado19">ESTRUCTURAS - Hormigón armado - Columnas (m3)</h3>
+            <h4>Mezcla 1 : 2 : 3</h4>
+            <div class="collapse" id="resultado19">
+                <form>
+                    <div class="form-group">
+                        <label for="area19">Área (m3):</label>
+                        <input type="number" class="form-control" id="area19" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular19" type="button" data-titulo="ESTRUCTURAS - Hormigón armado - Columnas (m3) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales19()">Calcular</button>
+                </form>
+
+                <div id="materiales19" class="mt-4"></div>
+                <button type="button" id="borrarBtn19" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado19()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales19 = [
+                { nombre: 'Cemento (KG)', valor: 326 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.50 },
+                { nombre: 'Ripio (1:3)', valor: 0.75 },
+                { nombre: 'Hierro torsionado (KG)', valor: 100 },
+                { nombre: 'Alambre N°16  (KG)', valor: 1 },
+                { nombre: 'Clavos (KG)', valor: 2 },
+                { nombre: 'Hrs Oficial', valor: 24.30 },
+                { nombre: 'Hrs Ayudante', valor: 23.30 }
+            ];
+
+            function calcularMateriales19() {
+                const areaInput = document.getElementById('area19');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales19');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales19.length; i++) {
+                    const material = materiales19[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado19() {
+                const areaInput = document.getElementById('area19');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales19');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA20" class="mb-0" data-toggle="collapse" data-target="#resultado20" aria-expanded="false"
+                aria-controls="resultado20">ESTRUCTURAS - Hormigón armado - Vigas (m3)</h3>
+            <h4>Mezcla 1 : 2 : 3</h4>
+            <div class="collapse" id="resultado20">
+                <form>
+                    <div class="form-group">
+                        <label for="area20">Área (m3):</label>
+                        <input type="number" class="form-control" id="area20" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular20" type="button" data-titulo="ESTRUCTURAS - Hormigón armado - Vigas (m3) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales20()">Calcular</button>
+                </form>
+
+                <div id="materiales20" class="mt-4"></div>
+                <button type="button" id="borrarBtn20" class="btn btn-danger  btn-block  mt-3"
+                    onclick="borrarResultado20()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales20 = [
+                { nombre: 'Cemento (KG)', valor: 326 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.50 },
+                { nombre: 'Ripio (1:3)', valor: 0.75 },
+                { nombre: 'Hierro torsionado (KG)', valor: 90 },
+                { nombre: 'Alambre N°16  (KG)', valor: 1 },
+                { nombre: 'Clavos (KG)', valor: 3 },
+                { nombre: 'Hrs Oficial', valor: 23.70 },
+                { nombre: 'Hrs Ayudante', valor: 20.30 }
+            ];
+
+            function calcularMateriales20() {
+                const areaInput = document.getElementById('area20');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales20');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales20.length; i++) {
+                    const material = materiales20[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado20() {
+                const areaInput = document.getElementById('area20');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales20');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA21" class="mb-0" data-toggle="collapse" data-target="#resultado21" aria-expanded="false"
+                aria-controls="resultado21">ESTRUCTURAS - Hormigón armado - Encadenados (m3)</h3>
+            <h4>Mezcla 1 : 2 : 3</h4>
+            <div class="collapse" id="resultado21">
+                <form>
+                    <div class="form-group">
+                        <label for="area21">Área (m3):</label>
+                        <input type="number" class="form-control" id="area21" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular21" type="button" data-titulo="ESTRUCTURAS - Hormigón armado - Encadenados (m3) " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales21()">Calcular</button>
+                </form>
+
+                <div id="materiales21" class="mt-4"></div>
+                <button type="button" id="borrarBtn21" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado21()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales21 = [
+                { nombre: 'Cemento (KG)', valor: 326 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.50 },
+                { nombre: 'Ripio (1:3)', valor: 0.75 },
+                { nombre: 'Hierro torsionado (KG)', valor: 80 },
+                { nombre: 'Alambre N°16  (KG)', valor: 0.80 },
+                { nombre: 'Clavos (KG)', valor: 1 },
+                { nombre: 'Hrs Oficial', valor: 17 },
+                { nombre: 'Hrs Ayudante', valor: 14 }
+            ];
+
+            function calcularMateriales21() {
+                const areaInput = document.getElementById('area21');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales21');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales21.length; i++) {
+                    const material = materiales21[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado21() {
+                const areaInput = document.getElementById('area21');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales21');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA22" class="mb-0" data-toggle="collapse" data-target="#resultado22" aria-expanded="false"
+                aria-controls="resultado22">ESTRUCTURAS - Hormigón armado - Encadenados (ml) - Secc. encad.: 20 x 20 cm
+            </h3>
+            <h4>Mezcla 1 : 2 : 3
+            </h4>
+
+            <div class="collapse" id="resultado22">
+                <form>
+                    <div class="form-group">
+                        <label for="area22">Metro Lineal:</label>
+                        <input type="number" class="form-control" id="area22" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular22" type="button" data-titulo="ESTRUCTURAS - Hormigón armado - Encadenados (ml) - Secc. encad.: 20 x 20 cm " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales22()">Calcular</button>
+                </form>
+
+                <div id="materiales22" class="mt-4"></div>
+                <button type="button" id="borrarBtn22" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado22()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales22 = [
+                { nombre: 'Cemento (KG)', valor: 13 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.02 },
+                { nombre: 'Ripio (1:3)', valor: 0.03 },
+                { nombre: 'Hierro torsionado (KG)', valor: 3.20 },
+                { nombre: 'Alambre N°16  (KG)', valor: 0.03 },
+                { nombre: 'Clavos (KG)', valor: 0.04 },
+                { nombre: 'Hrs Oficial', valor: 0.68 },
+                { nombre: 'Hrs Ayudante', valor: 0.56 }
+            ];
+
+            function calcularMateriales22() {
+                const areaInput = document.getElementById('area22');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales22');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales22.length; i++) {
+                    const material = materiales22[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado22() {
+                const areaInput = document.getElementById('area22');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales22');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA23" class="mb-0" data-toggle="collapse" data-target="#resultado23" aria-expanded="false"
+                aria-controls="resultado23">ESTRUCTURAS - Hormigón armado - Losas llenas (m3)</h3>
+            <h4>Mezcla 1 : 2 : 3</h4>
+            <div class="collapse" id="resultado23">
+                <form>
+                    <div class="form-group">
+                        <label for="area23">Área (m²):</label>
+                        <input type="number" class="form-control" id="area23" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular23" type="button" data-titulo="ESTRUCTURAS - Hormigón armado - Losas llenas (m3)  " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales23()">Calcular</button>
+                </form>
+
+                <div id="materiales23" class="mt-4"></div>
+                <button type="button" id="borrarBtn23" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado23()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales23 = [
+                { nombre: 'Cemento (KG)', valor: 326 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.50 },
+                { nombre: 'Ripio (1:3)', valor: 0.75 },
+                { nombre: 'Hierro torsionado (KG)', valor: 40 },
+                { nombre: 'Alambre N°16  (KG)', valor: 0.60 },
+                { nombre: 'Clavos (KG)', valor: 2 },
+                { nombre: 'Hrs Oficial', valor: 17.30 },
+                { nombre: 'Hrs Ayudante', valor: 15.10 }
+            ];
+
+            function calcularMateriales23() {
+                const areaInput = document.getElementById('area23');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales23');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales23.length; i++) {
+                    const material = materiales23[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado23() {
+                const areaInput = document.getElementById('area23');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales23');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA24" class="mb-0" data-toggle="collapse" data-target="#resultado24" aria-expanded="false"
+                aria-controls="resultado24">ESTRUCTURAS - Hormigón armado - Losas de viguetas (m2) - Bovedilla h: 9,5 cm
+            </h3>
+            <h4>
+                Losa (vigu. pret.) c. comp 5 cm
+                Mezcla c. comp. 1 : 2 : 3
+            </h4>
+            <div class="collapse" id="resultado24">
+                <form>
+                    <div class="form-group">
+                        <label for="area24">Área (m²):</label>
+                        <input type="number" class="form-control" id="area24" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular24" type="button" data-titulo="ESTRUCTURAS - Hormigón armado - Losas de viguetas (m2) - Bovedilla h: 9,5 cm " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales24()">Calcular</button>
+                </form>
+
+                <div id="materiales24" class="mt-4"></div>
+                <button type="button" id="borrarBtn24" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado24()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales24 = [
+                { nombre: 'Cemento (KG)', valor: 19 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.03 },
+                { nombre: 'Ripio (1:3) m3', valor: 0.04 },
+                { nombre: 'Viguetas mt', valor: 2 },
+                { nombre: 'Bobedillas 9,5cm U', valor: 8, },
+                { nombre: 'Malla 4,2 x 15 x 15 m2', valor: 1.10 },
+                { nombre: 'Hrs Oficial', valor: 0.48 },
+                { nombre: 'Hrs Ayudante', valor: 1.59 }
+            ];
+
+            function calcularMateriales24() {
+                const areaInput = document.getElementById('area24');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales24');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales24.length; i++) {
+                    const material = materiales24[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado24() {
+                const areaInput = document.getElementById('area24');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales24');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA25" class="mb-0" data-toggle="collapse" data-target="#resultado25" aria-expanded="false"
+                aria-controls="resultado25">ESTRUCTURAS - Hormigón armado - Losas de viguetas (m2) - Bovedilla h: 12,5
+                cm
+            </h3>
+            <h4>Losa (vigu. pret.) c. comp 5 cm
+                Mezcla c. comp. 1 : 2 : 3
+            </h4>
+            <div class="collapse" id="resultado25">
+                <form>
+                    <div class="form-group">
+                        <label for="area25">Área (m²):</label>
+                        <input type="number" class="form-control" id="area25" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular25" type="button" data-titulo="ESTRUCTURAS - Hormigón armado - Losas de viguetas (m2) - Bovedilla h: 12,5
+                    cm " class="btn btn-primary btn-block mt-3"
+                        onclick="calcularMateriales25()">Calcular</button>
+                </form>
+
+                <div id="materiales25" class="mt-4"></div>
+                <button type="button" id="borrarBtn25" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado25()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales25 = [
+                { nombre: 'Cemento (KG)', valor: 22 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.03 },
+                { nombre: 'Ripio (1:3) m3', valor: 0.05 },
+                { nombre: 'Viguetas m', valor: 2 },
+                { nombre: 'Bobedillas 12,5 cm U', valor: 8, },
+                { nombre: 'Malla 4,2 x 15 x 15 m2', valor: 1.10 },
+                { nombre: 'Hrs Oficial', valor: 0.59 },
+                { nombre: 'Hrs Ayudante', valor: 1.95 }
+            ];
+
+            function calcularMateriales25() {
+                const areaInput = document.getElementById('area25');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales25');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales25.length; i++) {
+                    const material = materiales25[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado25() {
+                const areaInput = document.getElementById('area25');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales25');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA26" class="mb-0" data-toggle="collapse" data-target="#resultado26" aria-expanded="false"
+                aria-controls="resultado26">ESTRUCTURAS - Hormigón armado - Losas de viguetas (m2) - Bovedilla h: 17,5
+                cm
+
+                <h4>Losa (vigu. pret.) c. comp 5 cm
+                    Mezcla c. comp. 1 : 2 : 3
+                </h4>
+
+
+            </h3>
+            <div class="collapse" id="resultado26">
+                <form>
+                    <div class="form-group">
+                        <label for="area26">Área (m²):</label>
+                        <input type="number" class="form-control" id="area26" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular26" type="button" data-titulo="ESTRUCTURAS - Hormigón armado - Losas de viguetas (m2) - Bovedilla h: 17,5
+                    cm " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales26()">Calcular</button>
+                </form>
+
+                <div id="materiales26" class="mt-4"></div>
+                <button type="button" id="borrarBtn26" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado26()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales26 = [
+                { nombre: 'Cemento (KG)', valor: 27 },
+                { nombre: 'Arena gruesa', valor: 0.04 },
+                { nombre: 'Ripio (1:3) m3', valor: 0.06 },
+                { nombre: 'Viguetas m', valor: 2 },
+                { nombre: 'Bobedillas 12,5 cm U', valor: 8, },
+                { nombre: 'Malla 4,2 x 15 x 15 m2', valor: 1.10 },
+                { nombre: 'Hrs Oficial', valor: 1.15 },
+                { nombre: 'Hrs Ayudante', valor: 2.30 }
+            ];
+
+            function calcularMateriales26() {
+                const areaInput = document.getElementById('area26');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales26');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales26.length; i++) {
+                    const material = materiales26[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado26() {
+                const areaInput = document.getElementById('area26');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales26');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA27" class="mb-0" data-toggle="collapse" data-target="#resultado27" aria-expanded="false"
+                aria-controls="resultado27">REVOQUES - Grueso interior, espesor 2 cm (m2)</h3>
+            <h4>Mezcla 1/4 : 2 : 5</h4>
+            <div class="collapse" id="resultado27">
+                <form>
+                    <div class="form-group">
+                        <label for="area27">Área (m²):</label>
+                        <input type="number" class="form-control" id="area27" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular27" type="button" data-titulo=" REVOQUES - Grueso interior, espesor 2 cm (m2)" class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales27()">Calcular</button>
+                </form>
+
+                <div id="materiales27" class="mt-4"></div>
+                <button type="button" id="borrarBtn27" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado27()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales27 = [
+                { nombre: 'Cemento (KG)', valor: 1.50 },
+                { nombre: 'Cal (KG)', valor: 3.85 },
+                { nombre: 'Arena Mediana (M3)', valor: 0.03 },
+                { nombre: 'Hrs Oficial', valor: 0.50 },
+                { nombre: 'Hrs Ayudante', valor: 0.25 }
+
+            ];
+
+            function calcularMateriales27() {
+                const areaInput = document.getElementById('area27');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales27');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales27.length; i++) {
+                    const material = materiales27[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado27() {
+                const areaInput = document.getElementById('area27');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales27');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA28" class="mb-0" data-toggle="collapse" data-target="#resultado28" aria-expanded="false"
+                aria-controls="resultado28">REVOQUES - Grueso exterior, espesor 2 cm - (m2)</h3>
+            <h4>Mezcla 1/2 : 2 : 5</h4>
+            <div class="collapse" id="resultado28">
+                <form>
+                    <div class="form-group">
+                        <label for="area28">Área (m²):</label>
+                        <input type="number" class="form-control" id="area28" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular28" type="button" data-titulo="REVOQUES - Grueso exterior, espesor 2 cm - (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales28()">Calcular</button>
+                </form>
+
+                <div id="materiales28" class="mt-4"></div>
+                <button type="button" id="borrarBtn28" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado28()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales28 = [
+                { nombre: 'Cemento (KG)', valor: 2.80 },
+                { nombre: 'Cal (KG)', valor: 3.85 },
+                { nombre: 'Arena Mediana (M3)', valor: 0.03 },
+                { nombre: 'Hrs Oficial', valor: 0.50 },
+                { nombre: 'Hrs Ayudante', valor: 0.25 }
+            ];
+
+            function calcularMateriales28() {
+                const areaInput = document.getElementById('area28');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales28');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales28.length; i++) {
+                    const material = materiales28[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado28() {
+                const areaInput = document.getElementById('area28');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales28');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+
+        <!--divisiona=======================================================================-->
+
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA29" class="mb-0" data-toggle="collapse" data-target="#resultado29" aria-expanded="false"
+                aria-controls="resultado29">REVOQUES - Fino interior, espesor 0,5 cm (m2)</h3>
+            <h4>Mezcla 1/2 : 1 : 4</h4>
+            <div class="collapse" id="resultado29">
+                <form>
+                    <div class="form-group">
+                        <label for="area29">Área (m²):</label>
+                        <input type="number" class="form-control" id="area29" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular29" type="button" data-titulo=" REVOQUES - Fino interior, espesor 0,5 cm (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales29()">Calcular</button>
+                </form>
+
+                <div id="materiales29" class="mt-4"></div>
+                <button type="button" id="borrarBtn29" class="btn btn-danger  btn-block  mt-3"
+                    onclick="borrarResultado29()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales29 = [
+                { nombre: 'Cemento (KG)', valor: 1.05 },
+                { nombre: 'Cal (KG)', valor: 0.67 },
+                { nombre: 'Arena fina (M3)', valor: 0.01 },
+                { nombre: 'Hrs Oficial', valor: 0.40 },
+                { nombre: 'Hrs Ayudante', valor: 0.20 }
+            ];
+
+            function calcularMateriales29() {
+                const areaInput = document.getElementById('area29');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales29');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales29.length; i++) {
+                    const material = materiales29[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado29() {
+                const areaInput = document.getElementById('area29');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales29');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA30" class="mb-0" data-toggle="collapse" data-target="#resultado30" aria-expanded="false"
+                aria-controls="resultado30">REVOQUES - Fino exterior, espesor 0,5 cm (m2)</h3>
+            <H4>Mezcla 1/2 : 1 : 3</H4>
+
+            <div class="collapse" id="resultado30">
+                <form>
+                    <div class="form-group">
+                        <label for="area30">Área (m²):</label>
+                        <input type="number" class="form-control" id="area30" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular30" type="button" data-titulo="REVOQUES - Fino exterior, espesor 0,5 cm (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales30()">Calcular</button>
+                </form>
+
+                <div id="materiales30" class="mt-4"></div>
+                <button type="button" id="borrarBtn30" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado30()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales30 = [
+                { nombre: 'Cemento (KG)', valor: 1.26 },
+                { nombre: 'Cal (KG)', valor: 0.03 },
+                { nombre: 'Arena fina (M3)', valor: 0.01 },
+                { nombre: 'Hrs Oficial', valor: 0.40 },
+                { nombre: 'Hrs Ayudante', valor: 0.20 }
+            ];
+
+            function calcularMateriales30() {
+                const areaInput = document.getElementById('area30');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales30');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales30.length; i++) {
+                    const material = materiales30[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado30() {
+                const areaInput = document.getElementById('area30');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales30');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA31" class="mb-0" data-toggle="collapse" data-target="#resultado31" aria-expanded="false"
+                aria-controls="resultado31">REVOQUES - Exterior Rústico a la bolsa, espesor 3 cm (m2)</h3>
+            <H4>Mezcla 1/2 : 1 : 4</H4>
+            <div class="collapse" id="resultado31">
+                <form>
+                    <div class="form-group">
+                        <label for="area31">Área (m²):</label>
+                        <input type="number" class="form-control" id="area31" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular31" type="button" data-titulo="REVOQUES - Exterior Rústico a la bolsa, espesor 3 cm (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales31()">Calcular</button>
+                </form>
+
+                <div id="materiales31" class="mt-4"></div>
+                <button type="button" id="borrarBtn31" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado31()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales31 = [
+                { nombre: 'Cemento (KG)', valor: 4.10 },
+                { nombre: 'Cal (KG)', valor: 5.40 },
+                { nombre: 'Arena mediana (M3)', valor: 0.03 },
+                { nombre: 'Hrs Oficial', valor: 0.60 },
+                { nombre: 'Hrs Ayudante', valor: 0.40 }
+            ];
+
+            function calcularMateriales31() {
+                const areaInput = document.getElementById('area31');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales31');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales31.length; i++) {
+                    const material = materiales31[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado31() {
+                const areaInput = document.getElementById('area31');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales31');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA32" class="mb-0" data-toggle="collapse" data-target="#resultado32" aria-expanded="false"
+                aria-controls="resultado32">REVOQUES - Fino con material predosificado, espesor 0,3 cm (m2)</h3>
+            <h4>Mezcla predosificada</h4>
+            <div class="collapse" id="resultado32">
+                <form>
+                    <div class="form-group">
+                        <label for="area32">Área (m²):</label>
+                        <input type="number" class="form-control" id="area32" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular32" type="button" data-titulo="REVOQUES - Fino con material predosificado, espesor 0,3 cm (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales32()">Calcular</button>
+                </form>
+
+                <div id="materiales32" class="mt-4"></div>
+                <button type="button" id="borrarBtn32" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado32()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales32 = [
+                { nombre: 'Mezcla predosificada', valor: 3 },
+                { nombre: 'Hrs Oficial', valor: 0.60 },
+                { nombre: 'Hrs Ayudante', valor: 0.30 }
+
+            ];
+
+            function calcularMateriales32() {
+                const areaInput = document.getElementById('area32');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales32');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales32.length; i++) {
+                    const material = materiales32[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado32() {
+                const areaInput = document.getElementById('area32');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales32');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA33" class="mb-0" data-toggle="collapse" data-target="#resultado33" aria-expanded="false"
+                aria-controls="resultado33">REVOQUES - Alisado de cemento (m2) - Paramento vertical (Alisado a la llana)
+            </h3>
+
+            <div class="collapse" id="resultado33">
+                <form>
+                    <div class="form-group">
+                        <label for="area33">Área (m²):</label>
+                        <input type="number" class="form-control" id="area33" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular33" type="button" data-titulo="REVOQUES - Alisado de cemento (m2) - Paramento vertical (Alisado a la llana) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales33()">Calcular</button>
+                </form>
+
+                <div id="materiales33" class="mt-4"></div>
+                <button type="button" id="borrarBtn33" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado33()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales33 = [
+                { nombre: 'Cemento (KG)', valor: 14 },
+                { nombre: 'Arena fina (M3)', valor: 0.03 },
+                { nombre: 'Hrs Oficial', valor: 1.47 },
+                { nombre: 'Hrs Ayudante', valor: 0.60 }
+            ];
+
+            function calcularMateriales33() {
+                const areaInput = document.getElementById('area33');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales33');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales33.length; i++) {
+                    const material = materiales33[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado33() {
+                const areaInput = document.getElementById('area33');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales33');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA34" class="mb-0" data-toggle="collapse" data-target="#resultado34" aria-expanded="false"
+                aria-controls="resultado34">REVOQUES - Azotado cementicio, espesor 2 cm - (m2)</h3>
+
+            <div class="collapse" id="resultado34">
+                <form>
+                    <div class="form-group">
+                        <label for="area34">Área (m²):</label>
+                        <input type="number" class="form-control" id="area34" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular34" type="button" data-titulo=" REVOQUES - Azotado cementicio, espesor 2 cm - (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales34()">Calcular</button>
+                </form>
+
+                <div id="materiales34" class="mt-4"></div>
+                <button type="button" id="borrarBtn34" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado34()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales34 = [
+                { nombre: 'Cemento (KG)', valor: 10.40 },
+                { nombre: 'Arena mediana', valor: 0.03 },
+                { nombre: 'Hrs Oficial', valor: 0.40 },
+                { nombre: 'Hrs Ayudante', valor: 0.25 }
+
+            ];
+
+            function calcularMateriales34() {
+                const areaInput = document.getElementById('area34');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales34');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales34.length; i++) {
+                    const material = materiales34[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                    // Calcular el número de bolsas de cemento si el material es cemento
+                    if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado34() {
+                const areaInput = document.getElementById('area34');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales34');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA35" class="mb-0" data-toggle="collapse" data-target="#resultado35" aria-expanded="false"
+                aria-controls="resultado35">CONTRAPISOS - De hormigón de ripio (piedra partida), espesor 10 cm - (m2)</h3>
+            <h4>Mezcla 1:7</h4>
+            <div class="collapse" id="resultado35">
+                <form>
+                    <div class="form-group">
+                        <label for="area35">Área (m²):</label>
+                        <input type="number" class="form-control" id="area35" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular35" type="button" data-titulo=" CONTRAPISOS - De hormigón de ripio (piedra partida), espesor 10 cm - (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales35()">Calcular</button>
+                </form>
+
+                <div id="materiales35" class="mt-4"></div>
+                <button type="button" id="borrarBtn35" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado35()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales35 = [
+                { nombre: 'Cemento (KG)', valor: 22 },
+                { nombre: 'Ripio bruto (M3)', valor: 0.12 },
+                { nombre: 'Hrs Oficial', valor: 0.25 },
+                { nombre: 'Hrs Ayudante', valor: 0.75 }
+
+            ];
+
+            function calcularMateriales35() {
+                const areaInput = document.getElementById('area35');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales35');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales35.length; i++) {
+                    const material = materiales35[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                    // Calcular el número de bolsas de cemento si el material es cemento
+                    if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado35() {
+                const areaInput = document.getElementById('area35');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales35');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA36" class="mb-0" data-toggle="collapse" data-target="#resultado36" aria-expanded="false"
+                aria-controls="resultado36">CARPETA CEMENTICIA - Espesor 2 cm - (m2)</h3>
+            <h4>Mezcla 1:4</h4>
+
+            <div class="collapse" id="resultado36">
+                <form>
+                    <div class="form-group">
+                        <label for="area36">Área (m²):</label>
+                        <input type="number" class="form-control" id="area36" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular36" type="button" data-titulo="CARPETA CEMENTICIA - Espesor 2 cm - (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales36()">Calcular</button>
+                </form>
+
+                <div id="materiales36" class="mt-4"></div>
+                <button type="button" id="borrarBtn36" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado36()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales36 = [
+                { nombre: 'Cemento (KG)', valor: 8.20 },
+                { nombre: 'Arena mediana (M3)', valor: 0.03 },
+                { nombre: 'Hrs Oficial', valor: 0.50 },
+                { nombre: 'Hrs Ayudante', valor: 0.30 }
+            ];
+
+            function calcularMateriales36() {
+                const areaInput = document.getElementById('area36');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales36');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales36.length; i++) {
+                    const material = materiales36[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                    // Calcular el número de bolsas de cemento si el material es cemento
+                    if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado36() {
+                const areaInput = document.getElementById('area36');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales36');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA37" class="mb-0" data-toggle="collapse" data-target="#resultado37" aria-expanded="false"
+                aria-controls="resultado37">PISOS - De cemento alisado coloreado, espesor 2 cm - (m2)</h3>
+            <h4>Mezcla 1:3</h4>
+            <div class="collapse" id="resultado37">
+                <form>
+                    <div class="form-group">
+                        <label for="area37">Área (m²):</label>
+                        <input type="number" class="form-control" id="area37" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular37" type="button" data-titulo="PISOS - De cemento alisado coloreado, espesor 2 cm - (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales37()">Calcular</button>
+                </form>
+
+                <div id="materiales37" class="mt-4"></div>
+                <button type="button" id="borrarBtn37" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado37()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales37 = [
+                { nombre: 'Cemento (KG)', valor: 12 },
+                { nombre: 'Arena fina (M3)', valor: 0.03 },
+                { nombre: 'Ferrite (KG)', valor: 0.05 },
+                { nombre: 'Hrs Oficial', valor: 0.60 },
+                { nombre: 'Hrs Ayudante', valor: 0.30 }
+            ];
+
+            function calcularMateriales37() {
+                const areaInput = document.getElementById('area37');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales37');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales37.length; i++) {
+                    const material = materiales37[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                    // Calcular el número de bolsas de cemento si el material es cemento
+                    if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado37() {
+                const areaInput = document.getElementById('area37');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales37');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA38" class="mb-0" data-toggle="collapse" data-target="#resultado38" aria-expanded="false"
+                aria-controls="resultado38">PISOS - De mosaico calcareo o granítico - (m2)</h3>
+            <h4>Mecla 1/4: 1: 4</h4>
+            <div class="collapse" id="resultado38">
+                <form>
+                    <div class="form-group">
+                        <label for="area38">Área (m²):</label>
+                        <input type="number" class="form-control" id="area38" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular38" type="button" data-titulo="PISOS - De mosaico calcareo o granítico - (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales38()">Calcular</button>
+                </form>
+
+                <div id="materiales38" class="mt-4"></div>
+                <button type="button" id="borrarBtn38" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado38()">Borrar
+                    Resultado</button>
+                    
+
+        <script>
+            const materiales38 = [
+                { nombre: 'Mosaico (M2)', valor: 1.05 },
+                { nombre: 'Cemento (KG)', valor: 2.00 },
+                { nombre: 'Cal (KG)', valor: 2.90 },
+                { nombre: 'Arena gruesa (M3)', valor: 0.03 },
+                { nombre: 'Hrs Oficial', valor: 1.00 },
+                { nombre: 'Hrs Ayudante', valor: 0.50 }
+            ];
+
+            function calcularMateriales38() {
+                const areaInput = document.getElementById('area38');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales38');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales38.length; i++) {
+                    const material = materiales38[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                    // Calcular el número de bolsas de cemento si el material es cemento
+                    if (material.nombre === 'Cemento (KG)') {
+    const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+    const bolsasElement = document.createElement('p');
+    bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+    materialesDiv.appendChild(bolsasElement);
+} else if (material.nombre === 'Cal (KG)' || material.nombre === 'Yeso Negro (KG)') {
+    const bolsasYeso = Math.ceil(cantidad / 25); // para yeso en bolsas de 25 kg
+    const bolsasYesoElement = document.createElement('p');
+    bolsasYesoElement.textContent = `Bolsas de ${material.nombre} (25 kg): ${bolsasYeso} bolsas`;
+    materialesDiv.appendChild(bolsasYesoElement);
+}
+                }
+            }
+
+            function borrarResultado38() {
+                const areaInput = document.getElementById('area38');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales38');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA39" class="mb-0" data-toggle="collapse" data-target="#resultado39" aria-expanded="false"
+                aria-controls="resultado39">PISOS - De cerámico colocado con pegamento - (m2)</h3>
+            <h4>Cerámico colocado con pegamento</h4>
+
+            <div class="collapse" id="resultado39">
+                <form>
+                    <div class="form-group">
+                        <label for="area39">Área (m²):</label>
+                        <input type="number" class="form-control" id="area39" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular39" type="button"  data-titulo=" PISOS - De cerámico colocado con pegamento - (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales39()">Calcular</button>
+                </form>
+
+                <div id="materiales39" class="mt-4"></div>
+                <button type="button" id="borrarBtn39" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado39()">Borrar
+                    Resultado</button>
+                    <div class="container">
+                        <h1>Rendimiento de Pegamento y Pastina</h1>
+                
+                        <p>Se utilizó para el cálculo de tabla el rendimiento de pegamento con una llana dentada N° 8 (4 kg/m²)</p>
+                
+                        <div class="table-responsive"> <!- - Para tablas responsivas en pantallas pequeñas -->
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th colspan="3"></th>
+                                    </tr>
+                                    <tr>
+                                        <th>6 mm</th>
+                                        <th>8 mm</th>
+                                        <th>12 mm</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Llana de 6 mm">
+                                            <br>Llana de 6 mm<br>(azulejo o revest. de<br>4 mm de espesor)<br>3 kg/m²
+                                        </td>
+                                        <td>
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Llana de 8 mm">
+                                            <br>Llana de 8 mm<br>(cerámicos de<br>6 mm de espesor)<br>4 kg/m²
+                                        </td>
+                                        <td>
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Llana de 12 mm">
+                                            <br>Llana de 12 mm<br>(cerámicos de<br>8 mm de espesor o sup.)<br>6 kg/m²
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                
+                        <p>En el ítem pastina se utilizó el rendimiento para cerámica esmaltada de 30 x 30 (cm) con un espesor de 8 mm y junta de 3 mm</p>
+                
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Tipo de revestimiento</th>
+                                        <th>Formato cm</th>
+                                        <th>Espesor mm</th>
+                                        <th>Junta mm</th>
+                                        <th>Rendim. kg/m²</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Azulejo</td>
+                                        <td>15 x 15</td>
+                                        <td>4</td>
+                                        <td>2</td>
+                                        <td>0,200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cerámica esmaltada</td>
+                                        <td>20 x 20</td>
+                                        <td>8</td>
+                                        <td>3</td>
+                                        <td>0,400</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cerámica esmaltada</td>
+                                        <td>30 x 30</td>
+                                        <td>8</td>
+                                        <td>3</td>
+                                        <td>0,400</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cerámica esmaltada</td>
+                                        <td>40 x 40</td>
+                                        <td>8</td>
+                                        <td>3</td>
+                                        <td>0,300</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+        </div>
+            </div>
+        </div>
+
+        <script>
+            const materiales39 = [
+                { nombre: 'Ceramico (M2)', valor: 1.05 },
+                { nombre: 'Pegamento (KG)', valor: 4.00 },
+                { nombre: 'Pastina (KG)', valor: 0.40 },
+                { nombre: 'Hrs Oficial', valor: 0.80 },
+                { nombre: 'Hrs Ayudante', valor: 0.40 }
+
+            ];
+
+
+            function calcularMateriales39() {
+                const areaInput = document.getElementById('area39');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales39');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales39.length; i++) {
+                    const material = materiales39[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                }
+            }
+
+            function borrarResultado39() {
+                const areaInput = document.getElementById('area39');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales39');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA40" class="mb-0" data-toggle="collapse" data-target="#resultado40" aria-expanded="false"
+                aria-controls="resultado40">CIELORRASOS - A la cal bajo losa, espesor 2,5 cm - (m2)</h3>
+
+            <div class="collapse" id="resultado40">
+                <form>
+                    <div class="form-group">
+                        <label for="area40">Área (m²):</label>
+                        <input type="number" class="form-control" id="area40" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular40" type="button" data-titulo="CIELORRASOS - A la cal bajo losa, espesor 2,5 cm - (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales40()">Calcular</button>
+                </form>
+
+                <div id="materiales40" class="mt-4"></div>
+                <button type="button" id="borrarBtn40" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado40()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales40 = [
+                { nombre: 'Cemento (KG)', valor: 2.5 },
+                { nombre: 'Cal (KG)', valor: 4.50 },
+                { nombre: 'Arena Mediana (M3) ', valor: 0.03 },
+                { nombre: 'Arena Fina (M3)', valor: 0.01 },
+                { nombre: 'Hrs Oficial', valor: 1.30 },
+                { nombre: 'Hrs Ayudante', valor: 0.25 }
+
+            ];
+
+            function calcularMateriales40() {
+                const areaInput = document.getElementById('area40');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales40');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales40.length; i++) {
+                    const material = materiales40[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                    // Calcular el número de bolsas de cemento si el material es cemento
+                    if (material.nombre === 'Cemento (KG)') {
+    const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+    const bolsasElement = document.createElement('p');
+    bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+    materialesDiv.appendChild(bolsasElement);
+} else if (material.nombre === 'Yeso Blanco (KG)' || material.nombre === 'Yeso Negro (KG)') {
+    const bolsasYeso = Math.ceil(cantidad / 25); // para yeso en bolsas de 25 kg
+    const bolsasYesoElement = document.createElement('p');
+    bolsasYesoElement.textContent = `Bolsas de ${material.nombre} (25 kg): ${bolsasYeso} bolsas`;
+    materialesDiv.appendChild(bolsasYesoElement);
+}
+                }
+            }
+
+            function borrarResultado40() {
+                const areaInput = document.getElementById('area40');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales40');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA41" class="mb-0" data-toggle="collapse" data-target="#resultado41" aria-expanded="false"
+                aria-controls="resultado41">CIELORRASOS - De yeso bajo losa - (m2)</h3>
+            <h4>Mezcla: Castigado: 1 : 4 </h4>
+            <div class="collapse" id="resultado41">
+                <form>
+                    <div class="form-group">
+                        <label for="area41">Área (m²):</label>
+                        <input type="number" class="form-control" id="area41" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular41" type="button" data-titulo=" CIELORRASOS - De yeso bajo losa - (m2) "  class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales41()">Calcular</button>
+                </form>
+
+                <div id="materiales41" class="mt-4"></div>
+                <button type="button" id="borrarBtn41" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado41()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales41 = [
+                { nombre: 'Cemento (KG)', valor: 3 },
+                { nombre: 'Yeso Blanco (KG)', valor: 3 },
+                { nombre: 'Yeso Negro (KG)', valor: 4.51 },
+                { nombre: 'Arena Mediana (M3)', valor: 0.00 },             
+                { nombre: 'Hrs Oficial', valor: 1.80 },
+                { nombre: 'Hrs Ayudante', valor: 0.90 },
+
+            ];
+
+            function calcularMateriales41() {
+                const areaInput = document.getElementById('area41');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales41');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales41.length; i++) {
+                    const material = materiales41[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                    // Calcular el número de bolsas de cemento si el material es cemento
+                    if (material.nombre === 'Cemento (KG)') {
+    const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+    const bolsasElement = document.createElement('p');
+    bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+    materialesDiv.appendChild(bolsasElement);
+} else if (material.nombre === 'Yeso Blanco (KG)' || material.nombre === 'Yeso Negro (KG)') {
+    const bolsasYeso = Math.ceil(cantidad / 25); // para yeso en bolsas de 25 kg
+    const bolsasYesoElement = document.createElement('p');
+    bolsasYesoElement.textContent = `Bolsas de ${material.nombre} (25 kg): ${bolsasYeso} bolsas`;
+    materialesDiv.appendChild(bolsasYesoElement);
+}
+
+                }
+            }
+
+            function borrarResultado41() {
+                const areaInput = document.getElementById('area41');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales41');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA42" class="mb-0" data-toggle="collapse" data-target="#resultado42" aria-expanded="false"
+                aria-controls="resultado42">CIELORRASOS - A la cal suspendido sobre metal desplegado - (m2)</h3>
+            <h4>Mezcla: Castigado : 1:4/
+                Grueso: 1/4 : 2 : 5 /
+                Fino:1/2 : 1 : 4/
+            </h4>
+
+            <div class="collapse" id="resultado42">
+                <form>
+                    <div class="form-group">
+                        <label for="area42">Área (m²):</label>
+                        <input type="number" class="form-control" id="area42" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular42" type="button" data-titulo="CIELORRASOS - A la cal suspendido sobre metal desplegado - (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales42()">Calcular</button>
+                </form>
+
+                <div id="materiales42" class="mt-4"></div>
+                <button type="button" id="borrarBtn42" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado42()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales42 = [
+                { nombre: 'Cemento (KG)', valor: 5 },
+                { nombre: 'Cal (KG)', valor: 4.50 },
+                { nombre: 'Arena Mediana (M3)', valor: 0.03 },
+                { nombre: 'Arena Fina (M3)', valor: 0.01 },
+                { nombre: 'Metal desplegado m2', valor: 1.25 },
+                { nombre: 'Arena Fina (M3)', valor: 0.01 },
+                { nombre: 'Alfajías (1" x 4") pie 2', valor: 1.73 },
+                { nombre: 'Listones (1" x 1 1/2") pie 2', valor: 2.75 },
+                { nombre: 'Alambre Negro (KG)', valor: 0.10 },
+                { nombre: 'Hrs Oficial', valor: 2.40 },
+                { nombre: 'Hrs Ayudante', valor: 1.50 },
+
+            ];
+
+            function calcularMateriales42() {
+                const areaInput = document.getElementById('area42');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales42');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales42.length; i++) {
+                    const material = materiales42[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                    // Calcular el número de bolsas de cemento si el material es cemento
+                    if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                        
+                        
+                    }
+                }
+            }
+
+            function borrarResultado42() {
+                const areaInput = document.getElementById('area42');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales42');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA43" class="mb-0" data-toggle="collapse" data-target="#resultado43" aria-expanded="false"
+                aria-controls="resultado43">PINTURA - (m2)</h3>
+            <h4>Rendimiento por lito por 2 manos</h4>
+            <div class="collapse" id="resultado43">
+                <form>
+                    <div class="form-group">
+                        <label for="area43">Área (m²):</label>
+                        <input type="number" class="form-control" id="area43" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular43" type="button" data-titulo=" PINTURA - (m2)" class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales43()">Calcular</button>
+                </form>
+
+                <div id="materiales43" class="mt-4">
+                    <h6>* Un litro de sellador se diluye en 3 de agua rinde
+                        aproximadamente 10 m2 x litro, se pasa una sola mano.
+                        (**) Barniz (se pinta diluido 1 litro x 1/2 litro de aguarras)</h6>
+                </div>
+                <button type="button" id="borrarBtn43" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado43()">Borrar
+                    Resultado</button>
+            </div>
+        </div>
+
+        <script>
+            const materiales43 = [
+                { nombre: 'Latex litro', valor: 0.14 },
+                { nombre: 'Sellador 1  mano', valor: 0.10 },
+                { nombre: 'Agua tipo "Cremar" ', valor: 0.25 },
+                { nombre: 'Sintetico sobre Madera', valor: 0.14 },
+                { nombre: 'Sintetico sobre Matal', valor: 0.14 },
+                { nombre: 'Sellador*', valor: 0.15 },
+                { nombre: 'Antioxido', valor: 0.10 },
+                { nombre: 'Barniz **', valor: 0.17 },
+                { nombre: 'Aguarras', valor: 0.08 }
+            ];
+
+            function calcularMateriales43() {
+                const areaInput = document.getElementById('area43');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales43');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales43.length; i++) {
+                    const material = materiales43[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                }
+            }
+
+            function borrarResultado43() {
+                const areaInput = document.getElementById('area43');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales43');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+
+
+        <!--divisiona=======================================================================-->
+        <div class="container mt-5 container-custom">
+            <h3 id="TAREA44" class="mb-0" data-toggle="collapse" data-target="#resultado44" aria-expanded="false"
+                aria-controls="resultado44">CUBIERTAS - De tejas coloniales sobre losa - (m2)</h3>
+            <h4>Mezcla: 1/4 : 3 : 5</h4>
+            <div class="collapse" id="resultado44">
+                <form>
+                    <div class="form-group">
+                        <label for="area44">Área (m²):</label>
+                        <input type="number" class="form-control" id="area44" placeholder="Ingrese el área">
+                    </div>
+                    <button id="calcular44" type="button" data-titulo="CUBIERTAS - De tejas coloniales sobre losa - (m2) " class="btn btn-primary  btn-block mt-3"
+                        onclick="calcularMateriales44()">Calcular</button>
+                </form>
+
+                <div id="materiales44" class="mt-4">
+                    <h5>Cantidad de tejas p/ m2:
+                        <br>
+                        Teja colonial mediana
+                        435 x 195 x 145: 27
+                        <br>
+                        Teja francesa
+                        425 x 255: 14
+                        <br>
+                        Teja romana
+                        435 x 280 : 11,4
+                    </h5>
+                </div>
+                <button type="button" id="borrarBtn44" class="btn btn-danger  btn-block mt-3"
+                    onclick="borrarResultado44()">Borrar
+                    Resultado</button>
+                    <div class="container">
+                        <h1>Cubiertas - Pendientes</h1>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Tipos de cubiertas</th>
+                                    <th scope="col">Pendiente en grado mínimo</th>
+                                    <th scope="col">Pendiente en grado máximo</th>
+                                    <th scope="col">% de la pendiente mínimo</th>
+                                    <th scope="col">% de la pendiente máximo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Azotea de baldosa cerámicas</td>
+                                    <td>1/2°</td>
+                                    <td>2 1/2°</td>
+                                    <td>1%</td>
+                                    <td>6%</td>
+                                </tr>
+                                <tr>
+                                    <td>Techado asfáltico</td>
+                                    <td>1°</td>
+                                    <td>3°</td>
+                                    <td>2%</td>
+                                    <td>7%</td>
+                                </tr>
+                                <tr>
+                                    <td>Chapa ondulada galvanizada</td>
+                                    <td>6°</td>
+                                    <td>45°</td>
+                                    <td>13%</td>
+                                    <td>100%</td>
+                                </tr>
+                                <tr>
+                                    <td>Chapa trapezoidal</td>
+                                    <td>6°</td>
+                                    <td>45°</td>
+                                    <td>13%</td>
+                                    <td>100%</td>
+                                </tr>
+                                <tr>
+                                    <td>Tejas coloniales</td>
+                                    <td>20°</td>
+                                    <td>50°</td>
+                                    <td>45%</td>
+                                    <td>110%</td>
+                                </tr>
+                                <tr>
+                                    <td>Tejas francesas</td>
+                                    <td>20°</td>
+                                    <td>55°</td>
+                                    <td>45%</td>
+                                    <td>120%</td>
+                                </tr>
+                                <tr>
+                                    <td>Pizarra</td>
+                                    <td>20°</td>
+                                    <td>85°</td>
+                                    <td>45%</td>
+                                    <td>190%</td>
+                                </tr>
+                                <tr>
+                                    <td>Tejas romanas</td>
+                                    <td>40°</td>
+                                    <td>60°</td>
+                                    <td>89%</td>
+                                    <td>135%</td>
+                                </tr>
+                                 <tr>
+                                    <td>Paja</td>
+                                    <td>45°</td>
+                                    <td>80°</td>
+                                    <td>100%</td>
+                                    <td>178%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+    <h1>Pendiente</h1>
+    <p>Es el grado de desnivel por unidad de distancia horizontal, también llamada inclinación.</p>
+
+    <h2>(1) Altura mayor de la pendiente</h2>
+    <p>Veamos un ejemplo: Si tenemos que construir una cubierta que tiene una distancia de <strong>4 m</strong> y voy a cubrir con <strong>tejas coloniales</strong> sobre tirantería, elijo una pendiente de <strong>45%</strong>.</p>
+
+    <h2>(2) Determinación del largo de caída del faldón</h2>
+    <p>Para cubrir una luz de <strong>4 m</strong> con una pendiente de <strong>45%</strong>, para la colocación de <strong>tejas coloniales</strong>.</p>
+
+    <p><strong>Nota:</strong> Siempre se deberá consultar con los fabricantes y/o vendedores de un determinado producto para cubierta, acerca de la pendiente máxima y mínima que recomiendan para su colocación.</p>
+            </div>
+            
+        </div>
+        <br>
+        <br>
+
+
+        <script>
+            const materiales44 = [
+
+                { nombre: 'Tejas colonial mediana 435 x 195 x 145 N°', valor: 27 },
+                { nombre: 'Tejas francesa 425 x 225  N°', valor: 14 },
+                { nombre: 'Tejas romana 435x280 N°', valor: 11.4 },
+
+                { nombre: 'Arena mediana (KG)', valor: 0.03 },
+                { nombre: 'Pintura asfaltica (L)', valor: 2 },
+                { nombre: 'Cemento (KG)', valor: 1.90 },
+                { nombre: 'Cal (KG)', valor: 13 },
+                { nombre: 'Arena mediana (M3)', valor: 0.03 },
+                { nombre: 'Hrs Oficial', valor: 0.80 },
+
+                { nombre: 'Hrs Ayudante', valor: 1.00 },
+
+            ];
+
+            function calcularMateriales44() {
+                const areaInput = document.getElementById('area44');
+                const area = parseFloat(areaInput.value);
+
+                if (isNaN(area)) {
+                    alert('Por favor, ingrese un valor numérico válido para el área.');
+                    return;
+                }
+
+                const materialesDiv = document.getElementById('materiales44');
+                materialesDiv.innerHTML = '';
+
+                for (let i = 0; i < materiales44.length; i++) {
+                    const material = materiales44[i];
+                    const cantidad = material.valor * area;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = `${material.nombre}: ${cantidad.toFixed(2)}`;
+                    materialesDiv.appendChild(pElement);
+                     // Calcular el número de bolsas de cemento si el material es cemento
+                     if (material.nombre === 'Cemento (KG)') {
+                        const bolsas = Math.ceil(cantidad / 50); // redondea hacia arriba
+                        const bolsasElement = document.createElement('p');
+                        bolsasElement.textContent = `Bolsas de Cemento (50 kg): ${bolsas} bolsas`;
+                        materialesDiv.appendChild(bolsasElement);
+                    }
+                }
+            }
+
+            function borrarResultado44() {
+                const areaInput = document.getElementById('area44');
+                areaInput.value = '';
+
+                const materialesDiv = document.getElementById('materiales44');
+                materialesDiv.innerHTML = '';
+            }
+        </script>
+        <!--divisiona=======================================================================-->
+        <!--divisiona=======================================================================-->
+
+
+        <!--divisiona=======================================================================-->
+
+        <!--divisiona=======================================================================-->
+
+        <!--divisiona=======================================================================-->
+
+
+    </div>
+
+    <script>
+      
+
+
+    </script>
+
+</body>
+
+</html>
