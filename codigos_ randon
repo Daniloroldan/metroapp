@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generador de Contraseñas</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+     @media print {
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      #contrasenas-generadas li:nth-child(odd) {
+        background-color: #f2f2f2;
+         border-radius: 10px;
+      padding: 5px;
+      margin-left: 5px;
+      }
+
+      #contrasenas-generadas {
+        max-height: none;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 15px;
+        box-shadow: none;
+        list-style-type: none;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .titulo {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .fila-titulo {
+        font-weight: bold;
+      }
+    }
+    #contrasenas-generadas li:nth-child(odd) {
+      background-color: #f2f2f2;
+      border-radius: 10px;
+      padding: 5px;
+      margin-left: 5px;
+    
+    }
+
+    #contrasenas-generadas {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      list-style-type: none;
+      background-color: #fff;
+      color: #333;
+    }
+  </style>
+  <script type="text/javascript">
+    function copiarContrasenas() {
+      var contrasenasContainer = document.getElementById("contrasenas-generadas");
+      var contrasenasParaCopiar = contrasenasContainer.innerText;
+      var textarea = document.createElement("textarea");
+      textarea.textContent = contrasenasParaCopiar;
+      textarea.style.position = "fixed";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        return document.execCommand("copy");
+      } catch (ex) {
+        console.warn("Copy to clipboard failed.", ex);
+        return false;
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
+    function generarContrasenas() {
+      var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      if(document.getElementById("caracteres-especiales").checked) {
+        caracteres += "!@#$%^&*()";
+      }
+      
+      var numContraseñas = parseInt(document.getElementById("numero-contraseñas").value);
+      var longitud = parseInt(document.getElementById("longitud-contraseñas").value);
+      var contraseñasGeneradas = [];
+
+      while (contraseñasGeneradas.length < numContraseñas) {
+        var contraseña = "";
+        
+        for (var i = 0; i < longitud; i++) {
+          contraseña += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        }
+        
+        if (!contraseñasGeneradas.includes(contraseña)) {
+          contraseñasGeneradas.push(contraseña);
+        }
+      }
+      
+      var contrasenasContainer = document.getElementById("contrasenas-generadas");
+      contrasenasContainer.innerHTML = "";
+      contraseñasGeneradas.forEach(function(contrasena) {
+        var li = document.createElement("li");
+        li.textContent = contrasena;
+        contrasenasContainer.appendChild(li);
+      });
+    }
+
+    function traducir() {
+      var userLang = navigator.language || navigator.userLanguage;
+      if (userLang.startsWith("es")) {
+        document.getElementById("titulo").innerText = "Generador de Contraseñas";
+        document.getElementById("label-numero").innerText = "Número de Contraseñas:";
+        document.getElementById("label-longitud").innerText = "Longitud de Contraseñas:";
+        document.getElementById("label-caracteres-especiales").innerText = "Incluir caracteres especiales (!@#$%^&*)";
+        document.getElementById("boton-generar").innerText = "Generar Contraseñas";
+        document.getElementById("boton-copiar").innerText = "Copiar Contraseñas";
+      }
+    }
+
+    window.onload = traducir;
+  </script>
+</head>
+<body class="bg-dark text-white">
+  <div class="container py-5">
+    <h1 id="titulo">Password Generator</h1>
+    <div class="form-group">
+      <label id="label-numero" for="numero-contraseñas">Number of Passwords:</label>
+      <input type="number" id="numero-contraseñas" class="form-control">
+    </div>
+    <div class="form-group">
+      <label id="label-longitud" for="longitud-contraseñas">Password Length:</label>
+      <input type="number" id="longitud-contraseñas" class="form-control">
+    </div>
+    <div class="form-check">
+      <input type="checkbox" id="caracteres-especiales" class="form-check-input">
+      <label id="label-caracteres-especiales" class="form-check-label" for="caracteres-especiales">Include special characters (!@#$%^&*)</label>
+    </div>
+    <button id="boton-generar" onclick="generarContrasenas()" class="btn btn-primary mt-3">Generate Passwords</button>
+    <button id="boton-copiar" onclick="copiarContrasenas()" class="btn btn-secondary mt-3">Copy Passwords</button>
+    <button id="boton-imprimir" onclick="imprimirContenido()" class="btn btn-info mt-3">Print Passwords</button>
+
+    <!-- Botón para descargar el contenido -->
+    <button id="boton-descargar" onclick="descargarContenido()" class="btn btn-success mt-3">Download Passwords</button>
+    <ul id="contrasenas-generadas" class="mt-3"></ul>
+    
+        <button id="boton-descargar-json" onclick="descargarContenidoJSON()" class="btn btn-success mt-3">Download Passwords as JSON</button>
+ 
+  </div>
+</body>
+   <script type="text/javascript">
+    // Función para obtener el contenido HTML de las contraseñas generadas
+    function obtenerContenidoHTML() {
+      var contrasenasContainer = document.getElementById("contrasenas-generadas");
+      return contrasenasContainer.innerHTML;
+    }
+
+    // Función para imprimir el contenido HTML
+    function imprimirContenido() {
+      var contenidoHTML = obtenerContenidoHTML();
+      var ventanaImpresion = window.open('', '', 'height=500,width=800');
+      ventanaImpresion.document.write('<html><head><title>Contraseñas Generadas</title></head><body>');
+      ventanaImpresion.document.write(contenidoHTML);
+      ventanaImpresion.document.write('</body></html>');
+      ventanaImpresion.document.close();
+      ventanaImpresion.focus();
+      ventanaImpresion.print();
+    }
+  function descargarContenidoJSON() {
+      var contraseñasGeneradas = obtenerContraseñasGeneradas();
+      var contenidoJSON = JSON.stringify({ contraseñas: contraseñasGeneradas }, null, 2);
+      var blob = new Blob([contenidoJSON], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'contrasenas.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+     
+    // Función para descargar el contenido HTML como archivo
+    function descargarContenido() {
+      var contenidoHTML = obtenerContenidoHTML();
+      var blob = new Blob([contenidoHTML], { type: 'text/html' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'contrasenas.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+     
+    // Función para obtener las contraseñas generadas en un array
+    function obtenerContraseñasGeneradas() {
+      var contraseñasGeneradas = [];
+      var contrasenasContainer = document.getElementById("contrasenas-generadas");
+      var contraseñasList = contrasenasContainer.getElementsByTagName('li');
+
+      for (var i = 0; i < contraseñasList.length; i++) {
+        contraseñasGeneradas.push(contraseñasList[i].textContent);
+      }
+
+      return contraseñasGeneradas;
+    }
+
+    // Resto del código existente...
+  </script>
+</html>
