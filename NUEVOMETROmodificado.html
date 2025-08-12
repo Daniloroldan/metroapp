@@ -1,0 +1,3387 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="cotizador, construcción, albanileria,Albañil, obra, Cemento, concreto
+  , ladrillo,software">
+
+  <meta http-equiv="Cache-Control" content="public">
+  <title>METRO</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <style>
+
+    bi bi-question-lg{
+      white-space: nowrap;
+    }
+
+ .container-buttons {
+            display: flex;
+            gap: 15px; /* Space between buttons */
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn-info-icon {
+            background-color: #0d6efd; /* Bootstrap primary blue */
+            border-color: #0d6efd;
+            color: rgb(42, 81, 197);
+            border-radius: 50%; /* Make it circular */
+            width: 60px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+       
+        }
+        .btn-info-icon:hover {
+            background-color: #0b5ed7;
+            border-color: #0b5ed7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .modal-content {
+            border-radius: 15px;
+            overflow: hidden; /* Ensures rounded corners apply to carousel */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 300px; /* Fixed height for carousel images */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            border-radius: 10px; /* Rounded corners for images inside carousel */
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+
+
+/* Prefijo 'temu-' a todas las clases para evitar conflictos */
+    .temu-body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
+    .temu-modal {
+      display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%;
+      height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6);
+    }
+    .temu-modal-content {
+      background-image: linear-gradient(to bottom, #ffffff, #dcd8ff, #b3b2ff, #808fff, #216fff);
+      margin: 10% auto; padding: 20px; border-radius: 12px;
+      max-width: 500px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); animation: temu-fadeIn 0.3s ease-in-out;
+    }
+    @keyframes temu-fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .temu-close {
+      color: #aaa; float: right; font-size: 24px; font-weight: bold; cursor: pointer;
+    }
+    .temu-close:hover { color: #000; }
+    .temu-h2 {
+      color: #ff8000;
+      font-size: 22px;
+    }
+    .temu-promo-block {
+      position: relative;
+      background: rgba(176, 15, 15, 0);
+      border: 8px solid #cee3fd;
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      /* Fondo difuminado por defecto, se sobreescribe por clase específica */
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+    .temu-promo-block::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.7;
+      pointer-events: none;
+      border-radius: 8px;
+    }
+    .temu-promo-block.temu-op1::before {
+      background-image: url('https://metroapp.site/img/temu/2%20INGCO%20cordless%20tools(2).png');
+    }
+    .temu-promo-block.temu-op2::before {
+      background-image: url('https://metroapp.site/img/temu/Herramientas-para-la-casa-C-1.jpg');
+    }
+    .temu-promo-block.temu-op3::before {
+      background-image: url('https://metroapp.site/img/temu/Uso-de-herramientas-electricas-y-neumaticas-600x400.jpg');
+    }
+    .temu-promo-block.temu-op4::before {
+      background-image: url('https://metroapp.site/img/temu/Herramientas-para-la-casa-C-1.jpg');
+    }
+    .temu-promo-block > * {
+      position: relative;
+      z-index: 1;
+    }
+    .temu-a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .temu-a:hover { text-decoration: underline; }
+    .temu-button {
+      max-width: max-content;
+      background: #ff7b008a;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: rgba(6, 24, 44, 0.756) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    }
+    .temu-button:hover {
+      background: #e66f00;
+    }
+
+
+    
+/* From Uiverse.io by Smit-Prajapati */ 
+.containerbuscar {
+  position: relative;
+  background: linear-gradient(135deg, rgb(179, 208, 253) 0%, rgb(164, 202, 248) 100%);
+  border-radius: 1000px;
+  padding: 7px;
+
+  place-content: center;
+  z-index: 0;
+  max-width: 100%;
+ 
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.search-container::after, .search-container::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  position: absolute;
+}
+
+.search-container::before {
+  top: -1px;
+  left: -1px;
+  background: linear-gradient(0deg, rgb(218, 232, 247) 0%, rgb(255, 255, 255) 100%);
+  z-index: -1;
+}
+
+.search-container::after {
+  bottom: -1px;
+  right: -1px;
+  background: linear-gradient(0deg, rgb(163, 206, 255) 0%, rgb(211, 232, 255) 100%);
+  box-shadow: rgba(79, 156, 232, 0.7019607843) 3px 3px 5px 0px, rgba(79, 156, 232, 0.7019607843) 5px 5px 20px 0px;
+  z-index: -2;
+}
+
+.input {
+
+  width: 100%;
+  background: linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%);
+  border: none;
+  color: #012d5f;
+  font-size: 18px;
+  border-radius: 50px;
+}
+
+.input:focus {
+  outline: none;
+  background: linear-gradient(135deg, rgb(239, 247, 255) 0%, rgb(214, 229, 247) 100%);
+}
+
+.search__icon {
+  width: 50px;
+  aspect-ratio: 1;
+  border-left: 2px solid white;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-radius: 50%;
+  padding-left: 12px;
+  margin-right: 10px;
+}
+
+.search__icon:hover {
+  border-left: 3px solid white;
+}
+
+.search__icon path {
+  fill: white;
+}
+
+.form-control {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px; /* Space between input and button */
+}
+
+
+
+    /* Estilos para ambos contenedores */
+    #resultado1,
+    #resultado {
+      background-color: #f9f9f9;
+      /* Fondo claro */
+      border: 2px solid #ddd;
+      /* Borde gris claro */
+      border-radius: 8px;
+      /* Bordes redondeados */
+      padding: 20px;
+      /* Espaciado interno */
+      margin: 15px 0;
+      /* Separación entre otros elementos */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Sombra para efecto de elevación */
+      font-family: Arial, sans-serif;
+      /* Fuente del texto */
+      color: #333;
+      /* Color del texto */
+    }
+
+    /* Estilos adicionales para #resultado1 */
+    #resultado1 {
+      background-color: #e6f7ff;
+      /* Fondo azul claro */
+      border-color: #00aaff;
+      /* Borde azul */
+      color: #006699;
+      /* Texto azul oscuro */
+    }
+
+    /* Estilos adicionales para #resultado */
+    #resultado {
+      background-color: #f7ffe6;
+      /* Fondo verde claro */
+      border-color: #aaff00;
+      /* Borde verde */
+      color: #669900;
+      /* Texto verde oscuro */
+    }
+
+    /* Agregar efecto hover para ambos contenedores */
+    #resultado1:hover,
+    #resultado:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      /* Sombra más intensa al pasar el cursor */
+      transform: translateY(-2px);
+      /* Efecto de movimiento hacia arriba */
+      transition: all 0.3s ease;
+      /* Transición suave */
+    }
+
+   
+/* Ejemplo para tablas */
+.table.modo-oscuro {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+    body {
+
+      background: linear-gradient(0deg, rgba(233, 238, 244, 1) 0%, rgba(68, 148, 242, 0.5858718487394958) 49%, rgba(233, 235, 238, 0.5858718487394958) 100%);
+
+      text-decoration: bold;
+      font-weight: bold;
+      color: rgb(44, 121, 208);
+    }
+
+    .fixed-footer {
+      max-width: 600px;
+      position: fixed;
+      bottom: 0;
+      border-radius: 8px 8px 0px 0px;
+      left: 5%;
+      right: 5%;
+      margin: 0 auto;
+      /* Centers the footer horizontally */
+      text-align: center;
+
+      padding: 10px;
+      /* Internal spacing */
+      background-image: linear-gradient(to right top, #3768b1, #3b75c4, #3e82d7, #3f90eb, #409eff);
+      box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+      z-index: 999;
+      /* Ensures the footer is above other elements */
+    }
+
+
+    .fixed-footer .form-control {
+      width: 100%;
+      color: red;
+      /* Asegúrate de que el input ocupe todo el ancho del contenedor */
+    }
+
+
+    .modal-dialog {
+      text-decoration: bold;
+      font-weight: bold;
+      color: rgb(44, 121, 208);
+      margin: 15px;
+      /* Aplica un margen de 15px a los modales */
+    }
+
+
+    .alert-container {
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #d9534f;
+      border-radius: 4px;
+      color: #d9534f;
+      background-color: #f2dede;
+    }
+
+    /* Estilo adicional para el texto de la alerta */
+    .alert-text {
+      font-weight: bold;
+    }
+
+    .custom-alert {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      font-weight: bold;
+      font-size: 30px;
+      transform: translate(-50%, -50%);
+      padding: 50px;
+      background-image: linear-gradient(to top, #1c7150e6, #1e9366e2, #21b67de2, #25da95d4, #2bffaad7);
+      /* color de fondo verde para aumento, puedes ajustarlo */
+      color: white;
+      box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      border-radius: 5px;
+      z-index: 1000;
+      animation: fadeOut 3s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 2;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    #tabla-container {
+      max-height: 400px;
+      /* Altura máxima del contenedor */
+      overflow-y: scroll;
+      /* Habilitar el desplazamiento vertical */
+    }
+
+
+
+    #boton-toggle {
+      background: rgb(51, 180, 252);
+      background: linear-gradient(360deg, rgba(51, 180, 252, 1) 6%, rgba(8, 103, 252, 1) 100%);
+      font-size: 20px;
+      margin-bottom: 10px;
+
+    }
+
+    .checkbox-wrapper-26 * {
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+      margin: 5px;
+    }
+
+    .checkbox-wrapper-26 input[type="checkbox"] {
+      display: none;
+    }
+
+    .checkbox-wrapper-26 label {
+      --size: 30px;
+      --shadow: calc(var(--size) * .07) calc(var(--size) * .1);
+
+      position: relative;
+      display: block;
+      width: var(--size);
+      height: var(--size);
+      margin: 0 auto;
+      background-color: #f72414;
+      border-radius: 50%;
+      box-shadow: 0 var(--shadow) #ffbeb8;
+      cursor: pointer;
+      transition: 0.2s ease transform, 0.2s ease background-color,
+        0.2s ease box-shadow;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .checkbox-wrapper-26 label:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      left: 0;
+      width: calc(var(--size) * .7);
+      height: calc(var(--size) * .7);
+      margin: 0 auto;
+      background-color: #fff;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      box-shadow: inset 0 var(--shadow) #ffbeb8;
+      transition: 0.2s ease width, 0.2s ease height;
+    }
+
+    .checkbox-wrapper-26 label:hover:before {
+      width: calc(var(--size) * .55);
+      height: calc(var(--size) * .55);
+      box-shadow: inset 0 var(--shadow) #ff9d96;
+    }
+
+    .checkbox-wrapper-26 label:active {
+      transform: scale(0.9);
+    }
+
+    .checkbox-wrapper-26 .tick_mark {
+      position: absolute;
+      top: -1px;
+      right: 0;
+      left: calc(var(--size) * -.05);
+      width: calc(var(--size) * .6);
+      height: calc(var(--size) * .6);
+      margin: 0 auto;
+      margin-left: calc(var(--size) * .14);
+      transform: rotateZ(-40deg);
+    }
+
+    .checkbox-wrapper-26 .tick_mark:before,
+    .checkbox-wrapper-26 .tick_mark:after {
+      content: "";
+      position: absolute;
+      background-color: #fff;
+      border-radius: 2px;
+      opacity: 0;
+      transition: 0.2s ease transform, 0.2s ease opacity;
+    }
+
+    .checkbox-wrapper-26 .tick_mark:before {
+      left: 0;
+      bottom: 0;
+      width: calc(var(--size) * .1);
+      height: calc(var(--size) * .3);
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.23);
+      transform: translateY(calc(var(--size) * -.68));
+    }
+
+    .checkbox-wrapper-26 .tick_mark:after {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: calc(var(--size) * .1);
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.23);
+      transform: translateX(calc(var(--size) * .78));
+    }
+
+    .checkbox-wrapper-26 input[type="checkbox"]:checked+label {
+      background-color: #07d410;
+      box-shadow: 0 var(--shadow) #92ff97;
+    }
+
+    .checkbox-wrapper-26 input[type="checkbox"]:checked+label:before {
+      width: 0;
+      height: 0;
+    }
+
+    .checkbox-wrapper-26 input[type="checkbox"]:checked+label .tick_mark:before,
+    .checkbox-wrapper-26 input[type="checkbox"]:checked+label .tick_mark:after {
+      transform: translate(0);
+      opacity: 1;
+    }
+
+    #ingreso {
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%25' gradientTransform='rotate(183,680,313)'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='1' stop-color='%232DC2FF'/%3E%3C/linearGradient%3E%3Cpattern patternUnits='userSpaceOnUse' id='b' width='540' height='450' x='0' y='0' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.17'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect x='0' y='0' fill='url(%23b)' width='100%25' height='100%25'/%3E%3C/svg%3E");
+      text-decoration: bold;
+      font-weight: bold;
+      color: rgb(44, 121, 208);
+
+      background-size: cover;
+      display: block;
+    }
+
+    #contenido-oculto {
+      display: none;
+    }
+
+    #contenido-oculto2 {
+      display: none;
+    }
+
+    #contenido-oculto3 {
+
+      display: none;
+      text-align: center;
+
+    }
+
+    #contenido-oculto8 {
+      display: none;
+    }
+
+    #indice1 {
+      max-width: 100%;
+      padding: 20px;
+      display: none;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      font-size: 30px;
+      display: block;
+      background: rgb(83, 139, 154);
+      background: linear-gradient(0deg, rgb(31, 108, 129) 0%, rgb(174, 226, 248) 52%, rgb(209, 243, 243) 100%);
+      color: #000000;
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.425) 3px 1.95px 2.6px;
+    }
+
+
+
+
+
+
+    .container {
+      text-decoration: bold;
+      font-weight: bold;
+      color: rgb(44, 121, 208);
+      max-width: none;
+      margin: 4 px;
+      padding-top: 10px;
+      background-image: linear-gradient(to right top, #f5f8fe, #e8f4ff, #ffffff, #e6f6fd, #e8e8e8);
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    }
+
+    .container2 {
+      text-decoration: bold;
+      font-weight: bold;
+      color: rgb(44, 121, 208);
+      max-width: none;
+      margin: 0px;
+      padding: 10px;
+      background-image: linear-gradient(to top, #ffffff, #fafafd, #f4f6fc, #edf3fb, #e5eff9);
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    }
+
+    .container3 {
+      text-decoration: bold;
+      font-weight: bold;
+      color: rgb(44, 121, 208);
+      max-width: none;
+      margin: 8px;
+      padding: 10px;
+      padding-top: 10px;
+      background-image: linear-gradient(to top, #ffffff, #fafafd, #f4f6fc, #edf3fb, #e5eff9);
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      padding: 2px;
+      font-size: 30px;
+      color: #023396;
+      text-shadow: 5px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    #result {
+      padding: 8px;
+      background-image: linear-gradient(to top, #ffffff, #f4f5fa, #e7ebf6, #d8e2f1, #c7d9ec);
+      border-radius: 5px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    }
+
+    .alert {
+      margin-top: 20px;
+      font-size: 18px;
+      background: rgb(56, 122, 0);
+      background: rgb(126, 153, 147);
+      background: linear-gradient(0deg, rgba(126, 153, 147, 1) 0%, rgba(255, 255, 255, 1) 84%);
+      box-shadow: 4px 4px 10px rgba(0, 4, 0, 0.5);
+    }
+
+
+
+    .button-82-pushable {
+      position: relative;
+      border: none;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      outline-offset: 4px;
+      transition: filter 250ms;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .button-82-shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: hsl(0deg 0% 0% / 0.25);
+      will-change: transform;
+      transform: translateY(2px);
+      transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+    }
+
+    .button-82-edge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(to left,
+          hsl(226, 100%, 16%) 0%,
+          hsl(216, 100%, 32%) 8%,
+          hsl(201, 8%, 56%) 92%,
+          hsl(219, 100%, 16%) 100%);
+    }
+
+    .button-82-front {
+      justify-content: center;
+      border-radius: 10px;
+      align-items: center;
+      background-image: linear-gradient(to right top, #3768b1, #3b75c4, #3e82d7, #3f90eb, #409eff);
+      box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+      display: block;
+      position: relative;
+      padding: 12px 27px;
+      font-size: 1rem;
+      color: white;
+      will-change: transform;
+      transform: translateY(-4px);
+      transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+    }
+
+    @media (min-width: 768px) {
+      .button-82-front {
+        font-size: 1rem;
+        padding: 12px 42px;
+      }
+    }
+
+    .button-82-pushable:hover {
+      filter: brightness(110%);
+      -webkit-filter: brightness(110%);
+    }
+
+    .button-82-pushable:hover .button-82-front {
+      transform: translateY(-6px);
+      transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+    }
+
+    .button-82-pushable:active .button-82-front {
+      transform: translateY(-2px);
+      transition: transform 34ms;
+    }
+
+    .button-82-pushable:hover .button-82-shadow {
+      transform: translateY(4px);
+      transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+    }
+
+    .button-82-pushable:active .button-82-shadow {
+      transform: translateY(1px);
+      transition: transform 34ms;
+    }
+
+    .button-82-pushable:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+
+
+
+
+
+
+    .program-title {
+      text-align: center;
+      font-size: 9px;
+      margin-bottom: 10px;
+      background-image: linear-gradient(to top, #ffffff, #fafafd, #f4f6fc, #edf3fb, #e5eff9);
+      border-radius: 10px;
+      border: solid 7px #f7feff18;
+      box-shadow: 4px 4px 10px rgba(0, 9, 30, 0.5);
+    }
+
+    .program-title h1 {
+
+      font-size: 40px;
+      padding: 0px 50px 50px 50px;
+      margin-bottom: 5px;
+      text-align: center;
+      text-transform: uppercase;
+      text-rendering: optimizeLegibility;
+      color: #1a1919;
+      background-color: #e7e5e4;
+      letter-spacing: .15em;
+      text-shadow:
+        1px -1px 0 #767676,
+        -1px 2px 1px #737272,
+        -2px 4px 1px #767474,
+        -3px 6px 1px #787777,
+        -4px 8px 1px #7b7a7a,
+        -5px 10px 1px #7f7d7d,
+        -6px 12px 1px #828181,
+        -7px 14px 1px #868585,
+        -8px 16px 1px #8b8a89,
+        -9px 18px 1px #8f8e8d,
+        -10px 20px 1px #949392,
+        -11px 22px 1px #999897,
+        -12px 24px 1px #9e9c9c,
+        -13px 26px 1px #a3a1a1,
+        -14px 28px 1px #a8a6a6,
+        -15px 30px 1px #adabab,
+        -16px 32px 1px #b2b1b0,
+        -17px 34px 1px #b7b6b5,
+        -18px 36px 1px #bcbbba,
+        -19px 38px 1px #c1bfbf,
+        -20px 40px 1px #c6c4c4,
+        -21px 42px 1px #cbc9c8,
+        -22px 44px 1px #cfcdcd,
+        -23px 46px 1px #d4d2d1,
+        -24px 48px 1px #d8d6d5,
+        -25px 50px 1px #dbdad9,
+        -26px 52px 1px #dfdddc,
+        -27px 54px 1px #e2e0df,
+        -28px 56px 1px #e4e3e2;
+    }
+
+    .program-title p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .table {
+      margin: 0px;
+      margin-bottom: 20px;
+      box-shadow: 4px 4px 10px rgba(0, 4, 0, 0.5);
+
+    }
+
+
+
+    .table th,
+    .table td {
+      font-size: 12px;
+      padding: 2px;
+      text-align: rigth;
+      color: rgb(19, 29, 135);
+      border-top: 2px solid #98a1af64;
+
+    }
+
+    .table tbody tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+
+    #version1 {
+      display: none;
+
+    }
+
+
+    #version2 {
+      display: none;
+
+    }
+
+    #listas {
+
+      display: flex;
+      justify-content: center;
+      border-radius: 10px;
+      align-items: center;
+      background-color: #fffffff6;
+      box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    }
+
+    #busqueda {
+      font-size: 18px;
+      font-weight: bold;
+      height: 40px;
+    }
+
+    body {
+      margin: 0px;
+
+    }
+
+    .publi {
+      text-align: left;
+      font-size: bold;
+      box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    }
+
+    #whatsapp-share {
+      background-color: #0c953e;
+      /* Color de fondo de WhatsApp */
+      color: #fff;
+      /* Color de texto */
+      padding: 10px 20px;
+      /* Espaciado interno */
+      border: none;
+      /* Sin borde */
+      border-radius: 5px;
+      /* Bordes redondeados */
+      cursor: pointer;
+      /* Cambiar el cursor al pasar el ratón */
+      font-size: 18px;
+    }
+
+    #whatsapp-share:hover {
+      background-color: #128C7E;
+      /* Cambiar color de fondo al pasar el ratón */
+    }
+
+    .imagen-container {
+      text-align: center;
+    }
+
+    /* Estilo para la imagen */
+    img {
+      box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      max-width: 50%;
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 25px;
+      padding: 10px;
+    }
+
+    p {
+      font-size: 9px;
+    }
+
+    #form-area {
+      padding-top: 20px;
+      background-color: #bee3ff6c;
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .col {
+      padding: 0px;
+    }
+
+    .btn-primary {
+
+      display: flex;
+      justify-content: center;
+      border-radius: 10px;
+      align-items: center;
+      background-image: linear-gradient(to right top, #3768b1, #3b75c4, #3e82d7, #3f90eb, #409eff);
+      box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    }
+  </style>
+  <style>
+    /* Estilo del botón redondo */
+    .btn-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    /* Estilo de la barra lateral */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #343a40;
+      padding: 20px;
+      transition: left 0.3s ease-in-out;
+      z-index: 1050;
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    /* Efecto de atenuación */
+    .backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 1040;
+    }
+    .backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .footer-fixed {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f8f9fa00;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1050;
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+    }
+  </style>
+
+
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FLJPCD5SX3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-FLJPCD5SX3');
+</script>
+
+<body>
+
+
+  <div class="container" style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); max-width: 800px;">
+
+    <div class="program-title" id="portada" style="border-radius: 10px;">
+      <h6 style="font-size: 12px; margin-bottom: 0px;">Orbita software</h6>
+    </dIv>
+
+    <div id="ingreso"
+      style="border-radius: 10px; padding-bottom: 10px; background-color: #ffffff; align-items: center; justify-content: center; margin: auto; padding: 30px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.897);">
+
+      <div id="ingreso6" style="border-radius: 10px; padding-bottom: 10px; ">
+        <div>
+          <H6 style="text-align: center;"> PRECIOS DE JULIO ACTUALIZADOS</H6>
+          <p style="text-align: center;">
+            Obtimizá tu manera de trabajar. Realizá automaticamente tus presupuestos directamente desde la aplicacion
+            con la lista de precios actualizados cada mes. Ahorrá tiempo. Mostrate profesional.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="imagen-container">
+        <img src="https://www.metroapp.site/metrologo.jpg" alt="">
+      </div>
+      <div class="text-center" style=" text-align: center;   display: flex; flex-direction: column;   border-radius: 10px;padding-bottom: 20px;   background: linear-gradient(0deg, rgba(206, 235, 251, 0.41rgba(207, 218, 232, 0.346),232,1) 51%, rgba(115, 201, 238, 0.42) 100%);
+      ">
+
+
+
+        <br>
+        <h3>Bienvenido</h3>
+        <div class="form-group" id="ingreso-codigo" style="font-size: 20px;">
+          <label for="password">Ingrese su código:</label>
+          <input type="text" id="password" class="form-control" autocomplete="current-password"
+            style="font-size: 30px; text-align: center;">
+        </div>
+        <button onclick="mostrarContenido()" class="btn btn-primary" style="
+        font-size: 18px;
+        font-weight: bold; 
+        width:100%;
+        height:60px;
+        margin-top: 20px;
+        display: block;">ENTRAR</button>
+
+        <br>
+        <button class="btn btn-primary" style="text-decoration: bold;
+        font-size: 16px;
+        font-weight: bold;
+        margin:  auto;
+        width: 100%;
+        height: 50px;
+        margin-top: 20px;
+        display: block;" id="mercadoPagoButton" onclick="ocltarContenido()">PROBÁ EL SISTEMA</button>
+      </div>
+      <div>
+        <a href="https://metroapp.site/calculadora_materiales.html" target="_blank"
+          style="text-decoration: bold;
+    font-size: 15px;
+    font-weight: bold;
+    width:100%;
+    height:60px;
+    padding: 9px;
+    color: #ffffff;
+    margin-top: 20px;
+    display: flex;
+      justify-content: center;
+      border-radius: 10px;
+      align-items: center;
+      background-image: linear-gradient(to right top, #ff8b00, #fe9c00, #fcad00, #f9bd00, #f5cd13);
+                  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, #ffffff14 0px 1px 0px inset;">CALCULADORA DE MATERIALES</a>
+      </div>
+
+      <div id="container" style="margin-bottom:10px; linear-gradient(0deg, rgba(168,176,186,1) 0%, rgba(208,241,255,0.927608543417367) 93%);
+      ; border-radius: 10px;padding-top: 10px;margin-top: 10px; max-width: 100%;">
+
+
+        <br>
+
+        <p style=" color:#ffffff;   text-align: center; margin-bottom: 10px;  margin-bottom:auto; border-radius: 5px; background-image: linear-gradient(to left top, #00832a, #36a04a, #58be69, #79dc8a, #99fbab);; padding:10px ; font-size: 12px; box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;"
+          onclick="openWebsite()"> comprár un código por whatsapp
+        </p>
+        <br>
+        <p style="text-align: center;font-size: 12px;  "> valor, $5.200 arg. te dura 3 meses y tenés acceso a la
+          calculadora de materiales </p>
+        <br>
+
+        <!-- Botón para abrir el modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#descuentoModal" style="text-decoration: bold;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+margin:  auto;
+width: 100%;
+height: 50px;
+margin: auto;
+display: block;">
+          Código de Descuento
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="descuentoModal" tabindex="-1" aria-labelledby="descuentoModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="text-align: center;">
+                <h2 class="modal-title" style="text-decoration: bold;
+              font-size: 16px;
+              font-weight: bold;
+              text-align: center;
+              margin:  auto;
+              width: 100%;
+              height: 50px;
+              margin: auto;" id="descuentoModalLabel">APROVECHÁ UN DESCUENTO ÚNICO</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="descuentoForm">
+                  <div class="mb-3">
+
+                    <input type="text" class="form-control" id="codigoDescuento" placeholder="Ingresá tú código aquí">
+                  </div>
+
+                  <div id="resultado1"></div>
+                  <div id="resultado"></div>
+
+
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="validarCodigo()">Validar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div style="margin: 10px;text-align: center;">
+          <button id="whatsapp-share">Compartir en WhatsApp</button>
+
+        </div>
+
+        <script>
+
+          document.getElementById('whatsapp-share').addEventListener('click', function () {
+            var url = "www.metroapp.site";  // Reemplaza con la URL de tu página
+            var text = "METRO, la app con precios de la contrucción. Hacé tus precuspuestos más facil y rápido. " + url;  // Reemplaza con el título de tu página
+
+            var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(text);
+            window.location.href = whatsappUrl;
+          });
+
+          function openWebsite() {
+            var websiteUrl = "https://wa.link/9lbeyq"; // Coloca tu enlace de sitio web aquí
+            window.open(websiteUrl);
+          }
+          function openWebsite2() {
+            var websiteUrl = "https://mpago.la/2s45BPy"; // Coloca tu enlace de sitio web aquí
+            window.open(websiteUrl);
+          }
+
+          function openWebsite3() {
+            var websiteUrl = "https://drive.google.com/drive/folders/1wquwi_wkEBmanhPdmJV7pn5B2AK41xcn?usp=drive_link"; // Coloca tu enlace de sitio web aquí
+            window.open(websiteUrl);
+          }
+        </script>
+
+
+      </div>
+    </div>
+
+
+
+    <div class="row" id="contenido-oculto">
+
+
+      <div id="notification" class="card mb-4" style="text-align: center; font-size: 15px; color:rgb(176, 40, 40);"></div>
+
+
+
+
+
+
+      <div class="col">
+
+ 
+ <div>
+
+
+<div style="text-align:center; margin-top: 40px; margin-bottom: 20px;">
+  
+  
+</div>
+
+<div id="temu-promoModal" class="temu-modal">
+  <div class="temu-modal-content">
+    <span class="temu-close" onclick="document.getElementById('temu-promoModal').style.display='none'">&times;</span>
+    <h2 class="temu-h2" style="text-align:center;"  >👷🎁 ¡Promos exclusivas en TEMU Argentina!</h2>
+    <p style="color: #e66f00;text-align:center; "><strong>EQUIPATE EN TU TRABAJO CON LAS MEJORES HERRAMIETAS</strong> </p>
+    <p style="color: #e66f00;text-align:center;"> Aprovechá estas ofertas imperdibles en <strong style="color: #ff6a00;">HERRAMIENTAS🛠️</strong> y más 👇</p>
+
+    <div class="temu-promo-block temu-op1">
+        <div style="text-align: center; margin-bottom: 10px; background-color: #fdfeffb4;padding: 10px; color: rgb(4, 30, 66)6); border-radius: 5px;">
+            <h1> $60.000 pesos </h1>
+            <h3>🎉 ¡Recibí un kit de cupones por 💰<strong>60.000 pesos</strong>!</h3>
+            ⭐ Hacé clic en este enlace:<br>
+            👉 <a class="temu-a" href="https://temu.to/k/gaiciul7akn" target="_blank">temu.to/k/gaiciul7akn</a><br>
+        </div>
+    </div>
+
+    <div class="temu-promo-block temu-op2">
+         <div style="text-align: center; margin-bottom: 10px; background-color: #fdfeffb4;padding: 10px; color: #ff6a00; border-radius: 5px;">
+            <h1> 30% de descuento </h1>
+            <h3>Decuento inmediato en la app !</h3>
+            ⭐ Hacé clic en este enlace:<br>
+            👉 <a class="temu-a" href="https://temu.to/k/gaiciul7akn" target="_blank">temu.to/k/gaiciul7akn</a><br>
+            ⭐ Abrí la app de Temu y buscá:<br>
+            🆔  <strong> alc093553</strong><br> 
+        </div>
+    </div>
+
+    <div class="temu-promo-block temu-op3">
+      <div style="text-align: center; margin-bottom: 10px; background-color: #fdfeffb4;padding: 10px; color: #ff6a00; border-radius: 5px;">
+            <h1> 💰 ¡Accedé a <strong>ARS 60.000</strong> en cupones desde la app! </h1>
+            🎯 Ingresá directo a la app con este enlace:<br>
+            👉 <a class="temu-a" href="https://app.temu.com/m/fuh2azxuxht" target="_blank">app.temu.com/m/fuh2azxuxht</a><br>
+        </div>
+    </div>
+
+    <div class="temu-promo-block temu-op4">
+      <div style="text-align: center; margin-bottom: 10px; background-color: #fdfeffb4;padding: 10px; color: #ff6a00; border-radius: 5px;">
+            <h1>       ✨ ¡Ganá <strong>dinero extra</strong> cada mes! </h1>
+            💥 Hacé clic acá:<br>
+            👉 <a class="temu-a" href="https://temu.to/k/gpl3rss10am" target="_blank">temu.to/k/gpl3rss10am</a><br>
+            🧑‍🤝‍🧑 O buscá el código: <strong>inb683848</strong><br>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Cierra el modal si el usuario hace clic fuera del contenido
+  window.onclick = function(event) {
+    const modal = document.getElementById('temu-promoModal');
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+ </div>
+
+
+       
+         <div class="container-buttons d-flex flex-column gap-2">
+  
+  <!-- Botón PDF de vivienda (arriba, ancho total) -->
+  <button onclick="abrirGoogleSheets2()" id="mano-de-obra-button2"
+          class="btn btn-primary rounded-pill px-4 py-2 w-100">
+    PDF valor vivienda JULIO/2025
+  </button>
+
+  <!-- Botones Bonos TEMU y Biblioteca -->
+  <div class="d-flex gap-2">
+    <button class="btn btn-primary rounded-pill px-4 py-2 flex-fill" 
+            onclick="document.getElementById('temu-promoModal').style.display='block'">
+      Bonos TEMU
+    </button>
+    
+    <button id="BIBLIOTECA" type="button" 
+            class="btn btn-primary rounded-pill px-4 py-2 flex-fill"
+            target="_blank" onclick="openWebsite3()">
+      BIBLIOTECA
+    </button>
+  </div>
+
+</div>
+
+            <div id="notification2" class="card mb-4" style="text-align: center; font-size: 10px; color:rgb(176, 40, 40);"></div>
+
+
+    <!-- Modal de Información -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">BIBLIOTECA DE RECURSOS</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Carrusel de Imágenes -->
+                    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://placehold.co/800x400/FF5733/FFFFFF?text=Imagen+1" class="d-block w-100" alt="Imagen 1 del carrusel">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>AUTOCAD Y REVIT</h5>
+                                    <p> Miles de Bloques, esquemass y familias para utilizar enn tu proyectos</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://placehold.co/800x400/33FF57/FFFFFF?text=Imagen+2" class="d-block w-100" alt="Imagen 2 del carrusel">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Proyectos Sostenibles</h5>
+                                    <p>Comprometidos con el medio ambiente y la eficiencia energética.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://placehold.co/800x400/3357FF/FFFFFF?text=Imagen+3" class="d-block w-100" alt="Imagen 3 del carrusel">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Innovación en Materiales</h5>
+                                    <p>Descubre los materiales más avanzados para tu obra.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+       
+
+        <div class="card mb-4" style="border-radius: 10px;">
+
+
+          <div class="col"
+            style="height: 50px; font-size: 30px; text-align: start; margin-left: 20px; display: flex; align-items: center;">
+            <!-- Contenedor para la imagen como ícono -->
+            <div id="fixedIconContainer" style="
+    position: fixed;
+    top: 10px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background-color: #076cdf8a;
+    border-radius: 50%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    justify-content: center;
+    align-items: center;
+">
+              <img id="fixedImageIcon" src="" alt="Icono Empresa"
+                style="max-width: 100%; max-height: 100%; border-radius: 50%; display: none; padding: 5px;" />
+            </div> 
+
+
+          </div>
+
+          <br>
+
+
+          <div class="card-body">
+
+            <div class="d-flex flex-column gap-2">
+  <button class="btn btn-primary w-100" type="button" data-bs-toggle="modal" data-bs-target="#empresaModal" >
+    DATOS DE TU EMPRESA
+  </button>
+  <button class="btn btn-primary w-100" type="button" data-bs-toggle="modal" data-bs-target="#clientModal" >
+    DATOS DEL CLIENTE
+  </button>
+</div>
+
+
+            <!-- Modal Principal -->
+            <div class="modal fade" id="empresaModal" tabindex="-1" role="dialog" aria-labelledby="empresaModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="empresaModalLabel">Agregar datos de tu Empresa</h5>
+                  </div>
+                  <div class="modal-body" style="padding: 10px;
+         
+          background-image: linear-gradient(to top, #ffffff, #fafafd, #f4f6fc, #edf3fb, #e5eff9);
+          border-radius: 10px;
+          box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;">
+                   
+                    <!-- Contenido del formulario -->
+                    <p style="text-align: center; font-size: 12px;">
+                      Podés editar estos datos las veces que quieras.
+                    </p>
+                    <div class="form-group">
+                      <label for="empresaName">Tu Empresa</label>
+                      <input type="text" class="form-control" id="empresaName" placeholder="¿Cómo se llama?">
+                    </div>
+                    <div class="form-group">
+                      <label for="empresaPhone">Teléfono:</label>
+                      <input type="text" class="form-control" id="empresaPhone" placeholder="telefono de tu empresa">
+                    </div>
+                    <div class="form-group">
+                      <label for="empresaemail">Email:</label>
+                      <input type="email" class="form-control" id="empresaemail" placeholder="email de tu empresa">
+                    </div>
+                    <div class="form-group">
+                      <label for="additionalDetailsempresa">Descripción de tu empresa:</label>
+                      <textarea class="form-control" id="additionalDetailsempresa" rows="3"
+                        placeholder="Cuenta a tus clientes de qué se trata tu empresa"></textarea>
+                    </div>
+                    <!-- Subir imagen -->
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#imageModal">
+                      Subir imagen
+                    </button>
+
+                  </div>
+                  <div class="modal-footer">
+                
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"  onclick="saveFormData()">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal para Subir Imagen -->
+            <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Subir Imagen</h5>
+                  </div>
+                  <div class="modal-body" style="text-align: center;">
+                  
+                    <!-- Contenedor circular para previsualización -->
+                    <div id="imageCircle"
+                    style="display: flex; justify-content: center;" >
+                      <img id="modalImagePreview"  class="img-fluid"  src="#" alt="Previsualización de la imagen"
+                        style="display: none; width: 80%; height: 80%;">
+                    </div>
+
+
+
+                    <p id="uploadMessage" style="margin-top: 10px; color: rgb(6, 113, 254); display: none;">Imagen
+                      subida</p>
+                    <input type="file" id="imageInput" accept="image/*" class="form-control" style="margin-top: 10px;">
+                    <p>formato cuadrado, 1080x1080px</p>
+                  
+                  </div>
+                  <div class="modal-footer">
+                   
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"  onclick="uploadImage()">Guardar</button>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div id="successAlert" class="alert alert-success" role="alert"
+              style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1050;">
+              Datos guardados con éxito.
+            </div>
+
+            <script>
+              document.addEventListener('DOMContentLoaded', (event) => {
+                loadFormData();
+              });
+
+              document.addEventListener('DOMContentLoaded', () => {
+                loadImageFromLocalStorage();
+              });
+
+
+
+
+              function uploadImage() {
+                const fileInput = document.getElementById('imageInput');
+                const file = fileInput.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = function (e) {
+                    const imageBase64 = e.target.result;
+                    localStorage.setItem('uploadedImage', imageBase64); // Almacena la imagen en localStorage
+
+                    // Previsualización en el modal
+                    const modalPreview = document.getElementById('modalImagePreview');
+                    modalPreview.src = imageBase64;
+                    modalPreview.style.display = 'block';
+
+                    // Previsualización en el modal principal
+                    const mainPreview = document.getElementById('fixedImageIcon');
+                    const mainPreview2 = document.getElementById('fixedImageIconmodal');
+                    mainPreview.src = imageBase64;
+                    mainPreview.style.display = 'block';
+                    mainPreview2.src = imageBase64;
+                    mainPreview2.style.display = 'block';
+
+                    // Mostrar mensaje de "Imagen subida"
+                    const uploadMessage = document.getElementById('uploadMessage');
+                    uploadMessage.style.display = 'block';
+
+                    // Cierra el modal después de 1 segundo
+                    setTimeout(() => {
+                      $('#imageModal').modal('hide');
+                    }, 1000);
+                  };
+                  reader.readAsDataURL(file);
+                } else {
+                  alert('Por favor, selecciona una imagen.');
+                }
+              }
+
+              function saveFormData() {
+                const empresaName = document.getElementById('empresaName').value;
+                const empresaPhone = document.getElementById('empresaPhone').value;
+                const empresaemail = document.getElementById('empresaemail').value;
+                const additionalDetailsempresa = document.getElementById('additionalDetailsempresa').value;
+                const image = localStorage.getItem('uploadedImage');
+
+                const formData = {
+                  empresaName,
+                  empresaPhone,
+                  empresaemail,
+                  additionalDetailsempresa,
+                  image,
+                };
+
+                // Guardar los datos en localStorage
+                localStorage.setItem('empresaData', JSON.stringify(formData));
+
+                // Mostrar el mensaje de éxito
+                document.getElementById('successAlert').style.display = 'block';
+                setTimeout(() => {
+                  document.getElementById('successAlert').style.display = 'none';
+                }, 2000);
+              }
+            </script>
+
+
+
+
+
+           
+
+            <!-- Botón que abre el modal -->
+
+
+            <!-- Botón que abre el modal -->
+           
+
+            <!-- Modal -->
+            <div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="clientModalLabel">Formulario de Datos del Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Mensaje de confirmación -->
+                    <h2 id="confirmationMessage" style="display: none; color: green; text-align: center;">Datos
+                      guardados</h2>
+                    <!-- Formulario -->
+                    <div class="form-group">
+                      <label for="clientName">Nombre:</label>
+                      <input type="text" class="form-control" id="clientName" placeholder="Nombre del cliente">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="contact">Contacto:</label>
+                      <input type="text" class="form-control" id="contact" placeholder="Información de contacto">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="budgetDate">Fecha del Presupuesto:</label>
+                      <input type="date" class="form-control" id="budgetDate" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="additionalDetails">Detalles Adicionales:</label>
+                      <textarea class="form-control" id="additionalDetails" rows="3"
+                        placeholder="Detalles opcionales"></textarea>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+               
+                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" id="saveButton">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="contenido-oculto2">
+      <div class="row">
+        <div class="col">
+          <H3>
+            Nuevo Presupuesto
+
+          </H3>
+          <hr>
+          <div class="card" style="border-radius: 10px;">
+            <div class="card-body" style="box-shadow: 4px 4px 10px rgba(0, 4, 0, 0.5); border-radius: 10px;">
+          
+
+              <form id="costCalculator" style="margin: 0px; padding: 0px;">
+
+
+
+
+                <div class="container" style="margin: 0px;">
+
+                  <div class="row">
+                    <div class="col">
+                      <div id="contenido" class="hidden">
+                        <div class="containerbuscar">
+                          <div class="search-container">
+                            <input class="input" placeholder="buscar en lista.." type="text" id="busqueda" onkeyup="buscar()"  >
+                            <svg viewBox="0 0 24 24" class="search__icon">
+                              <g>
+                                <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                                </path>
+                              </g>
+                            </svg>
+                          </div>
+                          </div>
+                          <p style="text-align: center; "> SI NO ENCUENTRAS LA TAREA QUE NECESITAS BUSCA: TAREA GENERICA,  Y AGREGA DESCRIPCION Y PRECIO.</p>
+                        
+                        <div id="tabla-container">
+                          
+                          <table id="tabla" class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>TAREA</th>
+                                <th>COSTO/$</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+<tr onclick="seleccionar(this)"><td>TAREA GENERICA</td><td class="preciolista">  1 </td></tr>
+<tr onclick="seleccionar(this)"><td>ACARREO DE ARIDOS, ARENA RIPIO ETC. X M3 Y MAS DE 10M DE TRANSPORTE (EJ. INTRODUCIR ARIDOS DESDE VEREDA AL INT DE OBRA)</td><td class="preciolista">  11.916 </td></tr>
+<tr onclick="seleccionar(this)"><td>(STEEL FRAMING) TABIQUE EXT. PORTANTE EIFS C/ A. TERMOCÚSTICA 2,40 X 2,40</td><td class="preciolista">  181.347 </td></tr>
+<tr onclick="seleccionar(this)"><td>(STEEL FRAMING) TABIQUE EXT. PORTANTE SIDING C/ A. ACÚSTICA 2,40 X 2,40</td><td class="preciolista">  168.902 </td></tr>
+<tr onclick="seleccionar(this)"><td>(STEEL FRAMING) TABIQUE INT. NO PORTANTE C/ A. ACÚSTICA 2,40 X 2,40</td><td class="preciolista">  130.596 </td></tr>
+<tr onclick="seleccionar(this)"><td>(STEEL FRAMING) TABIQUE INT. PORTANTE C/ A. ACÚSTICA 2,40 X 2,40</td><td class="preciolista">  144.658 </td></tr>
+<tr onclick="seleccionar(this)"><td>ACOMETIDA MONOFASICA COL CAJA MEDIDOR, CAÑO 1Y1/4 " CABLEADO HASTA LA PIPETA EXTERIOR CALZADO SIN AMURAR</td><td class="preciolista">  173.859 </td></tr>
+<tr onclick="seleccionar(this)"><td>ACOMETIDA MONOFASICA INTERNA SOLO RECABLEADO HASTA LA PIPETA EXTERIOR, Y CONEXIÓN EN TABLERO PPAL</td><td class="preciolista">  115.470 </td></tr>
+<tr onclick="seleccionar(this)"><td>ADICIONAL POR MTS DE SALIDA DE GASES</td><td class="preciolista">  78.682 </td></tr>
+<tr onclick="seleccionar(this)"><td>AJUSTE DE HOJAS SOBRE MARCO COLOCACION PUERTA O VENTANA HASTA 2M2</td><td class="preciolista">  100.571 </td></tr>
+<tr onclick="seleccionar(this)"><td>ANULACIÓN DE DEPÓSITO DE EMBUTIR X MOCHILA DE INODORO</td><td class="preciolista">  66.975 </td></tr>
+<tr onclick="seleccionar(this)"><td>APRETADA MATERIAL 0,15X 0,25 CM DE ALTO COLOCACION MAMP. CON TERMINACION REVOQUE FRATAZADO Y BABETA MATERIAL X ML</td><td class="preciolista">  29.422 </td></tr>
+<tr onclick="seleccionar(this)"><td>ARMADO DE PLANTA REGULADORA</td><td class="preciolista">  334.899 </td></tr>
+<tr onclick="seleccionar(this)"><td>ARMADO Y CONEXION  TABLERO ELECTRICO MONOFASICO DE FUERZA PROTECCION DISYUNTOR CONTACTOR PTA TIERRA Y RELE TERMICO</td><td class="preciolista">  231.648 </td></tr>
+<tr onclick="seleccionar(this)"><td>ARMADO Y COLOCACION DE ALFEIZAR (TERMINACIONSUP DEL ANTEPECHO) HºAº U OTRO MATERIAL GRANITO MARMOL ETC. HASTA 1,2 X 0,3 M</td><td class="preciolista">  79.199 </td></tr>
+<tr onclick="seleccionar(this)"><td>ARMADO Y COLOCACION DE CORREAS HASTA 4 M ALTURA X M2 INCLUYE AMURADO ANTIOXIDO Y SOLDADURAS NECES X M2</td><td class="preciolista">  22.067 </td></tr>
+<tr onclick="seleccionar(this)"><td>ARREG. EN CIELORR DE YESO AGUJEROS DE DIAMETROS HASTA 70 CM CON AGREG DE METAL DESPLEG, ALFAJ. X UNID.</td><td class="preciolista">  127.283 </td></tr>
+<tr onclick="seleccionar(this)"><td>ARREGLO DE JAMBAS PTAS CHAPA REPARACIONES MENORES COLOCACION DE VISAGRAS SOLDADURAS X HOJA</td><td class="preciolista">  66.869 </td></tr>
+<tr onclick="seleccionar(this)"><td>ARREGLO DE JAMBAS VENTANAS CHAPA REPARACIONES MENORES COLOCACION DE VISAGRAS SOLDADURAS X HOJA</td><td class="preciolista">  66.869 </td></tr>
+<tr onclick="seleccionar(this)"><td>ARREGLO DE MARCOS JAMBAS PTAS VENT CHAPA REEMPLAZO HASTA 0,70CM. SOLDADO Y COLOCACION X JAMBA</td><td class="preciolista">  102.437 </td></tr>
+<tr onclick="seleccionar(this)"><td>ARRIOSTRAMIENTOS (ENCADENADOS) PRECIO X M3 (ADICIONAR UN 15% CUANDO SUPERE LOS 2,7M HASTA 5M)</td><td class="preciolista">  1.447.773 </td></tr>
+<tr onclick="seleccionar(this)"><td>AUTOMATIZACION POR TERMOSTATO</td><td class="preciolista">  114.033 </td></tr>
+<tr onclick="seleccionar(this)"><td>BABETAS (MATERIAL) TRIANGULAR EN ALTURA TERMINACIONES ESQUINEROS ANGULOS TECHOS TAPIAS ETC. X ML</td><td class="preciolista">  12.299 </td></tr>
+<tr onclick="seleccionar(this)"><td>BALDOZONES TAPAS DE POZOS CÁMARAS U OBRAS DE ARTE EN Hº Aº IN SITU DE 4CM A 6 CM ESPESOR X M2</td><td class="preciolista">  86.377 </td></tr>
+<tr onclick="seleccionar(this)"><td>BAÑO BASICO GLOBAL COMPLETO ARMADO Y COLOCACIÓN ION. S/CALADO, PIL DE PAT, DESCARG INOD, BIDE, LAVAT, BAÑERA, SIEMPRE INTERIOR DEL BAÑO</td><td class="preciolista">  378.857 </td></tr>
+<tr onclick="seleccionar(this)"><td>BAÑO BÁSICO SANIT. COLOC CODO CON BASE P/INODORO ( NO INCLUYE CALADO Y REVESTIMIENTO IMIENTOS )</td><td class="preciolista">  14.854 </td></tr>
+<tr onclick="seleccionar(this)"><td>BAÑO CAÑERIA GLOBAL AGUA FRIA O CALIENTE SOLO INTERIOR CALADO Y COLOCACION X C/U POLIPROPILENO (ROSCA O FUSION)</td><td class="preciolista">  324.734 </td></tr>
+<tr onclick="seleccionar(this)"><td>BAÑO COC. LAVADERO COLOC. PILETA DE PÁTIO (NO INCLUYE CALADO Y REVESTIMIENTO IMIENTOS )</td><td class="preciolista">  14.283 </td></tr>
+<tr onclick="seleccionar(this)"><td>BAÑO COCINA LAVADERO BASICO SANIT COLOC DE CODOS EN CAÑOS DE Ø 40;50;60 A 90º O 45º (NO INCLUYE CALADO NI REVESTIMIENTO IMIENTOS )</td><td class="preciolista">  6.142 </td></tr>
+<tr onclick="seleccionar(this)"><td>BASE ZAPATA ARMADO Y LLENADO Hº (0,8X0,8X0,6)</td><td class="preciolista">  60.119 </td></tr>
+<tr onclick="seleccionar(this)"><td>BASE ZAPATA ARMADO Y LLENADO Hº (1,00X1,00X0,80)</td><td class="preciolista">  125.247 </td></tr>
+<tr onclick="seleccionar(this)"><td>BASE ZAPATA ARMADO Y LLENADO Hº X M3</td><td class="preciolista">  156.559 </td></tr>
+<tr onclick="seleccionar(this)"><td>BASE ZAPATA SOLO CAVADO 0,80X0,80X1M</td><td class="preciolista">  37.063 </td></tr>
+<tr onclick="seleccionar(this)"><td>BASE COAT</td><td class="preciolista">  11.476 </td></tr>
+<tr onclick="seleccionar(this)"><td>BASE Hº LIMPIEZA 5 CM DE ESPESOR Hº 180 A200 KG/M3 + CENTRADO ARMADURA</td><td class="preciolista">  2.054 </td></tr>
+<tr onclick="seleccionar(this)"><td>BASES ARMADO (GANDES OBRAS) X CANTIDAD 0,8X0,8 (PARRILLA Y ATADO PIE ARMADURA DE COLUMNA APLOMADA EN EXCAVACIONN)</td><td class="preciolista">  25.373 </td></tr>
+<tr onclick="seleccionar(this)"><td>BASES ZAPATAS LLENADO M3 (GRANDES OBRAS)</td><td class="preciolista">  56.955 </td></tr>
+<tr onclick="seleccionar(this)"><td>BIDE ARMADO GRIFERIA</td><td class="preciolista">  10.774 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA DE CALDERA</td><td class="preciolista">  177.894 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA DE CIRCUITO</td><td class="preciolista">  198.417 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA DE GABINETE</td><td class="preciolista">  177.894 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA DE RADIADOR</td><td class="preciolista">  177.894 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA ELECTRICA CAÑERIA Y SOPORTERIA AEREA HASTA 4ML</td><td class="preciolista">  30.048 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA ELECTRICA CAÑERIA Y SOPORTERIA AEREA SOLO CAÑERIA HASTA4ML</td><td class="preciolista">  17.650 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA ELECTRICA EMBUTIDA HASTA 7 BOCAS EN UNA MISMA DEPENDENCIA</td><td class="preciolista">  31.687 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA ELECTRICA EMBUTIDA QUE SUPERE 7 BOCAS EN UNA MISMA DEPENDENCIA</td><td class="preciolista">  27.959 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA ELECTRICA EMBUTIDA SOLO CABLEADO O AEREA POR BOCA HASTA 4ML</td><td class="preciolista">  12.399 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA ELECTRICA EMBUTIDA SOLO CAÑERIA SIN CABLEADO HASTA 4 ML</td><td class="preciolista">  28.930 </td></tr>
+<tr onclick="seleccionar(this)"><td>BOCA ELECTRICAEMBUT MENOR A 5 BOCAS EN UNA MISMA DEPENDENC Y HASTA 4ML A MAYOR LONG. OTRA BOCA O VALOR PROPORCIONAL A LA DIST</td><td class="preciolista">  41.329 </td></tr>
+<tr onclick="seleccionar(this)"><td>BAÑO COCINA LAVADERO BASICO SANIT COLOC DE CODOS EN CAÑOS DE Ø 40;50;60 A 90º O 45º (NO INCLUYE CALADO NI REVESTIMIENTO )</td><td class="preciolista">  67.112 </td></tr>
+<tr onclick="seleccionar(this)"><td>CALADO DE MURO X M3</td><td class="preciolista">  867.958 </td></tr>
+<tr onclick="seleccionar(this)"><td>CALADO DE MURO X ML. HASTA 0,05X0,05 PARA INSTALACIONES, AMURADO CHAPA TECHO, ETC.</td><td class="preciolista">  3.531 </td></tr>
+<tr onclick="seleccionar(this)"><td>CALADO DE MURO X ML. HASTA 0,15X0,05 PARA INSTALACIONES, AMURADOS, ETC..</td><td class="preciolista">  7.061 </td></tr>
+<tr onclick="seleccionar(this)"><td>CALADO MURO X ML. COLOCACION CAÑOS DE Ø 1/2",3/4",1", SOLO AMURADO DE SOSTENIMIENTO SIN REVOQUE</td><td class="preciolista">  20.566 </td></tr>
+<tr onclick="seleccionar(this)"><td>CALCULO Y BALANCE TÉRMICO PARA PISO RADIANTE</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>CALCULO Y BALANCE TÉRMICO PARA RADIADORES (HASTA 80 M2)</td><td class="preciolista">  150.703 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMARA INSPECCIÓN INTERMEDIA PARA PLUVIALES EN MATERIAL</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMARA INSPECCIÓN PLÁSTICA (PARA PLUVIAL) SOBRE MORTERO DE ASIENTO</td><td class="preciolista">  83.729 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE ÁNODO DE TERMOTANQUE</td><td class="preciolista">  66.975 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE BOMBA CIRCULADORA</td><td class="preciolista">  153.945 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE CALDERA</td><td class="preciolista">  340.958 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE CUADRO DE DUCHA SIN ALBAÑILERÍA</td><td class="preciolista">  127.768 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE CUERO DE GRIFERÍA DE ARTEFACTO</td><td class="preciolista">  16.746 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE DIAFRAGMA DE CALENTADOR DE AGUA</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE FLEXIBLE EN ARTEFACTO</td><td class="preciolista">  35.934 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE FLUJOSTATO</td><td class="preciolista">  124.295 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE FORZADOR</td><td class="preciolista">  244.030 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE MONOCOMANDO DE COCINA</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE PLACA ELECTRONICA</td><td class="preciolista">  153.945 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE PRESOSTATO DE AGUA</td><td class="preciolista">  124.295 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE PRESOSTATO DE HUMO</td><td class="preciolista">  99.212 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE SERPENTINA</td><td class="preciolista">  153.945 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE TERMOCUPLA DE CALEFACTOR SIN SALIDA</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE TERMOCUPLA DE CALEFACTOR TB</td><td class="preciolista">  66.975 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE TERMOCUPLA DE CALENTADOR DE AGUA</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE TERMOCUPLA DE COCINA</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE TERMOTANQUE CON MODIFICACIÓN EN LA VENTILACIÓN</td><td class="preciolista">  117.220 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE TERMOTANQUE O CALEFÓN ELÉCTRICO EN COCINA O LAVADERO, FRÍA Y CALIENTE</td><td class="preciolista">  145.951 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE TERMOTANQUE SIN MODIFICAR VENTILACIÓN</td><td class="preciolista">  83.729 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE TRAMPA DE CONDENSADO</td><td class="preciolista">  99.212 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE VÁLVULA DE CIERRE DE TANQUE DE RESERVA (FLOTANTE)</td><td class="preciolista">  55.899 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE VALVULA DE GAS</td><td class="preciolista">  153.945 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE VASO DE EXPANSION DESMONTANDO CALDERA</td><td class="preciolista">  199.559 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO DE VASO DE EXPANSION SIN DESMONTAR CALDERA</td><td class="preciolista">  125.437 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAMBIO SONDA NTC</td><td class="preciolista">  124.295 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAÑERO Hº PARA INSTALACION ELÉCTRICA - SANITARIA X ML. (BASE EN Hº LIVIANO P/ CAÑERÍAS INSTALAC. BAJO TIERRA 5CM ESPESOR)</td><td class="preciolista">  392.794 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAÑERO Hº PARA INSTALACIONELÉCTRICA - SANITARIA X ML. (BASE EN Hº LIVIANO P/ CAÑERÍAS INSTALAC. BAJO TIERRA 5CM ESPESOR)</td><td class="preciolista">  1.570 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAPA AISLADORA ALISADO CEM. + PINTURA +PLÁSTICO EJ. MURO 0,15 X ML.</td><td class="preciolista">  6.089 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAPA AISLADORA ALISADO CEM. + PINTURA +PLÁSTICO EJ. MURO 0,30 X ML.</td><td class="preciolista">  12.178 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAPA AISLADORA HORIZONTAL (ALISADO + PINTURA + PLASTICO 200 MICRONES) X M2</td><td class="preciolista">  40.592 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAPA AISLADORA HORIZONTAL MURO X M2 (ALISADO MAS PINTURA) GRANDES OBRAS</td><td class="preciolista">  23.164 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAPA AISLADORA HORIZONTAL X M2 ALIS CEMENT, PINTURA ASF., Y BARRERA HIDROF. (100 A 200 MICRONES) GRAND OBRAS, POR VOLUMEN</td><td class="preciolista">  23.073 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAPA AISLADORA INYECCION QUIMICA HIDROFUGA MURO 0,15 X ML</td><td class="preciolista">  41.191 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAPA AISLADORA INYECCION QUIMICA MURO 0,30 X ML</td><td class="preciolista">  42.957 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAPA AISLADORA RECONSTRUCCION MURO DE 0,15CM ESP (INCLUYE CALADO DE MURO, REARMADO DE CAPA, SIN COLOCACION DE ZÓCALOS,)</td><td class="preciolista">  66.789 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAPA AISLADORA RECONSTRUCCION MURO DE 0,30CM ESP (INCLUYE CALADO DE MURO, REARMADO DE CAPA, SIN COLOCACION DE ZÓCALOS,)</td><td class="preciolista">  74.438 </td></tr>
+<tr onclick="seleccionar(this)"><td>CAPA AISLADORA VERT X M2</td><td class="preciolista">  30.893 </td></tr>
+<tr onclick="seleccionar(this)"><td>CARPETA CEMENTICIA CON PENDIENTES, BAÑOS, GALERIAS ETC. X M2</td><td class="preciolista">  11.769 </td></tr>
+<tr onclick="seleccionar(this)"><td>CARPETA CEMENTICIA X M2</td><td class="preciolista">  9.330 </td></tr>
+<tr onclick="seleccionar(this)"><td>CASTIGADO CEMENTICIO X M2</td><td class="preciolista">  6.473 </td></tr>
+<tr onclick="seleccionar(this)"><td>CEMENTO-HORMIGÓN ALISADO (LLANEADO) PISO, ESPESOR DE 2CM</td><td class="preciolista">  23.058 </td></tr>
+<tr onclick="seleccionar(this)"><td>CENEFA ZINGUERIA DE TERMINACION PERIMETRAL REMATE Y CIERRE LATERAL DE TERMINACION HASTA CIELORRASO X ML</td><td class="preciolista">  30.011 </td></tr>
+<tr onclick="seleccionar(this)"><td>CENEFA ZINGUERIA DE TERMINACIONPERIMETRAL SOBRE CUBIERTA X ML</td><td class="preciolista">  20.596 </td></tr>
+<tr onclick="seleccionar(this)"><td>CERAMICO (PISO) COLOCACION SIN CARPETA X M2 NI EMPASTINADO</td><td class="preciolista">  17.373 </td></tr>
+<tr onclick="seleccionar(this)"><td>CERAMICO REVESTIMIENTO IMIENTO X M2 SIN EMPASTINADO</td><td class="preciolista">  17.373 </td></tr>
+<tr onclick="seleccionar(this)"><td>CERAMICO COLOCACION SIN CARPETA CON DETALLES ESPECIALES X M LINEAL</td><td class="preciolista">  26.480 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIELORRASO "CIELOTEX" HASTA 2,7 M DE ALTURA</td><td class="preciolista">  10.636 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIELORRASO DURLOCK (MENOS DE 3 M2) TRABAJO MINIMO/ DETALLES / CAJONES /DESNIVELES</td><td class="preciolista">  114.027 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIELORRASO DURLOCK CON PERFILERIA 35 MM (MAYOR A 12 M2)</td><td class="preciolista">  21.271 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIELORRASO DURLOCK CON PERFILERIA 35 MM (MENOS DE 12 M2)</td><td class="preciolista">  26.589 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIELORRASO DURLOCK CON PERFILERIA 70 MM (MAYOR A 12 M2)</td><td class="preciolista">  26.943 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIELORRASO TELGOPOR HASTA 2,7 M DE ALTURA X M2</td><td class="preciolista">  6.473 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIMIENTO CAVADO (0,30X0,50) X ML.</td><td class="preciolista">  8.687 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIMIENTO CAVADO (0,40X0,50) X ML.</td><td class="preciolista">  11.582 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIMIENTO CAVADO (0,40X0,6) X ML.</td><td class="preciolista">  13.899 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIMIENTO CAVADO (GRANDES OBRAS ) GALPONES MEDIANERAS CIERRE COMPLETO DE TERRENO EN BARRIOS ETC. EJ.CIMIENT (0,4 X 0,6 X 1ML.)</td><td class="preciolista">  10.563 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIMIENTO Hº LIMPIEZA 0,4CM ANCHO X 5CM DE ESPESOR Hº 180 A200 KG/M3 X ML.</td><td class="preciolista">  1.396 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIMIENTO LLENADO (0,30X0,50) X ML. (ESTRATOS DE PIEDRA BOLA, RIPIO BRUTO)</td><td class="preciolista">  14.273 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIMIENTO LLENADO (0,40X0,60) X ML. (ESTRATOS PIEDRA BOLA, RIPIO BRUTO FINO)</td><td class="preciolista">  22.836 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIMIENTOS (GRANDES OBRAS) GALPONES MEDIANERAS CIERRE COMPLETO DE TERRENO EN BARRIOS ETC. EJ.CIMIENT (0,4 X 0,6 X 1ML.)</td><td class="preciolista">  16.001 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIMIENTOS LLENADO (GRANDES OBRAS) ESTRATOS CON PIEDERA BOLA, RIPIO BRUTO, GALPONES BARRIOS ETC POR CANTIDAD EL M3</td><td class="preciolista">  66.673 </td></tr>
+<tr onclick="seleccionar(this)"><td>CIMIENTOS LLENADO X 1 M3 (EN ESTRATOS DE PIEDRA BOLA, RIPIO BRUTO)</td><td class="preciolista">  95.150 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION ARMADO Y CONEXION  TABLERO DOMICILIARIO MONOFASICO (AEREO) DISYUNTOR Y DOS CIRCUITOS - SIN JABALINA</td><td class="preciolista">  63.374 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION ARMADO Y CONEXION  TABLERO DOMICILIARIO MONOFASICO (EMBUTIDO) DISYUNTOR Y DOS CIRCUITOS - SIN JABALINA</td><td class="preciolista">  95.062 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION BIDE+ARMADO DE GRIFERIA+CONEXION FLEXIBLES (2)</td><td class="preciolista">  88.267 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION CAMARA DE INSP 60X60 PVCCOLOCACIONION</td><td class="preciolista">  73.556 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE ACCES TOALL. PERCH. JABON.ETC. EMBUTIDOS C/U</td><td class="preciolista">  11.426 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE ACCES TOALL. PERCH. JABON.ETC. SUPERSUPERFICIALES C/U (CON TACOS FISHER, Y AUTOADHES, SIN CALAR O ROMPER REVESTIMIENTO )</td><td class="preciolista">  4.285 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE ADORNOS CUADROS REPISAS ESPEJOS SOPORTES ETC HASTA 0,30X0,30CM DE LADO, PEGADOS O COLGADOS X UNIDAD</td><td class="preciolista">  3.300 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE AIRE ACOND SPLIT HASTA 4000 FRIG Y HASTA 4 M DE ALTURA SIN INSTALACIONELECTR</td><td class="preciolista">  140.230 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE AIRE ACOND VENTANA HASTA 4000 FRIG Y HASTA 2.7 M DE ALTURA TERMINACIONCON REVOQUE FRATAZADO SIN INSTALACIONELECT</td><td class="preciolista">  152.461 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE AISL TERM (LANA DE VID O SIMILAR) ENTRETEJ DE ALAMB GALV. O RED PLAST. SUPERF SUPERIOR A 60M2 Y HASTA 4,5M DE ALT</td><td class="preciolista">  7.061 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE AISLANTE TERMICO (LANA DE VID O SIMILAR) INCLUYE ENTRETEJIDO DE ALAMBRE GALV MENOS DE 60M2</td><td class="preciolista">  8.974 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE ALACENAS COCINAS EN Aº INOX O CHAPA 0,5X0,8 A 0,50 DE ALTURA SOBRE MESADA X ML, SIN COLOCACION CERAM</td><td class="preciolista">  11.000 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE ALACENAS COCINAS EN Aº INOX O CHAPA 0,5X0,8 A 0,50 DE ALTURA SOBRE MESADA X ML, SIN COLOCACION CERAM</td><td class="preciolista">  80.911 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE ALACENAS COCINAS EN MDF O MADERA DE 0,5X0,8 A 0,50 DE ALTURA SOBRE MESADA CON CONEX CAMPANA, EXTRACT, ETC. ML</td><td class="preciolista">  28.600 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE ALACENAS COCINAS EN MDF O MADERA DE 0,5X0,8 A 0,50 DE ALTURA SOBRE MESADA X ML. SIN COLOCACION CERAM</td><td class="preciolista">  75.428 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE ALFOMBRA X M2</td><td class="preciolista">  28.063 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE BABETA CHAPA ZINCADA EN CUBIERTA CHAPA O TEJA /M LINEAL</td><td class="preciolista">  28.851 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE BAJOMES COCIN EN MDF O MADERA 0,6X0,85, TRAMOS CON PILETA COCINA, Y CONEX DE AGUA GAS ETC SIN COLOCACION CERAM</td><td class="preciolista">  22.628 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE BAJOMESADAS COCIN EN Aº INOX O CHAPA (0,6X0,85), TRAMOS CON PILETA COC, Y CONEX DE AGUA GAS ETC. SIN COLOCACION CERAM</td><td class="preciolista">  82.971 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE BAJOMESADAS COCIN EN Aº INOX O CHAPA (0,6X0,85), TRAMOS SIN PILETA COC, NI CONEX DE AGUA GAS ETC. SIN COLOCACION CERAM</td><td class="preciolista">  18.857 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE BAJOMESADAS COCINAS EN MDF O MADERA 0,6X0,85, TRAMOS SIN PILETA COC, NI CONEX DE AGUA GAS ETC, SIN COLOCACION CERAM</td><td class="preciolista">  62.857 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE BANITORI, MELAMINA, ATORNILLADO SIN MENSULAS EN BAÑO CON CONEX DE SIFON Y ARM DE GRIF (SIN ROT DE MUROS NI PISOS )</td><td class="preciolista">  72.135 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE BANITORI, O SIMILAR, (MESADA CON MENS) EN BAÑO CON CONEX DE SIFON Y ARM DE GRIFERIA (SIN CALADO DE MUROS NI PISOS )</td><td class="preciolista">  157.109 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE BAÑERA COMUN</td><td class="preciolista">  257.088 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE BAÑERA CON HIDRO + INCLUYE INSTALACIONELECTRICAPARA BOMBA</td><td class="preciolista">  402.614 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE CAB CANAL O CAÑO PVC AEREO + TACOS O GRAMP ATORN HASTA 19X20MM (CCAN) / 25MM O 1" (CAÑ PVC) X ML SIN CABL</td><td class="preciolista">  2.407 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE CAMPANA EXTRACTORA CON PASE DE MURO O CUBIERTA, MAS TOMA ELECTRICA Y TERMINACIONES</td><td class="preciolista">  115.470 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE CAÑOS Ø 100;110 PVC HORIZONTAL. VERTICAL. BAJADA PLUVIAL, SANIT, VENTILAC, ENGRAMPADA EN MURO X M.LIN, HASTA 2M DE ALTURA</td><td class="preciolista">  10.284 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE CARPINTERIA LIVIANA TIPO VAIVÉN</td><td class="preciolista">  94.285 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE CODOS; TEE; BOCA ACCESO C/ TAPA Ø 100;110 PVC HORIZONTALONT PLUVIAL O SANIT X UN.PVC ( SUMAR CALADO Y REVESTIMIENTO  )</td><td class="preciolista">  11.997 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE ESTRUCTURA MADERA ALFAJIAS 2"X3" PARA TECHO SOBRE VIGAS ESTR MADERA C/U X MLINEAL</td><td class="preciolista">  4.496 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE FLEXIBLES LAVATORIO BIDE INODORO C/U</td><td class="preciolista">  7.356 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE HERRAJES DE APOYO EN VIGAS ESTR MADERA C/U</td><td class="preciolista">  7.356 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACIÓN DE MEDIDOR CON REGULADOR</td><td class="preciolista">  67.637 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE MEMBRANA ALUMINIZADA EN LOSA (LAMIPLAS X ROLLO 10 M2)</td><td class="preciolista">  76.498 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE MESADA COCINA DE MARMOL, GRANITO HASTA 1,6ML X 0,6M CON CONEX DE DESCARGA Y ARMADO DE GRIFERIA</td><td class="preciolista">  314.219 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE MESADA DE APOYO CON MENS O EN BAÑO, COCINA, LAVADERO X M2</td><td class="preciolista">  154.253 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE MINGITORIO SIN CAÑERIAS DE DESCARGA PARA ESCURRIMIENTO SOLO FLEXIBLE AGUA FRIA</td><td class="preciolista">  37.135 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE MOLDURA TELGOPOR X ML</td><td class="preciolista">  4.400 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACIÓN DE PAR DE REJAS DE VENTILACIÓN</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE PILETA LAV HºAº + MENSULAS Y DESCARGA .NO INCLUYE CALADO NI COLOCACION DE CAÑERIAS</td><td class="preciolista">  62.844 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE PILETA, LAVADERO PLASTICO,  LIVIANA+COLOCACION DE MENSULA+ DESCARGA NO INCLUYE CALADO NI COLOCACION DE CAÑERIA</td><td class="preciolista">  34.278 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE PORTERO ELECTRICO ADICIONAL POR AIRICULAR EMB SIN CERRADURA ELECTRICA, VALOR BOCA ELECTRICA O DISTANCIA PASES ETC</td><td class="preciolista">  47.728 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE PORTERO ELECTRICO UN AIRICULAR EMBUTIDO CON CERRADURA ELECTRICA</td><td class="preciolista">  177.054 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE PUERTA HASTA 2M2 CON MOCHETAS TERMINACION C/REVOQUE FRATAZADO</td><td class="preciolista">  112.340 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE RECEPTACULO 1X1 MTS CON CONEXION A PILETA DE PATIO Y TERMINACIONES</td><td class="preciolista">  141.660 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE REJILLAS VENT; GAS; CIELORR ETC 15X15 EL PAR EN ALTURA HASTA HASTA 3 MT(INCLUYE PASE DE MURO HASTA 0,3M ESPESOR)</td><td class="preciolista">  14.711 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE REJILLAS VENT; GAS; CIELORR ETC 30X15 EL PAR EN ALTURA HASTA 3MTS(INCLUYE EL PASE DE MURO HASTA 0,3M ESPESOR)</td><td class="preciolista">  17.948 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACIÓN DE TANQUE DE RESERVA EN PLANTA ALTA</td><td class="preciolista">  399.277 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACIÓN DE TANQUE DE RESERVA EN PLANTA BAJA</td><td class="preciolista">  200.941 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE TK PVC DE AGUA EN VIVIEND HASTA 1000LTS ARMAD BASE HºAº+ MURO MAPOST, CONEX COMPL, ACOMET Y BAJAD SOLO DE TK</td><td class="preciolista">  685.568 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DE TK PVC DE AGUA EN VIVIEND HASTA 1000LTS SOBRE BASE EXIST, CONEX COMPL DE CAÑ ACOM Y BAJAD SOLO DEL TK</td><td class="preciolista">  199.957 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION DERIVADORES CAJA EMBUTIDA VIDEO X UNIDAD</td><td class="preciolista">  13.048 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION O RECAMBIO LUMINARIAS, DICROICAS FOCOS ETC.</td><td class="preciolista">  6.510 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION PUERTA ALUMINIO HASTA 2M2 (SOLO COLOCACION CON TACOS Y ESPUMA O SILICONA SOBRE VANO TERMINADO)</td><td class="preciolista">  80.243 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION PUERTA EN TABIQUERIA DURLOCK</td><td class="preciolista">  106.990 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION PUERTA EN TABIQUERIA DURLOCK CON ESTRUCTURA DE REFUERZO EN CAÑO ESTRUCTURAL</td><td class="preciolista">  127.051 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION PUERTA GAS O SIMILAR - ENMARCADOS METAL. O MADERA - LIVIANOS - AMURADOS - DE SUPERFICIES MENOR A 1M2</td><td class="preciolista">  36.427 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION PUERTA VIDREIRA ALUMINIO CORREDIZA HASTA 4M2 CALADO PARA EMBUTIR EN PISO Y TERMINACIONES EN JAMBAS SIN SOLIA</td><td class="preciolista">  171.602 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION PUERTAS - ENMARCADOS METAL / MADERA - LIVIANOS - AMURADOS - DE SUPERFICIES MENOR A 1M2 - COLOCACION EN ALTURA</td><td class="preciolista">  41.631 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION PUERTAS O PORTONES, TIPO REJAS DE SEGURIDAD VALORES X M2</td><td class="preciolista">  27.145 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION REVESTIMIENTO  LOSAS MARMOLES GRANDES BLOQUES EN BANQUINAS DESNIVELES UMBRALES X M2</td><td class="preciolista">  47.076 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION SOPORTERIA AMURADO LCD, CABLEADO Y CONEXION </td><td class="preciolista">  65.105 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION TRANSFERENCIA DUCHA CALADO CONEXION NIVELADO AMURADO. SIN COLOCACION CAÑERIA DUCHA CODOS ETC</td><td class="preciolista">  84.431 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION VENT DE TECHO ESTRACTORES ETC</td><td class="preciolista">  53.484 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION VENTANA ALUMINIO HASTA 2M2 EN VANO TERMINADO SOLO COLOCACION (SIN ARREG EN MOCHET, DINTEL, JAMBA NI ANTEPECHO)</td><td class="preciolista">  59.085 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION VENTANA ALUMINIOO HASTA 2M2 (SOLO COLOCACION CON TACOS Y ESPUMA O SILICONA SOBRE VANO TERMINADO)</td><td class="preciolista">  93.616 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION VENTANA CHAPA O MADERA HASTA 2M2 CON MOCHETAS TERMINACIONC/REVOQUE FRATAZADO</td><td class="preciolista">  120.364 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION VENTANA HASTA 2M2 EN TABIQURIA DURLOCK</td><td class="preciolista">  85.592 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION VENTANA HASTA 2M2 EN TABIQURIA DURLOCK CON REFUERZOS EN CAÑO ESRTRUCTURAL</td><td class="preciolista">  120.364 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION VIGAS ESTR. CONSTRUCC. EN SECO POR M. LINEAL MURO DE 0,15 HASTA 4M LUZ X 1 PERF MET "I"(IPN, UPN), VIGUETAS, VIG PREMOLD,)</td><td class="preciolista">  67.671 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION VIGAS ESTR. CONSTRUCC. EN SECO POR M. LINEAL MURO DE 0,30 HASTA 4M LUZ HASTA 2 PERF MET "I"(IPN,UPN, VIGUETAS, VIG PREM.)</td><td class="preciolista">  82.382 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION Y ATORNILLADO DE CHAPAS SIN APRETADA LATERAL XM2</td><td class="preciolista">  16.182 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION Y CONEXION  APLIQ. CARTELER INTERN O ELEM SIMILARES DE ILUM LIVIANOS NO INCLUYE I.ELECTRICAX UNID. Y HASTA 2,5 MT DE ALT.</td><td class="preciolista">  45.072 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACION. PUERTA VID TEMPLADO O SIMILAR ESPESOR 8-10 MM FRENO HIDRAULICO EXTERNO(EN PARTE SUP PUERTA)</td><td class="preciolista">  175.999 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACIONAC DE BANDEJAS PORTACAB ELECTRICAS HASTA 150 MM ANCHO, SIN CABLEADO POR ML (CABLEADO POR CIRC O BOCAS AEREAS)</td><td class="preciolista">  4.280 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CABLE CANAL AUTOADHESIVO + TACOS Y TORNILLOS PARA REFUERZO FIJACION HASTA 50X30 X ML SIN CABLEADO</td><td class="preciolista">  3.676 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CAMARA DE INSP H°PREMOLDEADO 60X60 C/TAPA Hº +1 COJINETE DE PASO</td><td class="preciolista">  120.364 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CANALETA COMÚN EXTERIOR CON GRAMPAS X ML</td><td class="preciolista">  16.335 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CANALETA COMÚN INTERIOR O LIMAHOYA X ML</td><td class="preciolista">  21.077 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CAÑOS Ø 100; 80;60; EN PASES DE CUBIERT CHAPA PARA BAJADA PLUV, SANIT ,VENT X UN.PVC O ZINC</td><td class="preciolista">  19.424 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CAÑOS Ø 100; 80;60; EN PASES DE CUBIERT LOSA PARA BAJADA PLUV, SANIT ,VENT X UN.PVC O ZINC</td><td class="preciolista">  44.276 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CAÑOS Ø 100; 80;60; EN PASES DE MUROS 0,15 PARA BAJADA PLUV, SANIT ,VENT X UN.PVC O ZINC</td><td class="preciolista">  12.854 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CAÑOS Ø 100; 80;60; EN PASES DE MUROS 0,30 PARA BAJADA PLUV, SANIT ,VENT X UN.PVC O ZINC</td><td class="preciolista">  23.424 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CAÑOS Ø 100;110 EN TIERRA C/CAÑERO DE HORMIGON PARA DESCARGA PLUVIAL O SANIT X ML.</td><td class="preciolista">  17.482 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CAÑOS Ø 100;110 PVC EN TIERRA S/CAÑERO PARA DESCARGA PLUVIAL O SANIT X M. LIN</td><td class="preciolista">  12.223 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CAÑOS Ø 100;110 PVC VERTICAL BAJADA PLUVIAL, SANIT, VENTILAC, ENGRAMPADA EN MURO X M.LIN,QUE SUPERE 3M DE ALTURA</td><td class="preciolista">  23.860 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CAÑOS PPP O MANG 1/2" A 1" CAV EN TIERRA HASTA 20 CM Y TAPADO SIN COLOCACION DE PROTECC RIGIDA (LADRILL, HºETC) X MLIN</td><td class="preciolista">  7.141 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CAÑOS PPP O MANGUERA 1/2" A 1" INSTALACION AEREA FIJACIONES CON GRAMPAS EN MUROS TECHOS ETC.X MLINEAL</td><td class="preciolista">  6.350 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CODOS, CUPLAS, UNION RAPIDA,DOBLE,LLAVE ESFERICA ETC, EN PPP ACCESORIOS EN GRAL EN CAÑOS DE Ø 1/2",3/4",1"</td><td class="preciolista">  8.570 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CODOS; TEE; BOCA ACCESO C/ TAPA Ø 100;110 PVC BAJADA PLUVIAL O SANIT X UN.PVC</td><td class="preciolista">  10.855 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CUBIERTA CHAPA X M2 ESTRUCT + CHAPAS SIN APRETADA NI CANALETAS</td><td class="preciolista">  38.249 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CUBIERTA CHAPA X M2 Y HASTA 3,5M DE ALTURA(CHAPA SOLA, SOBRE ESTRUCTURA EXISTENTE, SIN APRETADA NI CANALETAS)</td><td class="preciolista">  13.439 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CUBIERTA TEJAS COLONIAL CLAVADA EN ESTRUCTURA DE MADERA X M2</td><td class="preciolista">  24.715 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CUBIERTA TEJAS COLONIAL CON MEZCLA EN ESTRUCTURA DE HORMIGON X M2</td><td class="preciolista">  25.009 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CUBIERTA TEJAS FRANCESA CLAVADA EN ESTRUCTURA DE MADERA X M2</td><td class="preciolista">  20.890 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE CUBIERTA TEJAS FRANCESA CON MEZCLA EN ESTRUCTURA DE HORMIGON X M2</td><td class="preciolista">  27.951 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE ENTABLONADO MADERA 1/2" HASTA 1Y1/2" X M2</td><td class="preciolista">  25.303 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE ESPEJOS PEGADOS O COLGADOS EN BAÑO, COCINA, LOC COMERCIAL ETC X M2</td><td class="preciolista">  21.015 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE ESTRUCTURA VIGAS CABIOS MADERA HASTA 7" HASTA 5 M LUZ X MLINEAL</td><td class="preciolista">  6.767 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE ESTRUCTURA VIGAS O CABIO MADERA 5"X3" HASTA 3 M LUZ X MLINEAL</td><td class="preciolista">  8.532 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE GRIFERIA EN PARED, COCINA, LAVADERO, BANITORI ETC, SIN ROTURAS DE MURO O COMPLETAR INSTAL SANIT SOLOCOLOCACIONIONAC.</td><td class="preciolista">  11.426 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE GRIFERIA SOBREMESADA, COCINA, LAVADERO, BANITORI ETC , CONEXIÓN DE FLEXIBLES</td><td class="preciolista">  25.709 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE INSERTOS METALICOS EN VIGAS O COLUMNAS EN HÚMEDO (PREVIO LLENADO ELEM. ESTRUCTURAL) X UNIDAD HASTA Ø 16</td><td class="preciolista">  3.185 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE INSERTOS METALICOS EN VIGAS O COLUMNAS EN SECO PERFORACIÓN + ANCLAJE MECÁNICO O QUÍMICO X UNIDAD HASTA Ø 12</td><td class="preciolista">  8.908 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE INSERTOS PLACA METALICA EN VIGA COLUMNA EN SECO +ANCLAJE MECÁNICO O QUÍMICO X CM2 X UNIDAD</td><td class="preciolista">  135 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE INSERTOS PLACA METALICA EN VIGA O COLUMNA EN HÚMEDO X CM2 X UNIDAD</td><td class="preciolista">  32 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE MEMBRANA DE ALUMINIO DETALLES ESPECIALES EMBUD BABETAS TRAB MINIMO UNITARIO /M LINEAL O UNIDAD</td><td class="preciolista">  20.596 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE MEMBRANA ALUMINIZADA BABETAS X ML</td><td class="preciolista">  10.298 </td></tr>
+<tr onclick="seleccionar(this)"><td> COLOCACION DE MEMBRANA ALUMINIZADA EN CHAPA ACANALADA (X ROLLO 10 M2)</td><td class="preciolista">  95.034 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLOCACIONÓN JABALINA 5/8 X 1,5 M - CAÑERIA EMBUTIDA Y CABLEADO TIERRA HASTA 1,5 ML -</td><td class="preciolista">  44.820 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLUMNA FUSTE 0,15X0,15XML ENCOF DENTRO MAMPOST / M LINEAL (CONST EN P BAJA HASTA 2,7MT DE ALTO Hº NO VISTO)</td><td class="preciolista">  35.181 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLUMNA FUSTE 0,15X0,15XML ENCOF DENTRO MAMPOST / M LINEALL (CONSTR EN P ALTA A MAS DE 2,7MT DE ALT Hº NOVISTO)</td><td class="preciolista">  40.458 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLUMNA FUSTE 0,15X0,20XML ENCOF DENTRO MAMPOST / M LINEAL (CONST EN P BAJA HASTA 2,7MT DE ALTO Hº NO VISTO)</td><td class="preciolista">  46.908 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLUMNA FUSTE 0,20X0,20XML ENCOF INDEPAENDIENTE /M LINEAL (CONSTR EN P BAJA 2,7MT DE ALT Hº NO VISTO)</td><td class="preciolista">  69.493 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLUMNA FUSTE 0,20X0,20XML ENCOF INDEPENDIENTE /MLINEAL (CONST EN P ALTA + 2,7MT DE ALTURA Hº NO VISTO)</td><td class="preciolista">  79.917 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLUMNA FUSTE PRECIO X M3 ENCOFRADO INDEPENDIENTE Hº NO VISTO HASTA 2,7 M DE ALTURA (H18 325KG/M3)</td><td class="preciolista">  1.737.328 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLUMNA FUSTE X M3 ENCOF DENTRO MAMPOST / M LINEAL (CONSTR EN P BAJA HASTA 2,7MT DE ALT NO Hº VISTO)</td><td class="preciolista">  1.563.595 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLUMNA Hº TERMINACIÓN SUPERFICIAL REVOQUE RÚSTICO + ENLUCIDO MANDILADO HASTA 0,3M. ANCHO X LADO X ML.</td><td class="preciolista">  5.212 </td></tr>
+<tr onclick="seleccionar(this)"><td>COLUMNA Hº TERMINACIÓN SUPERFICIAL REVOQUE RÚSTICO FRATAZADO HASTA 0,3M ANCHO X LADO X ML.</td><td class="preciolista">  3.563 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONEXIÓN DESAGÜES PRIMARIOS HASTA SIST DE RED CLOACAL (SEGÚN CORRESPONDA ZONA) (HASTA 6 MTS)</td><td class="preciolista">  234.432 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONEXION  SOLO - TABLERO DOMICILIARIO MONOFASICO - DISYUNTOR Y DOS CIRCUITOS - SIN COLOCACION JABALINA</td><td class="preciolista">  41.329 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONSTRUCCION DE CAMARA DE INSP 60X60 MAMPOSTERIA, CAVADO, C/TAPA Hº PREMOLDEADA+1 COJINETE DE PASO</td><td class="preciolista">  255.974 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO 10CM DE ESPESOR CON MALLA SIMA 15X15X Ø 4,2 O 5 CM. POR M2</td><td class="preciolista">  35.595 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO 10CM DE ESPESOR SIN MALLA X M2</td><td class="preciolista">  31.099 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO 5CM DE ESPESOR SIN MALLA X M2</td><td class="preciolista">  15.550 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO 7CM DE ESPESOR CON MALLA SIMA 15X15X Ø 4,2 O 5 CM. POR M2</td><td class="preciolista">  26.265 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO 7CM DE ESPESOR SIN MALLA X M2</td><td class="preciolista">  21.770 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO ADICIONAR MALLA SIMA DE Ø 4,2 HASTA MALLA Ø8 ELECTROSOLD. X M2</td><td class="preciolista">  4.496 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO ALIVIANADO CON POLIESTIRENO EXPANDIDO O SIMILAR 10CM ESPESOR X M2</td><td class="preciolista">  32.430 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO ALIVIANADO CON POLIESTIRENO EXPANDIDO O SIMILAR 5CM ESPESOR X M2</td><td class="preciolista">  16.215 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO ALIVIANADO CON POLIESTIRENO EXPANDIDO O SIMILAR 7CM ESPESOR X M2</td><td class="preciolista">  22.701 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO ALIVIANADO CON POLIESTIRENO EXPANDIDO O SIMILAR X M3 SIN MALLA ELECTROSOLD (EN ALTURA AGREGAR 12%)</td><td class="preciolista">  324.301 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO SIN MALLA NI RELLENOS X M3</td><td class="preciolista">  310.994 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO TERMINAC. ALISADO CEMENTICIO LLANA MANUAL ADICIONAR X M2</td><td class="preciolista">  9.845 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO TERMINAC. ALISADO CEMENTICIO LLANA MANUAL COLOR (FERRITE)ADICIONAR X M2</td><td class="preciolista">  11.582 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO TERMINAC. BORDES DE REFUERZOS FRATAZ. HASTA 10CM ANCHO X ML.</td><td class="preciolista">  8.687 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO TERMINAC. FRATAZADO ADICIONAR X M2</td><td class="preciolista">  4.633 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONTRAPISO TERMINAC. FRATAZADO Y MANDILADO ADICIONAR X M2</td><td class="preciolista">  5.791 </td></tr>
+<tr onclick="seleccionar(this)"><td>CONVERSIÓN DE ARTEFACTO, DE GLP A GN</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>DEMOL CIELORR MAS DE 2,7 ALT(TRAB C/ ANDAM O ESCAL. LARG) TELGOPOR SIN RET DE ESCOMB FUERA DE OBRA X M2</td><td class="preciolista">  4.178 </td></tr>
+<tr onclick="seleccionar(this)"><td>DEMOL CIELORR MAS DE 2,7 ALT(TRAB C/ ANDAM O ESCAL. LARG) YESO, DURLOCK ETC SIN RET DE ESCOMB FUERA DE OBRA X M2</td><td class="preciolista">  13.240 </td></tr>
+<tr onclick="seleccionar(this)"><td>DEMOL TABIQUE 0,10 ESPESOR DURLOCK HASTA 2,7 ALT SIN RET DE ESCOMB FUERA DE OBRA</td><td class="preciolista">  12.063 </td></tr>
+<tr onclick="seleccionar(this)"><td>DEMOLER CIELORRASOS HASTA 2,7 ALTURA YESO DURLOCK ETC SIN RETIRO DE ESCOMBROS FUERA DE OBRA X M2</td><td class="preciolista">  10.298 </td></tr>
+<tr onclick="seleccionar(this)"><td>DEMOLER MURO 0,15 X M2</td><td class="preciolista">  25.558 </td></tr>
+<tr onclick="seleccionar(this)"><td>DEMOLER MURO 0,30 XM2</td><td class="preciolista">  38.462 </td></tr>
+<tr onclick="seleccionar(this)"><td>DESARROLLO DE CAÑERÍA SISTEMA BI-TUBO POR PAR DE BOCA SISTEMA PEX</td><td class="preciolista">  133.958 </td></tr>
+<tr onclick="seleccionar(this)"><td>DESARROLLO DE CAÑERÍA SISTEMA BI-TUBO POR PAR DE BOCA SISTEMA PPN ALUMINIO</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>DESARROLLO POR M2 PISO RADIANTE SOBRE MALLA SIMA</td><td class="preciolista">  33.491 </td></tr>
+<tr onclick="seleccionar(this)"><td>DESARROLLO POR M2 PISO RADIANTE SOBRE PLACAS DE EPS</td><td class="preciolista">  40.199 </td></tr>
+<tr onclick="seleccionar(this)"><td>DESMONTE ( TERMINO TECNICO REFERIDO A SACAR TIERRA EN VOLUMEN PARA NIVELAR) X M3</td><td class="preciolista">  73.850 </td></tr>
+<tr onclick="seleccionar(this)"><td>DESOBSTRUCCIÓN DESAGÜES HORIZONTALES X ML</td><td class="preciolista">  75.359 </td></tr>
+<tr onclick="seleccionar(this)"><td>DESOBSTRUCCIÓN DESAGÜES VERTICALES X ML</td><td class="preciolista">  66.975 </td></tr>
+<tr onclick="seleccionar(this)"><td>DETECCIÓN DE FUGA DE GAS</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>DETECCIÓN DE PÉRDIDA EN SISTEMA DE CALEFACCIÓN (SIN REPARACIÓN)</td><td class="preciolista">  66.975 </td></tr>
+<tr onclick="seleccionar(this)"><td>DINTEL H° PRECIO X ML</td><td class="preciolista">  44.000 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK AISLACION TERM EN TABIQUE O CIELORRASO ENTRETEJIDO DE ALAMBRE GALVANIZADO X M2</td><td class="preciolista">  4.292 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK CAJON DOS CARAS PLACAS 9,5 PERFILERIA 35 - 70 MM X M3</td><td class="preciolista">  382.490 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK PERFIL OMEGA FIJACION CON TACOS EN MURO X M2</td><td class="preciolista">  7.356 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK PERFILERIA SOLA 35MM (TABIQUE O CIELORRASO) SIN AISLACION TERM X M2</td><td class="preciolista">  7.837 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK PERFILERIA SOLA 70MM (TABIQUE O CIELORRASO) SIN AISLACION TERM X M2</td><td class="preciolista">  7.837 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK REVESTIMIENTO  MEDIO FORRO (TABIQUE O CIELORASO) PLACAS SOLA 12,5 X M2</td><td class="preciolista">  9.889 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK REVESTIMIENTO  MEDIO FORRO (TABIQUE O CIELORRASO )PLACAS SOLA 9,5 X M2</td><td class="preciolista">  8.770 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK REVESTIMIENTO  MEDIO FORRO PLACAS 12,5 PERFILERIA 70MM TERMINADO (TABIQUE O CIELORRASO) SIN AISLACION TERM X M2</td><td class="preciolista">  22.391 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK REVESTIMIENTO  MEDIO FORRO PLACAS 9,5 PERFILERIA 35MM TERMINADO (TABIQUE O CIELORRASO) SIN AISLACION TERM X M2</td><td class="preciolista">  21.271 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK TABIQUE FORRADO PLACAS 12,5 PERFILERIA 70MM SIN AISLACION TERM O ACUSTICA X M2</td><td class="preciolista">  25.597 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK TABIQUE FORRADO PLACAS 9,5 PERFILERIA 35MM SIN AISLACION TERM O ACUSTICA X M2</td><td class="preciolista">  23.538 </td></tr>
+<tr onclick="seleccionar(this)"><td>DURLOCK COLOCACION CINTA (TABIQUE O CIELORRASO) X M2</td><td class="preciolista">  4.665 </td></tr>
+<tr onclick="seleccionar(this)"><td>EJECUCUCION DE TRABAJO ESPECIAL  X UNIDAD COLOCACION DE BOMBA DE AGUA, MOTORES ELECT, PURIFICADORES EN PISCINAS ETC (HASTA 1HP)</td><td class="preciolista">  67.518 </td></tr>
+<tr onclick="seleccionar(this)"><td>EMBOQUILLADO A MAS DE DE 2M DE ALTURA ENRASADO (AGREGAR 25%)</td><td class="preciolista">  11.569 </td></tr>
+<tr onclick="seleccionar(this)"><td>EMBOQUILLADO X M2 ENRASADO</td><td class="preciolista">  9.172 </td></tr>
+<tr onclick="seleccionar(this)"><td>EMBOQUILLADO X M2 JUNTA TOMADA</td><td class="preciolista">  13.899 </td></tr>
+<tr onclick="seleccionar(this)"><td>EMPASTINADO PISO JUNTA ANCHA (10MM HASTA 20MM) X M2</td><td class="preciolista">  10.786 </td></tr>
+<tr onclick="seleccionar(this)"><td>EMPASTINADO PISO O REVESTIMIENTO IMIENTO (JUNTA HASTA 2MM), X M2</td><td class="preciolista">  2.060 </td></tr>
+<tr onclick="seleccionar(this)"><td>EMPASTINADO ZOCALOS JUNTA ANCHA X ML</td><td class="preciolista">  1.039 </td></tr>
+<tr onclick="seleccionar(this)"><td>EMPASTINADO ZOCALOS JUNTA HASTA 3MM X ML</td><td class="preciolista">  624 </td></tr>
+<tr onclick="seleccionar(this)"><td>ENCADENADO HORIZONTAL INF. X M3 (GRANDES OBRAS)</td><td class="preciolista">  539.859 </td></tr>
+<tr onclick="seleccionar(this)"><td>ENCADENADO HORIZONTAL INFERIOR (VIGA RIOSTRA INF.) X MT. LINEAL (0,15X0,15)</td><td class="preciolista">  32.575 </td></tr>
+<tr onclick="seleccionar(this)"><td>ENCADENADO HORIZONTAL INFERIOR (VIGA RIOSTRA INF.) X MT. LINEAL (0,15X0,30)</td><td class="preciolista">  65.150 </td></tr>
+<tr onclick="seleccionar(this)"><td>ENCADENADO HORIZONTAL SUP (VIGA RIOSTRA SUP.) X MT. LINEAL (0,15X0,15) A PARTIR DE 2,7 HASTA 5M DE ALTURA</td><td class="preciolista">  37.461 </td></tr>
+<tr onclick="seleccionar(this)"><td>ENCADENADO HORIZONTAL SUP (VIGA RIOSTRA SUP.) X MT. LINEAL (0,15X0,20) A PARTIR DE 2,7 HASTA 5M DE ALTURA</td><td class="preciolista">  49.948 </td></tr>
+<tr onclick="seleccionar(this)"><td>ENCADENADO HORIZONTAL SUP. X M3 HASTA 3 M ALTURA (GRANDES OBRAS)</td><td class="preciolista">  593.844 </td></tr>
+<tr onclick="seleccionar(this)"><td>ENCADENADO VERTICAL (COLUMNA ARRIOSTRAMIENTO) 0,15X0,15 X M LINEAL CONSTUCC SUPERIOR A 3M DE ALTURA HASTA 5M</td><td class="preciolista">  37.461 </td></tr>
+<tr onclick="seleccionar(this)"><td>ENCADENADO VERTICAL (COLUMNA ARRIOSTRAMIENTO) 0,15X0,15 X M LINEAL HASTA 2,7M DE ALTURA</td><td class="preciolista">  32.575 </td></tr>
+<tr onclick="seleccionar(this)"><td>ENDUIDO (PLANCHADO COMPLETO) MUROS CIELORRASOS LIJADO TERMINACION FINA X M2</td><td class="preciolista">  4.963 </td></tr>
+<tr onclick="seleccionar(this)"><td>ESCALERA DE HORMIGÓN ARMADO ANCHO DE 90 CM, Y 15 ESCALONES.</td><td class="preciolista">  993.665 </td></tr>
+<tr onclick="seleccionar(this)"><td>ESCALERA DE HORMIGÓN ARMADO POR ESCALÓN, 90CM DE ANCHO</td><td class="preciolista">  64.969 </td></tr>
+<tr onclick="seleccionar(this)"><td>ESTANTERIAS MELAMINA/MADERA, SOBRE ESTRUCT METAL CON TERMINAC. BORDES EN ANGULOS, FRESADOS ETC.COLOCACIONIONAC/FIJACION X M2</td><td class="preciolista">  14.053 </td></tr>
+<tr onclick="seleccionar(this)"><td>EXCAVACION (GRANDES OBRAS) GRANDES VOLÚMENES X CANTIDAD EL M3</td><td class="preciolista">  44.012 </td></tr>
+<tr onclick="seleccionar(this)"><td>EXCAVACION EN TIERRA (PARA CIM, COLOCACION DE CAÑER, MUERTOS DE ANCLAJE) EXCAVACION EN GRAL HASTA 1,5M DE PROFUND X M3</td><td class="preciolista">  7.027 </td></tr>
+<tr onclick="seleccionar(this)"><td>EXCAVACION MANUAL GENERAL X M3</td><td class="preciolista">  57.911 </td></tr>
+<tr onclick="seleccionar(this)"><td>EXCAVACION PARA SUBMURACION EN CIMIENTOS + TABLESTACADO REFUEROS ETC X M3</td><td class="preciolista">  191.245 </td></tr>
+<tr onclick="seleccionar(this)"><td>EXCAVACION PISCINA ( GRAN VOLUMEN) EJ (3MX4MX1.5M)= (18M3)</td><td class="preciolista">  792.221 </td></tr>
+<tr onclick="seleccionar(this)"><td>FACTIBILIDAD</td><td class="preciolista">  133.958 </td></tr>
+<tr onclick="seleccionar(this)"><td>FLETES TRANSPORTE Y ACARREO MINIMO POR VIAJE (EJ TRAER MAT DESDE PUNTO DE VENTA A LA OBRA: CEMENTO, BOLS ARENA, ETC. )</td><td class="preciolista">  41.485 </td></tr>
+<tr onclick="seleccionar(this)"><td>FLOTANTE ELECTRICAINSTAL O REEMPLAZO, SOLO CONEXION  EN TK ELEVADO HASTA 2 NIVELES DE ALT. AGREG. MAY VALOR EN ACCESOS DIFICILES</td><td class="preciolista">  25.457 </td></tr>
+<tr onclick="seleccionar(this)"><td>FLOTANTE ELECTRICAINSTALACION REEMPLAZO, SOLO CONEXION  EN TK PB RESERVA</td><td class="preciolista">  10.183 </td></tr>
+<tr onclick="seleccionar(this)"><td>BALDOSAS (PISO GRANITICO) COLOCACION SIN CARPETA X M2 NI EMPASTINADO</td><td class="preciolista">  20.596 </td></tr>
+<tr onclick="seleccionar(this)"><td>GRASERA, BOCA DE DESAG ABIER, BOCA DE ACCESO FABRIC "IN SITU" EN MAPOST. H° ETC. 0,20X0,2 A 0,30 X 0,30 O TAMAÑ SIMILAR</td><td class="preciolista">  25.709 </td></tr>
+<tr onclick="seleccionar(this)"><td>GUARDAS COMPUESTAS MAS DE UNA PIEZA DE HASTA 15 CM DE ALTO PARA PISO O REVESTIMIENTO IMIENTO X ML</td><td class="preciolista">  15.559 </td></tr>
+<tr onclick="seleccionar(this)"><td>GUARDAS SIMPLES UNA PIEZA DE HASTA 15 CM DE ALTO PARA PISO O REVESTIMIENTO IMIENTO X ML</td><td class="preciolista">  8.886 </td></tr>
+<tr onclick="seleccionar(this)"><td>Hº DE LIMPIEZA H8 X 1 M3 (200KG CEMENTO PORTLAND X M3)</td><td class="preciolista">  69.777 </td></tr>
+<tr onclick="seleccionar(this)"><td>INFORME DE CONFORMIDAD PARA INMOBILIARIAS</td><td class="preciolista">  117.220 </td></tr>
+<tr onclick="seleccionar(this)"><td>INODORO ARMADO MECANISMO INTERNO MOCHILA</td><td class="preciolista">  29.422 </td></tr>
+<tr onclick="seleccionar(this)"><td>INODORO, BIDET COLOCACION SOLO</td><td class="preciolista">  48.561 </td></tr>
+<tr onclick="seleccionar(this)"><td>INODORO COLOCACION + ARMADO Y FIJACION MOCHILA + FLEXIBLE (1)</td><td class="preciolista">  104.653 </td></tr>
+<tr onclick="seleccionar(this)"><td>INODORO COLOCACION MOCHILA FIJAR EN MURO</td><td class="preciolista">  19.314 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN BIODIGESTOR (SIN DRENAJES)</td><td class="preciolista">  267.923 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN BOMBA PRESURIZADORA BAJO TANQUE CON BY PASS (HASTA 3 BAJADAS)</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN BOMBA PRESURIZADORA PRE-CALENTADOR DE AGUA</td><td class="preciolista">  83.729 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN CALDERA TIRO FORZADO</td><td class="preciolista">  267.923 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN CALDERA TIRO NATURAL</td><td class="preciolista">  284.668 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN CÁMARA SÉPTICA PLÁSTICA.</td><td class="preciolista">  133.958 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN CISTERNA CON BOMBA ELEVADORA (CON AUTOMATIZACIÓN)</td><td class="preciolista">  535.847 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN CISTERNA CON BOMBA ELEVADORA (SIN AUTOMATIZACIÓN)</td><td class="preciolista">  334.899 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN CLIMATIZADOR PARA PISCINA</td><td class="preciolista">  535.847 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE AGUA FRÍA Y CALIENTE, CON CAÑERÍA FUSIÓN, PARA 4 ARTEFACTOS DE BAÑO</td><td class="preciolista">  502.355 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE AGUA FRÍA Y CALIENTE, CON CAÑERÍA FUSIÓN, PARA BACHA DE COCINA</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE AGUA FRÍA Y CALIENTE, CON CAÑERÍA FUSIÓN, PARA PILETA DE LAVAR Y LAVARROPAS</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE AGUA, CON CAÑERÍA FUSIÓN POR MT AÉREO Y ENGRAMPADO</td><td class="preciolista">  33.491 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE AGUA, CON CAÑERÍA FUSIÓN POR MT CANALIZADO</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE AGUA, CON CAÑERÍA FUSIÓN POR MT ZANJEADO</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE AGUA, CON CAÑERÍA FUSIÓN, DESDE RED HACIA ALIMENTACIÓN TANQUE HASTA 15 MTS</td><td class="preciolista">  334.899 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE ANAFE</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE ARTEFACTO SANITARIO CON GRIFERIA O MOCHILA (C/U)</td><td class="preciolista">  79.856 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE BACHA DE COCINA (GRIFERÍA Y DESAGÜE)</td><td class="preciolista">  71.870 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE C.I PLÁSTICA SOBRE MORTERO DE ASIENTO</td><td class="preciolista">  133.958 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE CALDERA</td><td class="preciolista">  234.432 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE CALEFACTOR CENTRAL</td><td class="preciolista">  468.855 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE CALEFACTOR SIN SALIDA</td><td class="preciolista">  83.729 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE CALEFACTOR TBH</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE CALEFACTOR TBU (HASTA 6 MTS)</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE CALENTADOR DE AGUA INSTANTÁNEO (CALEFÓN) T.B</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE CALENTADOR DE AGUA INSTANTÁNEO (CALEFÓN) TN</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE CALENTADOR DE AGUA POR ACUMULACIÓN (TERMOTANQUE)</td><td class="preciolista">  117.220 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE CÁMARA SÉPTICA PRE-MOLDEADA MODULAR</td><td class="preciolista">  200.941 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE COCINA DOMÉSTICA</td><td class="preciolista">  79.856 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE COCINA INDUSTRIAL</td><td class="preciolista">  133.958 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE DESAGÜE SECUNDARIO PARA 1 BACHA DE COCINA CON BOCA DE ACCESO</td><td class="preciolista">  117.220 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE DESAGÜES PRIMARIOS (PARA BAÑO Y COCINA CONTIGUOS) HASTA C.I (HASTA 5 MTS)</td><td class="preciolista">  200.941 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE DESAGÜES SECUNDARIOS PARA 1 BAÑO (4 ARTEFACTOS, PILETA DE PISO Y VENTILACIÓN)</td><td class="preciolista">  234.584 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE DESAGÜES SECUNDARIOS PARA 1 PILETA DE LAVAR Y LAVARROPAS</td><td class="preciolista">  117.220 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE GAS, CON CAÑERÍA EPOXI POR BOCA</td><td class="preciolista">  267.923 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE GAS, CON CAÑERÍA EPOXI POR MT AÉREO Y ENGRAMPADO</td><td class="preciolista">  33.490 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE GAS, CON CAÑERÍA EPOXI POR MT CANALIZADO</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE GAS, CON CAÑERÍA EPOXI POR MT ZANJEADO</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE GAS, CON CAÑERÍA FUSIÓN POR BOCA</td><td class="preciolista">  267.923 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE GAS, CON CAÑERÍA FUSIÓN POR MT AÉREO Y ENGRAMPADO</td><td class="preciolista">  33.491 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE GAS, CON CAÑERÍA FUSIÓN POR MT CANALIZADO</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE GAS, CON CAÑERÍA FUSIÓN POR MT ZANJEADO</td><td class="preciolista">  40.727 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE HORNO EN NICHO</td><td class="preciolista">  117.220 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE LAVARROPAS/LAVAVAJILLA</td><td class="preciolista">  67.878 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE LEÑO</td><td class="preciolista">  66.975 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE PANTALLA INFRAROJA</td><td class="preciolista">  66.975 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACION DE PORTERO ELECTRICAFRENTE Y UN AIRICULAR EMBUTIDO SIN CERRAD ELECTRICA, CABLEADO Y ALIMENTAC S/ TRAFO INDEP</td><td class="preciolista">  123.168 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE RADIADOR POR UNIDAD.</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN DE TERMOTANQUE O CALEFÓN ELÉCTRICO EN COCINA O LAVADERO, FRÍA Y CALIENTE</td><td class="preciolista">  383.091 </td></tr>
+<tr onclick="seleccionar(this)"><td>INSTALACIÓN SUBTERRANEA X ML SOLO CABLEADO CAVADO Y TAPADO S/CONTRAPISO NI ALBAÑILERIA</td><td class="preciolista">  7.050 </td></tr>
+<tr onclick="seleccionar(this)"><td>JORNADA  DE AYUDANTE GASISTA</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>JORNADA  DE AYUDANTE SANITARISTA</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>JORNADA  DE OFICIAL GASISTA</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>JORNADA  DE OFICIAL SANITARISTA</td><td class="preciolista">  83.729 </td></tr>
+<tr onclick="seleccionar(this)"><td>LAVADO CON ACIDO O LAVANDINA MUROS LADRILLO VISTO Y PINTURA ACRILICA 3 MANOS X M2 HASTA 2,7M DE ALTURA</td><td class="preciolista">  15.057 </td></tr>
+<tr onclick="seleccionar(this)"><td>LAVADO CON ACIDO O LAVANDINA MUROS X M2 HASTA 2,7M DE ALTURA</td><td class="preciolista">  3.243 </td></tr>
+<tr onclick="seleccionar(this)"><td>LAVATORIO COLOCACION CON ARMADO DE GRIFER NO INCLUYE CALADO NI CAÑERIA PARA CONEX A PILETA DE PATIO</td><td class="preciolista">  44.133 </td></tr>
+<tr onclick="seleccionar(this)"><td>LAVATORIO COLOCACION SOLO</td><td class="preciolista">  31.708 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIJADO CARPINTERIA METALICA X M2</td><td class="preciolista">  3.771 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMP. DE OBRA TRAB. MENORES RETIRO DE ESCOMB ENBOLSADOS HASTA 3 BULTOS - MAYOR CANT. EMPRESA DEDICADA A ESE TRANSPORTE</td><td class="preciolista">  32.365 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE CALEFACTOR SIN SALIDA</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE CALEFACTOR TBH</td><td class="preciolista">  66.975 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE CALEFACTOR TBU</td><td class="preciolista">  83.729 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE CALENTADOR DE AGUA INSTANTÁNEO (CALEFÓN)</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE CALENTADOR DE AGUA POR ACUMULACIÓN (TERMOTANQUE)</td><td class="preciolista">  66.975 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE OBRA CARGA CONTENEDOR X UNIDAD</td><td class="preciolista">  103.566 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE RADIADOR DE ALUMINIO POR UNIDAD (HASTA 10 VELAS)</td><td class="preciolista">  75.359 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE RADIADOR DE FUNDICIÓN POR UNIDAD (HASTA 10 VELAS)</td><td class="preciolista">  83.729 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE SIFÓN DE BACHA BAJO MESADA</td><td class="preciolista">  18.366 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE TANQUE DE RESERVA DE EDIFICIO</td><td class="preciolista">  267.923 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE TANQUE DE RESERVA HASTA 1000 LTS EN PLANTA ALTA</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE TANQUE DE RESERVA HASTA 1000 LTS EN PLANTA BAJA</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>LIMPIEZA DE TERRENO M2</td><td class="preciolista">  736 </td></tr>
+<tr onclick="seleccionar(this)"><td>LOSA HORMIGÓN ARMADO, ESPESOR 10CM X M2 CON MADERA, ENCOFRADO, ARMADO DE HIERROS Y LLENADO.</td><td class="preciolista">  62.314 </td></tr>
+<tr onclick="seleccionar(this)"><td>LOSA VIGUETAS BOVEDILLAS 17 ARMADO Y LLENADO. SUPERFICIE MAYOR A 15 M2</td><td class="preciolista">  53.986 </td></tr>
+<tr onclick="seleccionar(this)"><td>LOSA VIGUETAS BOVEDILLAS 17 ARMADO Y LLENADO. SUPERFICIE MENOR A 15 M2</td><td class="preciolista">  63.433 </td></tr>
+<tr onclick="seleccionar(this)"><td>LOSA VIGUETAS BOVEDILLAS 9 -12 ARMADO Y LLENADO. SUPERFICIE MAYOR A 15 M2</td><td class="preciolista">  48.587 </td></tr>
+<tr onclick="seleccionar(this)"><td>LOSA VIGUETAS BOVEDILLAS 9 -12 ARMADO Y LLENADO. SUPERFICIE MENOR A 15 M2</td><td class="preciolista">  58.035 </td></tr>
+<tr onclick="seleccionar(this)"><td>MACHIMBRE X M2 DE 1/2, REVESTIMIENTO, PISO O PARED</td><td class="preciolista">  41.762 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA LADRILLO COMUN 0,10 Y 0,15 HASTA 2,20 M. DE ALTURA PRECIO X METRO CUADRADO</td><td class="preciolista">  18.242 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA LADRILLO COMUN 0,10 Y 0,15 MAS DE 2,3 M HASTA 3,5 M DE ALTURA PRECIO X METRO CUADRADO (ADICION 15%)</td><td class="preciolista">  20.978 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA 0,12 LADRILLOS HUECOS (12X18X33) MAS DE 2,2 MTS. DE ALTURA PRECIO X METRO CUADRADO</td><td class="preciolista">  20.848 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA 0,15 LADRILLO VISTO HASTA 2M S/ EMBOQUILLADO PRECIO X METRO CUADRADO</td><td class="preciolista">  34.584 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA 0,15 LADRILLO VISTO MAS 2M HASTA 3,5 M DE ALTURA PRECIO X METRO CUADRADO S/EMBOQUILLADO</td><td class="preciolista">  39.772 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA 0,18 LADRILLOS HUECOS (18X18X33) MAS DE 2,2 MTS. DE ALTURA PRECIO X METRO CUADRADO</td><td class="preciolista">  20.848 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA LADRILLO COMUN 0,20 Y 0,30 HASTA 2,2 M DE ALTURA PRECIO X METRO CUADRADO</td><td class="preciolista">  41.956 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA LADRILLO COMUN 0,20 Y 0,30 MAS DE 2,3 M HASTA 3,5 M DE ALTURA PRECIO X METRO CUADRADO</td><td class="preciolista">  48.250 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA 0,30 LADRILLO VISTO ALTURA MAS DE 2MTS. HASTA 3,5M S/ EMBOQUILLADO PRECIO X METRO CUADRADO</td><td class="preciolista">  51.489 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA 0,30 LADRILLO VISTO HASTA 2MTS. S/ EMBOQUILLADO PRECIO X METRO CUADRADO</td><td class="preciolista">  35.013 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA BLOQUES INDUSTRIALES (20X20X40) HASTA 2,2MTS. PRECIO X METRO CUADRADO</td><td class="preciolista">  28.955 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA BLOQUES INDUSTRIALES(20X20X40) MAS DE 2,2MTS. HASTA 3,5M PRECIO X METRO CUADRADO</td><td class="preciolista">  33.299 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA LADRILLOS HUECOS 0,12 (12X18X33) PRECIO X METRO CUADRADO</td><td class="preciolista">  15.005 </td></tr>
+<tr onclick="seleccionar(this)"><td>MAMPOSTERIA LADRILLOS HUECOS 0,18 (18X18X33) PRECIO X METRO CUADRADO</td><td class="preciolista">  15.005 </td></tr>
+<tr onclick="seleccionar(this)"><td>MANTENIMIENTO BÁSICO PREVENTIVO DE CALDERA</td><td class="preciolista">  208.678 </td></tr>
+<tr onclick="seleccionar(this)"><td>MICROCEMENTO, 2MM DE ESPESOR</td><td class="preciolista">  28.821 </td></tr>
+<tr onclick="seleccionar(this)"><td>MOCHETAS EN JAMBAS, DINTEL O ALFEIZAR (TERMINACIONSUP DEL ANTEPECHO) POR ML EN MATERIAL REVOQUE (VANO P/ CARP ALUMINIO)</td><td class="preciolista">  21.924 </td></tr>
+<tr onclick="seleccionar(this)"><td>MOCHETAS, GUARDAPOLVOS PEQUEÑOS HASTA 7X10CM LISOS SIN ADORNOS X M LINEAL</td><td class="preciolista">  17.653 </td></tr>
+<tr onclick="seleccionar(this)"><td>MONTAJE DE CALDERA(MAX. 1 MTS SALIDA DE GASES Y CODO)</td><td class="preciolista">  254.291 </td></tr>
+<tr onclick="seleccionar(this)"><td>MONTAJE DE RADIADOR</td><td class="preciolista">  52.457 </td></tr>
+<tr onclick="seleccionar(this)"><td>PARRILLA PREFABRICADA  hasta 1,60 mts aprx.</td><td class="preciolista">  98.222 </td></tr>
+<tr onclick="seleccionar(this)"><td>PARRILLA DE MATERIAL CON PULMON (1M X 1,50M)</td><td class="preciolista">  745.361 </td></tr>
+<tr onclick="seleccionar(this)"><td>PASES DE COLUMNAS O VIGAS 0,15 ESPESOR HASTA 40 MM DIAMETRO DE BROCA X UNIDAD</td><td class="preciolista">  6.419 </td></tr>
+<tr onclick="seleccionar(this)"><td>PASES DE COLUMNAS O VIGAS 0,30 ESPESOR Y HASTA 40 MM DIAMETRO DE BROCA X UNIDAD</td><td class="preciolista">  13.374 </td></tr>
+<tr onclick="seleccionar(this)"><td>PASES DE MUROS 0,15 ESPESOR DESDE15MM HASTA 40 MM DIAMETRO DE BROCA X UNIDAD</td><td class="preciolista">  4.012 </td></tr>
+<tr onclick="seleccionar(this)"><td>PASES DE MUROS 0,15 ESPESOR DESDE40MM HASTA 65 MM DIAMETRO DE BROCA X UNIDAD</td><td class="preciolista">  5.350 </td></tr>
+<tr onclick="seleccionar(this)"><td>PASES DE MUROS 0,15 ESPESOR Y HASTA 12MM DIAMETRO DE BROCA X UNIDAD</td><td class="preciolista">  1.605 </td></tr>
+<tr onclick="seleccionar(this)"><td>PASES DE MUROS 0,30 ESPESOR DESDE15MM HASTA 40 MM DIAMETRO DE BROCA X UNIDAD</td><td class="preciolista">  5.884 </td></tr>
+<tr onclick="seleccionar(this)"><td>PASES DE MUROS 0,30 ESPESOR DESDE40MM HASTA 65 MM DIAMETRO DE BROCA X UNIDAD</td><td class="preciolista">  6.687 </td></tr>
+<tr onclick="seleccionar(this)"><td>PASES DE MUROS 0,30 ESPESOR Y HASTA 12MM DIAMETRO DE BROCA X UNIDAD</td><td class="preciolista">  2.942 </td></tr>
+<tr onclick="seleccionar(this)"><td>PASES EN CIMIENTOS PARA CAÑERIAS (0,40 DE ESPESOR)</td><td class="preciolista">  18.536 </td></tr>
+<tr onclick="seleccionar(this)"><td>PICAR REVOQUE XM2</td><td class="preciolista">  11.769 </td></tr>
+<tr onclick="seleccionar(this)"><td>PILAR DE LUZ, SOLO ESTRUCTURA</td><td class="preciolista">  332.148 </td></tr>
+<tr onclick="seleccionar(this)"><td>PILAR LADRILLO VISTO 0,45X0,45X1MLINEAL MAS ARMADO, LLENADO DE COLUMNA HUECO CENTRAL Y EMBOQUILLADO JUNTA TOMADA</td><td class="preciolista">  100.758 </td></tr>
+<tr onclick="seleccionar(this)"><td>PILAR LADRILLO VISTO EMBOQUILLADO JUNTA TOMADA DE 0,30X0,30X1M LINEAL</td><td class="preciolista">  57.843 </td></tr>
+<tr onclick="seleccionar(this)"><td>PILOTÍN DE 20CM DE DIÁMETRO</td><td class="preciolista">  33.942 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA ASFALTICA EXT MUROS EN ALTURA SUPERIOR A 3M Y HASTA 8M X M2</td><td class="preciolista">  8.936 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA ASFALTICA EXT MUROS HASTA 3M ALTURA X M2</td><td class="preciolista">  4.384 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA ASFALTICA O EMULSIÓN TECHOS LOSA X M2</td><td class="preciolista">  4.054 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA CELOSIA XM2 XMANO</td><td class="preciolista">  5.657 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA PUERT CHAPA LIJADO ANTIOX O CONVERT Y PINTURA SINTETICO 2 MANOS EN PTA 2X0,80 - 0,90 COMPLETA Y MARCO</td><td class="preciolista">  68.158 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA PUERT MADERA LIJADO Y PINTURA SINTETICO 2 MANOS EN PTA 2X0,80 - 0,90 COMPLETA Y MARCO</td><td class="preciolista">  56.798 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA VENT CHAPA HOJA VIDR REPARTID LIJAD ANTIOX O CONVERT Y PINTURA SINTET 2 MANOS EN VENT 1,2MX1M COMPL Y MARCO</td><td class="preciolista">  27.214 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA VENT CHAPA HOJA VIDR REPARTID LIJAD ANTIOX O CONVERT Y PINTURA SINTET 2 MANOS EN VENT 1,5MX1M COMPL Y MARCO</td><td class="preciolista">  32.132 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA VENT CHAPA HOJA VIDR REPARTID LIJAD ANTIOX O CONVERT Y PINTURA SINTET 2 MANOS EN VENT 2MX1M COMPL Y MARCO</td><td class="preciolista">  40.329 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA VENTANA CHAPA CELOCIA LIJAD ANTIOX O CONVERT Y PINTURA SINTET 2 MANOS EN VENT 1,2MX1M COMPLETA Y MARCO</td><td class="preciolista">  38.649 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA VENTANA CHAPA CELOCIA LIJAD ANTIOX O CONVERT Y PINTURA SINTET 2 MANOS EN VENT 1,5MX1M COMPLETA Y MARCO</td><td class="preciolista">  45.438 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA VENTANA CHAPA CELOCIA LIJAD ANTIOX O CONVERT Y PINTURA SINTET 2 MANOS EN VENT 2MX1M COMPLETA Y MARCO</td><td class="preciolista">  69.846 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA VENTANA MADERA CELOCIA LIJAD Y PINTURA SINTET 2 MANOS EN VENT 1,2MX1M COMPLETA Y MARCO</td><td class="preciolista">  54.583 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA VENTANA MADERA CELOCIA LIJAD Y PINTURA SINTET 2 MANOS EN VENT 1,5MX1M COMPLETA Y MARCO</td><td class="preciolista">  61.333 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA VENTANA MADERA CELOCIA LIJAD Y PINTURA SINTET 2 MANOS EN VENT 2MX1M COMPLETA Y MARCO</td><td class="preciolista">  69.843 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA VIDRIO REPARTIDO X M2 X MANO</td><td class="preciolista">  4.098 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA X CANTIDAD X M2 (MAYOR A 4 UNIDADES O SUPERFICIES MAYORES A 18 M2) X MANO</td><td class="preciolista">  3.771 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA CARPINTERIA X MANO X M2</td><td class="preciolista">  4.714 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA LATEX BLANCO MUROS INTERIOR ENDUIDO TRABAJOS DE ARREGLOS MENORES GRANDES SUPERFICIES (BARRIOS ESCUELAS ETC)</td><td class="preciolista">  4.777 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA LATEX COLOR MUROS INTERIOR ENDUIDO TRABAJOS DE ARREGLOS MENORES (BARRIOS, ESCUELAS ETC)</td><td class="preciolista">  5.738 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA LATEX EXT. GRANDES SUPERF. DOS MANOS SOLO PINTURA SIN ARREGLOS NI ENDUIDO EN ALTURA SUP A 5M ALTURA X M2</td><td class="preciolista">  12.645 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA LATEX INT COLOR GRANDES SUPERF.(SUSTRATO EN BUEN ESTADO LIJADO FIJADOR Y LATEX 2 MANOS, BARRIOS ESC.)</td><td class="preciolista">  4.547 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA LATEX INT COLOR GRANDES SUPERFICIES (BARRIOS ESCUELAS ETC. CON DETALLES GRIETAS ARREGLOS LIJADO FIJADOR Y LATEX 2 MANOS)</td><td class="preciolista">  6.620 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA LATEX INT. BLANCO (SUSTRATO EN BUEN ESTADO LIJADO FIJADOR Y LATEX 2 MANOS, BARRIOS ESCUELAS ETC.)</td><td class="preciolista">  3.598 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA LATEX INT. BLANCO GRANDES SUPERF. (BARRIOS ESCUELAS ETC. CON DETALLES GRIETAS ARREGLOS LIJADO FIJADOR Y LATEX 2 MANOS)</td><td class="preciolista">  5.672 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA MEMBRANA LIQUIDA CUBIERTAS IMPERMEABILIZANTE 4 MANOS 40 MICRONES X M2</td><td class="preciolista">  12.740 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA MUROS CIELORR LATEX EXT. X M2 DOS MANOS ARREGL. GRIETAS MEDIANAS A GRANDES SACAR PINTURA VIEJA (ALT HASTA 5M)</td><td class="preciolista">  9.034 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA MUROS CIELORR LATEX EXTERIOR X M2 PARED VIRGEN, SELLADOR FIJADOR Y DOS MANOS PINTURA (ALT HASTA 5M)</td><td class="preciolista">  7.528 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA MUROS CIELORR. INTERIOR X M2 ARREGLOS MENORES ENDUIDO, SELLADOR FIJADOR Y DOS MANOS LATEX</td><td class="preciolista">  6.949 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA MUROS CIELORR. INTERIOR X M2 PARED VIRGEN, SELLADOR FIJADOR Y DOS MANOS LATEX</td><td class="preciolista">  5.791 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA MUROS CIELORR. LATEX SATINADO INT COLOR, X M2 TERMINACION FINA, PLANCHADO ENDUIDO Y TERMINACION</td><td class="preciolista">  17.373 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA PISOS IMPERMEABILIZANTE ACRILICO X M2 2 MANOS</td><td class="preciolista">  7.857 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA REJA METALICA CON REMOVEDOR COLOCACION DE ANTIOXIDO O CONVERT + PINTURA SINTET 2 MANOS X M2</td><td class="preciolista">  30.171 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA REJA METALICA LIJAD PINTURA 1 MANO DE ANTIOXIDO O CONVERTIDOR Y ESMALTE SINTET 2 MANOS X M2</td><td class="preciolista">  41.800 </td></tr>
+<tr onclick="seleccionar(this)"><td>PINTURA REJA METALICA COLOCACION DE ANTIOXIDO O CONVERT O PINTURA SINTET X MANO X M2</td><td class="preciolista">  7.071 </td></tr>
+<tr onclick="seleccionar(this)"><td>PISCINA x M3 (PISO DE HORMIGON Y PAREDES DE LADRILLOS COMÚN espesor de 30cm) </td><td class="preciolista">  728.243 </td></tr>
+<tr onclick="seleccionar(this)"><td>PISO FLOTANTE CON MANTA X M2</td><td class="preciolista">  23.391 </td></tr>
+<tr onclick="seleccionar(this)"><td>PISOS VINILICOS EN ROLLO X M2</td><td class="preciolista">  7.061 </td></tr>
+<tr onclick="seleccionar(this)"><td>PLANO COMPLETO EN AUTOCAD -GAS</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>PLÁSTICO TIPO SUPER IGGAM</td><td class="preciolista">  30.546 </td></tr>
+<tr onclick="seleccionar(this)"><td>PLATEA DE HORMIGON ARMADO (espesor 15cm.) M²</td><td class="preciolista">  33.916 </td></tr>
+<tr onclick="seleccionar(this)"><td>PLATEA DE HORMIGON ARMADO (espesor 20cm.) M²</td><td class="preciolista">  38.594 </td></tr>
+<tr onclick="seleccionar(this)"><td>PLATEA DE HORMIGON ARMADO (espesor 25cm.) M²</td><td class="preciolista">  42.102 </td></tr>
+<tr onclick="seleccionar(this)"><td>PLUVIALES HASTA CORDÓN CUNETA POR M.L (POR TIERRA)</td><td class="preciolista">  50.229 </td></tr>
+<tr onclick="seleccionar(this)"><td>PORCELANATO (PISO) COLOCACION SIN CARPETA X M2</td><td class="preciolista">  31.801 </td></tr>
+<tr onclick="seleccionar(this)"><td>PORCELANATO GRANDES PIEZAS ( 0,60X0,40 )CADA PIEZA (PISO) COLOCACION SIN CARPETA X M2</td><td class="preciolista">  34.424 </td></tr>
+<tr onclick="seleccionar(this)"><td>PORTONES, REJA COMBINADO PLANCH. HIERRO LISO , C. ESTRUCTUR. DISEÑOS SIMPLES X M2 M.O. MONTO 100% COSTO. MATERIAL.</td><td class="preciolista">  132.245 </td></tr>
+<tr onclick="seleccionar(this)"><td>PRESIRUZACION DE VASO DE EXPANSION CON DESMONTAJE</td><td class="preciolista">  199.559 </td></tr>
+<tr onclick="seleccionar(this)"><td>PRESIRUZACION DE VASO DE EXPANSION SIN DESMONTAJE</td><td class="preciolista">  125.437 </td></tr>
+<tr onclick="seleccionar(this)"><td>PRUEBA HIDRÁULICA EN DESAGÜES (CON TAPÓN NEUMÁTICO)</td><td class="preciolista">  133.958 </td></tr>
+<tr onclick="seleccionar(this)"><td>PRUEBA HIDRÁULICA HASTA 15 BARES ≈</td><td class="preciolista">  79.856 </td></tr>
+<tr onclick="seleccionar(this)"><td>PRUEBA HIDRÁULICA HASTA 20 BARES ≈</td><td class="preciolista">  133.958 </td></tr>
+<tr onclick="seleccionar(this)"><td>PRUEBA MANOMÉTRICA HASTA 3 ARTEFACTOS</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>PRUEBA MANOMÉTRICA HASTA 6 ARTEFACTOS</td><td class="preciolista">  150.703 </td></tr>
+<tr onclick="seleccionar(this)"><td>PUESTA EN FUNCIONAMIENTO DEL SIST DE CALEFACCION (PURGA Y ARRANQUE DE CALDERA HASTA 10 RADIADORES)</td><td class="preciolista">  184.194 </td></tr>
+<tr onclick="seleccionar(this)"><td>PUESTA EN MARCHA CON TERMOSTATO</td><td class="preciolista">  177.894 </td></tr>
+<tr onclick="seleccionar(this)"><td>REALIZACIÓN DE C.I CON MODULO PRE-MOLDEADO (TAPA Y CONTRATAPA) Y COJINETES DE MATERIAL</td><td class="preciolista">  200.941 </td></tr>
+<tr onclick="seleccionar(this)"><td>REALIZACIÓN DE DRENAJES POR ML (CAÑOS PERFORADOS,ZANJEO,RELLENO CON GRANZA Y TAPADA)</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>RECAMBIO DE LLAVE DE PASO EMBUTIDA (SIN ALBAÑILERÍA)</td><td class="preciolista">  100.474 </td></tr>
+<tr onclick="seleccionar(this)"><td>RECAMBIO DE TANQUE DE FIBROCEMENTO X PLÁSTICO EN PLANTA ALTA</td><td class="preciolista">  359.350 </td></tr>
+<tr onclick="seleccionar(this)"><td>RECAMBIO DE TANQUE DE FIBROCEMENTO X PLÁSTICO EN PLANTA BAJA</td><td class="preciolista">  279.494 </td></tr>
+<tr onclick="seleccionar(this)"><td>REEMPLAZO O CLOCAC. DE SIFON DOBLE EN BAJO MESADA COC, SIN ROTURAS DE MUROS O PISOS SOLO PASES EN MUEBL BAJO MESAD.</td><td class="preciolista">  14.283 </td></tr>
+<tr onclick="seleccionar(this)"><td>REEMPLAZO O CLOCAC. DE SIFON SIMPLE EN BAJO MESADA COC, BANITORIOS, O LAVAD SOLO PASES EN MUEBLES, BANDEJA, O FONDO</td><td class="preciolista">  12.854 </td></tr>
+<tr onclick="seleccionar(this)"><td>REFUERZOS O SOPORTES Hº Aº X M3, H 18 (325 KG CEM PORTL X M3) PARA DISTRIBUC DE CARGAS</td><td class="preciolista">  2.084.793 </td></tr>
+<tr onclick="seleccionar(this)"><td>REJA METALICA LIJADO Y RASPADO CON ESPAULA SI LA PINTURA O EL SUTRATO ESTA EN BUENAS CONDICIONES</td><td class="preciolista">  20.447 </td></tr>
+<tr onclick="seleccionar(this)"><td>REJA METALICA REMOCION COMPLETA PINTURA C/ REMOVEDOR X M2</td><td class="preciolista">  25.843 </td></tr>
+<tr onclick="seleccionar(this)"><td>REJAS PUERTAS DE SEGURIDADCOLOCACIONION. AMURADO DIMENCIONES REJA HASTA 2 M2. M DE OBRA</td><td class="preciolista">  37.629 </td></tr>
+<tr onclick="seleccionar(this)"><td>REJAS SIMPLES SIN MOLD O ADORNOS X M2 SINCOLOCACIONIONAC. M DE OBRA (PREC. ENTRE EL 90 A 100% DEL COSTO TOT DE LOS MAT PARA SU CONST)</td><td class="preciolista">  81.907 </td></tr>
+<tr onclick="seleccionar(this)"><td>REJAS VALLADOS INSTALAC. 2M DE ALTURA X ML. M DE O SOPORT EN MURO INF. O BASE DE H° EN TIERRA (SIN CONSTRUCC MUROS O PILARES)</td><td class="preciolista">  16.127 </td></tr>
+<tr onclick="seleccionar(this)"><td>REJAS X M2 M DE OBRA COLOCACION EN VENTANAS (AMURADO) HASTA 2,5 M DE ALTURA (P BAJA)</td><td class="preciolista">  28.940 </td></tr>
+<tr onclick="seleccionar(this)"><td>REJAS X M2 M DE OBRA COLOCACION EN VENTANAS (AMURADO) HASTA 6,5 M TRABAJO EN ALTURA</td><td class="preciolista">  81.032 </td></tr>
+<tr onclick="seleccionar(this)"><td>RELLENO DE CAÑERIAS EN MUROS (ELECTRICIDAD TAPADO) X M.LINEAL</td><td class="preciolista">  1.410 </td></tr>
+<tr onclick="seleccionar(this)"><td>RELLENO DE CAÑERIAS EN MUROS (GAS - SANITARIOS AGUA FRIA O CAL. TAPADO) X M.LINEAL</td><td class="preciolista">  1.961 </td></tr>
+<tr onclick="seleccionar(this)"><td>RELLENO Y COMPACTAC X M2 EN CAPAS HASTA 10CM DE ESPESOR EN (GRANDES SUPERFICIES)</td><td class="preciolista">  9.448 </td></tr>
+<tr onclick="seleccionar(this)"><td>RELLENO Y COMPACTAC. TIERRA SOBRE BASE 0,8ML X0,8ML</td><td class="preciolista">  4.818 </td></tr>
+<tr onclick="seleccionar(this)"><td>RELLENO Y COMPACTAC. TIERRA SOBRE BASE 1,50ML X1,50ML</td><td class="preciolista">  16.939 </td></tr>
+<tr onclick="seleccionar(this)"><td>RELLENO Y COMPACTACION TIERRA X M2 EN CAPAS HASTA 10CM DE ESPESOR</td><td class="preciolista">  7.528 </td></tr>
+<tr onclick="seleccionar(this)"><td>RELLENOS Hº SIMPLE BANQUINAS DESNIVELES UMBRALES X CM DE ALTURA X M2</td><td class="preciolista">  7.650 </td></tr>
+<tr onclick="seleccionar(this)"><td>RELLENOS Y COMPACTACION TIERRA ESCOMBRO, BASE ESTABILIZADA X M3</td><td class="preciolista">  260.387 </td></tr>
+<tr onclick="seleccionar(this)"><td>REMOCION COMPLETA DE PINTURA VIEJA CON REMOVEDOR O PROCESO MECANICO CARPINTERIA METALICA REJAS ETC X M2</td><td class="preciolista">  9.940 </td></tr>
+<tr onclick="seleccionar(this)"><td>REPARACIÓN CALDERA-- DIAGNÓSTICO DE FALLA (SIN REPUESTOS)</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>REPARACIÓN MONOCOMANDO PILETA COCINA LAVATORIO, REEMPLAZO DE CARTUCHO MONOCOMANDO, ORRINGS Y LIMPIEZA</td><td class="preciolista">  28.144 </td></tr>
+<tr onclick="seleccionar(this)"><td>REPARACION TRABAJO MINIMO SOLDADURA (TRABAJO UNICO TRANSLADO DE EQUIPO Y OPERARIO PARA ESE TRABAJO ESPECIFICO)</td><td class="preciolista">  47.664 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE AIRE ACOND VENTANA (SEGÚN TAMAÑO Y ALTURA DE UBICACIÓN, Y SIN CERRAR HUECO)</td><td class="preciolista">  44.125 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE CARPINTERIA LIVIANA TIPO VAIVÉN</td><td class="preciolista">  29.857 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE CARPINTERIA PUERTAS VENTANAS HASTA 2M2 CON MARCO</td><td class="preciolista">  39.600 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE CARPINTERIA PUERTAS VENTANAS HASTA 7,5 M2 CON MARCO</td><td class="preciolista">  66.314 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE CARPINTERIA PUERTAS VENTANAS TIPO CAJON MARCO METALICO O MADERA HASTA 2M2 X UNIDAD</td><td class="preciolista">  59.714 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE CUALQUIER ART SANIT (INOD BIDET LAVAT BANITORI ETC.)</td><td class="preciolista">  26.095 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE CUBIERTAS DE CHAPAS DESARMADO, EN ESTRUCTURA MADERA, CALVADAS CUBIERTAS HASTA 5M ALTURA X M2</td><td class="preciolista">  14.123 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE CUBIERTAS DE CHAPAS DESARMADO, EN ESTRUCTURA METALICA, ATORNILLADAS CUBIERTAS HASTA 5M ALTURA X M2</td><td class="preciolista">  5.760 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE GRIFERIA SOBREMESADA, COCINA, LAVADERO, BANITORI ETC</td><td class="preciolista">  10.751 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE MEMBRANA ASFÁLTICA (LAMIPLAS) DESPEGAR Y LIMPIEZA EN CUBIERTAS H° X M2</td><td class="preciolista">  4.224 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE REJAS EN VENTANAS X METRO CUADRADO DE SUP EN PLANTA BAJA X UNID SIN TERMINACIONALBAÑILERIA</td><td class="preciolista">  6.473 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE REJAS EN VENTANAS X METRO CUADRADO DE SUP Y PLANTA ALTA O ALTURA HASTA 5M X UNID</td><td class="preciolista">  18.242 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE SETOS TELAS ALAMBRADAS POSTES HORMIGON QUE INCLUYEN CAVADO LIMPIEZAETC SIN RETIRO DE MATERIAL X ML</td><td class="preciolista">  6.914 </td></tr>
+<tr onclick="seleccionar(this)"><td>RETIRO DE TEJAS EN CUBIERTA HORMIGON X M2</td><td class="preciolista">  2.803 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVESTIMIENTO  MUROS (COLOCACION DE CERAMICOS INT) SIN JAHARRO HASTA 2,5 M DE ALTURA</td><td class="preciolista">  15.005 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVESTIMIENTO  MUROS (COLOCACION DE CERAMICOS) EN ALTURA MOCHETAS JAMBAS ETC X MLINEAL</td><td class="preciolista">  21.184 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVESTIMIENTO  MUROS (COLOCACION DE CERAMICOS) EN ALTURA SIN JAHARRO EXT DE 2,5 HASTA 4 MTS DE ALTURA (FRENT EDIF PATIOS AL EXT ETC.)</td><td class="preciolista">  32.365 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVESTIMIENTO  MUROS (COLOCACION DE CERAMICOS) EN ALTURA SIN JAHARRO EXT SUP A 4 MTS DE ALTURA (FRENT EDIF PATIOS AL EXT ETC.)</td><td class="preciolista">  42.074 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVESTIMIENTO  MUROS (COLOCACION DE PORCELANATO) EN INTERIOR (COCINA BAÑO ETC.)</td><td class="preciolista">  31.776 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE GRUESO EXTERIOR EN ALTURA MAS DE 3 M HASTA 7 M ALTURA</td><td class="preciolista">  19.419 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE GRUESO EXTERIOR HASTA 2,5 M ALTURA X M2</td><td class="preciolista">  14.711 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE FINO EXTERIOR X M2</td><td class="preciolista">  9.799 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE FINO INTERIOR X M2</td><td class="preciolista">  9.247 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE FRATAZADO INCLUYE CASTIGADO CEMENTICIO CON IMPERMEAB EXTERIOR EN ALTURA (MAS DE 3 M Y HASTA 7M DE ALTURA)</td><td class="preciolista">  25.892 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE FRATAZADO INCLUYE CASTIGADO CEMENTICIO CON IMPERMEAB EXTERIOR HASTA 2,7 M ALTURA</td><td class="preciolista">  21.184 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE GRUESO INTERIOR HABITACIONES X M2</td><td class="preciolista">  14.711 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE GRUESO INTERIOR O EXTERIOR GRANDES SUP X M2</td><td class="preciolista">  12.357 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE JASPEADO CON CUCHARA SIN BASE DE REVOQUE</td><td class="preciolista">  13.534 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE JASPEADO CON SALPICADORA EN BASE DE JAHARRO NIVELADO (IGGAM SOBRE REVOQUE GRUESO APLOMADO)</td><td class="preciolista">  30.011 </td></tr>
+<tr onclick="seleccionar(this)"><td>REVOQUE JASPEADO CON SALPICADORA EN BASE DE JAHARRO NIVELADO EN ALTURA (IGGAM SOBRE REVOQUE GRUESO APLOMADO)</td><td class="preciolista">  34.718 </td></tr>
+<tr onclick="seleccionar(this)"><td>ROTURA DE CONTRAPISO (HASTA 7 CM ESPESOR) PRECIO X M2</td><td class="preciolista">  8.897 </td></tr>
+<tr onclick="seleccionar(this)"><td>ROTURA Y LIMPIEZA DE PISO EXISTENTE (SOLO REVESTIMIENTO IMIENTO, SIN CONTRAPISO)</td><td class="preciolista">  5.296 </td></tr>
+<tr onclick="seleccionar(this)"><td>SOPORTE, PROTECCION, COBERTORES ETC TRABAJO DETALLES HERRERIA CHICOS, MANO DE OBRA S/ COLOCACION (PRECIO APROX X M2)</td><td class="preciolista">  61.198 </td></tr>
+<tr onclick="seleccionar(this)"><td>TABIQUE DE HORMIGÓN ARMADO, ESPESOR 10CM (X M3) CON MADERA, ENCOFRADO, ARMADO DE HIERROS Y LLENADO.</td><td class="preciolista">  585.993 </td></tr>
+<tr onclick="seleccionar(this)"><td>TEXTURADO 1 TARQUINI O RULATO (FINO)</td><td class="preciolista">  13.241 </td></tr>
+<tr onclick="seleccionar(this)"><td>TEXTURADO 2 TARQUINI O RULATO (MEDIO)</td><td class="preciolista">  15.279 </td></tr>
+<tr onclick="seleccionar(this)"><td>TEXTURADO 3 TARQUINI O RULATO (GRUESO)</td><td class="preciolista">  17.318 </td></tr>
+<tr onclick="seleccionar(this)"><td>TEXTURADO 4 TARQUINI O RULATO (EXTRA-GRUESO)</td><td class="preciolista">  17.631 </td></tr>
+<tr onclick="seleccionar(this)"><td>TEXTURADO PÉTREO</td><td class="preciolista">  24.448 </td></tr>
+<tr onclick="seleccionar(this)"><td>TOMACORRIENTES, LLAVES, ETC REPOSICION</td><td class="preciolista">  15.024 </td></tr>
+<tr onclick="seleccionar(this)"><td>TRABAJO ELECTRICIDAD MINIMO</td><td class="preciolista">  28.051 </td></tr>
+<tr onclick="seleccionar(this)"><td>TRABAJOS EN ALTURA CUALQUIERA MAS DE 3,7 ALT O NECESITE TRAB C/ ANDAM O ESCAL. LARGAS MINIMO MONTO</td><td class="preciolista">  94.151 </td></tr>
+<tr onclick="seleccionar(this)"><td>TRÁMITES COMPLETOS DE INST. DE GAS (PLANOS, FACT, PARCIAL, FINAL)-10 BOCAS</td><td class="preciolista">  435.371 </td></tr>
+<tr onclick="seleccionar(this)"><td>TRÁMITES COMPLETOS DE INST. DE GAS (PLANOS, FACT, PARCIAL, FINAL)-3 BOCAS</td><td class="preciolista">  602.820 </td></tr>
+<tr onclick="seleccionar(this)"><td>TRÁMITES PARA INSPECCIÓN FINAL- GAS</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>TRÁMITES PARA INSPECCIÓN PARCIAL -GAS</td><td class="preciolista">  167.449 </td></tr>
+<tr onclick="seleccionar(this)"><td>VIGA 20X20X100 X MT. LINEAL (NO Hº VISTO)</td><td class="preciolista">  83.392 </td></tr>
+<tr onclick="seleccionar(this)"><td>VIGA 20X30X100 X MT. LINEAL (NO Hº VISTO)</td><td class="preciolista">  125.088 </td></tr>
+<tr onclick="seleccionar(this)"><td>VIGA Hº TERMINACIÓN SUPERFICIAL. REVOQUE RÚSTICO + ENLUCIDO MANDILADO HASTA 0,3M ANCHO X LADO X ML.</td><td class="preciolista">  7.828 </td></tr>
+<tr onclick="seleccionar(this)"><td>VIGA Hº TERMINACIÓN SUPERFICIAL. REVOQUE RÚSTICO FRATAZADO HASTA 0,3M ANCHO X LADO X ML.</td><td class="preciolista">  3.509 </td></tr>
+<tr onclick="seleccionar(this)"><td>VIGAS PRECIO X M3 ADICIONAR 15% CUANDO SUPERE LOS 3M HASTA 5M</td><td class="preciolista">  2.084.793 </td></tr>
+<tr onclick="seleccionar(this)"><td>VISITA TECNICA HASTA DE 15 KM - GAS</td><td class="preciolista">  88.943 </td></tr>
+<tr onclick="seleccionar(this)"><td>ZAPATA DE HORMIGON POBRE (0.40x0.80)</td><td class="preciolista">  35.085 </td></tr>
+<tr onclick="seleccionar(this)"><td>ZOCALOS CERÁMICOS X ML SIN EMPASTINADO</td><td class="preciolista">  7.356 </td></tr>
+<tr onclick="seleccionar(this)"><td>ZOCALOS GRANITICO X ML</td><td class="preciolista">  11.180 </td></tr>
+<tr onclick="seleccionar(this)"><td>ZOCALOS MADERA P/ DURLOCK COLOCACION X ML</td><td class="preciolista">  4.119 </td></tr>
+<tr onclick="seleccionar(this)"><td>ZOCALOS PORCELANATO X ML CORTADO EN OBRA</td><td class="preciolista">  13.137 </td></tr>
+<tr onclick="seleccionar(this)"><td>ML LADRILLO RETAK 50X25X15CM. TIPO: ¨U¨ REFUERZO VERTICAL - HORIZONTAL, CON ARMADURA Y HORMIGÓN</td><td class="preciolista">  11.054 </td></tr>
+<tr onclick="seleccionar(this)"><td>ML LADRILLO RETAK 50X25X17,5CM. TIPO: ¨U¨ REFUERZO VERTICAL - HORIZONTAL CON ARMADURA Y HORMIGÓN</td><td class="preciolista">  11.054 </td></tr>
+<tr onclick="seleccionar(this)"><td>ML LADRILLO RETAK 50X25X20CM.  TIPO:¨U¨ REFUERZO VERTICAL - HORIZONTAL  CON ARMADURA Y HORMIGÓN</td><td class="preciolista">  11.054 </td></tr>
+<tr onclick="seleccionar(this)"><td>M2 LADRILLO RETAK 50X25X07,5CM. (NO PORTANTE)</td><td class="preciolista">  12.205 </td></tr>
+<tr onclick="seleccionar(this)"><td>M2 LADRILLO RETAK 50X25X10CM. (NO PORTANTE)</td><td class="preciolista">  13.356 </td></tr>
+<tr onclick="seleccionar(this)"><td>M2 LADRILLO RETAK 50X25X12,5CM. (NO PORTANTE)</td><td class="preciolista">  15.198 </td></tr>
+<tr onclick="seleccionar(this)"><td>M2 LADRILLO RETAK 50X25X15CM. </td><td class="preciolista">  16.350 </td></tr>
+<tr onclick="seleccionar(this)"><td>M2 LADRILLO RETAK 50X25X17,5CM. </td><td class="preciolista">  18.192 </td></tr>
+<tr onclick="seleccionar(this)"><td>M2 LADRILLO RETAK 50X25X20CM.</td><td class="preciolista">  19.574 </td></tr>
+<tr onclick="seleccionar(this)"><td>M2 LADRILLO RETAK 50X25X25CM.</td><td class="preciolista">  21.186 </td></tr>
+
+                            </tbody>
+                          </table>
+                        </div>
+                        <hr>
+
+                        <input type="text" id="precio" style="display: none;" readonly class="form-control">
+                        <!-- Contenedor fijo tipo footer -->
+
+ 
+ 
+
+                        <div class="row" style="margin-bottom: 10px;  ">
+
+
+                     
+                           
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalZona">Seleccionar Provincia</button>
+                          
+                          <!-- Modal de selección de provincia -->
+                          <div class="modal fade" id="modalZona" tabindex="-1" aria-labelledby="modalZonaLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="modalZonaLabel">Seleccionar Provincia</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <h7 id="zonaBloqueadaMensaje" class="text-danger mt-2" style="display:none;">Esta función solo se activa con código de acceso.</h7>
+
+                                  <select class="form-select" id="provinciaSelect" onchange="cambiarProvincia()">
+                                    <option disabled selected>Seleccione una provincia...</option>
+                                   
+                                    <option value="A|Buenos Aires">Buenos Aires</option>
+                                    <option value="A|Santa Fe">Santa Fe</option>
+                                    <option value="A|Mendoza">Mendoza</option>
+                                    <option value="A|Córdoba">Córdoba</option>
+                                    <option value="A|Tucumán">Tucumán</option>
+                                    <option value="A|Salta">Salta</option>
+                                    <option value="A|Jujuy">Jujuy</option>
+                                    <option value="A|Entre Ríos">Entre Ríos</option>
+                                    <option value="A|Corrientes">Corrientes</option>
+                                    <option value="A|Formosa">Formosa</option>
+                                    <option value="A|La Pampa">La Pampa</option>
+                                    <option value="A|San Luis">San Luis</option>
+                                    <option value="A|La Rioja">La Rioja</option>
+                                    <option value="A|Santiago del Estero">Santiago del Estero</option>
+                                    <option value="A|Chaco">Chaco</option>
+                                    <option value="A|Misiones">Misiones</option>
+                                    <option value="A|Catamarca">Catamarca</option>
+                                    <option value="A|San Juan">San Juan</option>
+                                    <option value="B|Neuquén">Neuquén</option>
+                                    <option value="B|Río Negro">Río Negro</option>
+                                    <option value="B|Chubut">Chubut</option>
+                                    <option value="C|Santa Cruz">Santa Cruz</option>
+                                    <option value="Austral|Tierra del Fuego">Tierra del Fuego</option>
+                                  </select>
+
+                                  <div class="mt-3">
+                                    <h6>valor sugerido de mano de obra pura sin cargas sociales</h6>
+                                    
+                                    <hr>
+                                    <ul style="list-style-type: none; padding: 0; margin: 0; background-color: #012d5f39; padding: 8px; border-radius: 8px;">
+                                      <li style="margin-bottom: 10px;"><strong>Zona 1:</strong> Buenos Aires, Santa Fe, Mendoza, Córdoba, Tucumán, Salta, Jujuy, Entre Ríos, Corrientes, Formosa, La Pampa, San Luis, La Rioja, Santiago del Estero, Chaco, Misiones, Catamarca, San Juan.</li>
+                                      <li style="margin-bottom: 10px;"><strong>Zona 2:</strong> Neuquén, Río Negro, Chubut.</li>
+                                      <li style="margin-bottom: 10px;"><strong>Zona 3:</strong> Santa Cruz.</li>
+                                      <li style="margin-bottom: 10px;"><strong>Zona 4:</strong> Tierra del Fuego.</li>
+                                    </ul>
+                                    <hr>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                            
+                          </div>
+                          <hr>
+                          <!-- Sección para disminuir precios -->
+                          <div class="col">
+                            <div class="input-group" style="padding:5px; margin: 2px;z-index: 0">
+                              <input type="text" id="porcentajeBajar" class="form-control" placeholder="%">
+                              <div class="input-group-append">
+                                <button class="btn btn-danger w-100" onclick="disminuirPrecios()">BAJAR</button>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Sección para aumentar precios -->
+                          <div class="col">
+                            <div class="input-group" style="padding:5px; margin: 2px; z-index: 0">
+                              <input type="text" id="porcentaje" class="form-control" placeholder="%">
+                              <div class="input-group-append">
+                                <button class="btn btn-success w-100" onclick="ajustarPrecios()">SUBIR</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+
+                      
+
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                    
+                    
+                   
+                   
+                     
+                    
+                    
+                  
+                  
+
+
+
+
+
+                  <!-- Aquí va el contenedor que deseas mostrar -->
+                  <!-- Modal -->
+                  <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="alert alert-success mt-4" id="successMessage" style="display: none;">tarea agregada
+                        </div>
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Nueva Tarea</h5>
+
+                        </div>
+                        <div class="modal-body" style="padding: 0px;">
+                          <div class="container2">
+
+                            <!-- Cambiar de <input> a <textarea> -->
+                              <p style="text-align: right; margin-bottom:  5px; font-size: 14px ;">puedes editar la tarea</p>
+
+                            <textarea id="nombre-tarea"
+                              style="margin-bottom: 20px; font-size: 14px; white-space: pre-wrap; overflow-wrap: break-word; background-image: linear-gradient(to top, #c7d0e9, #d7dbee, #e5e7f4, #f3f3f9, #ffffff); color: #092865; padding: 10px; resize: none; font-weight: bold;  "
+                               class="form-control" rows="3">                            
+                              </textarea>
+                           
+                              
+
+                            
+
+                            <div class="form-group row">
+                              <div class="col-6">
+                                <label for="area">Área (m²/m³):</label>
+                                <input type="number" class="form-control" id="area"
+                                  placeholder="Número entero" required>
+                              </div>
+                              <div class="col-6">
+                                <label for="modal-cost">Costo por m²/m³/ml:</label>
+                                <input type="text" class="form-control" id="cost"
+                                  style="color: #ab1444; font-weight: bold; text-align: center;"
+                                  placeholder="Ingresa el costo" step="0.01" required>
+                                 
+                                  <div class="form-group">
+                                     <hr>
+                              <div id="alert-precio-oculto"
+                              
+                                style="display: none; text-align: center; color: rgb(240, 90, 44)">
+                                <p style="font-size: 9px;">Precio real de la lista solo disponible con código</p>
+                              </div>
+                            </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="description">Descripción:</label>
+                              <input type="text" class="form-control" id="description" placeholder="es opcional">
+                            </div>
+                            
+                            <div class="form-group">
+                              <label for="discount">Descuento (%):</label>
+                              <input type="number" class="form-control" id="discount" value="0">
+                            </div>
+
+
+
+                            <div class="text-right">
+                              <div class="d-grid gap-2">
+         
+         
+
+                              <button type="submit" id="agregar" class="button-82-pushable" data-bs-dismiss="modal"
+                                role="button">
+                                <span class="button-82-shadow"></span>
+                                <span class="button-82-edge"></span>
+                                <span class="button-82-front text">Agregar Tarea</span>
+                              </button>
+                              <hr>
+                               <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+                            
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                  <br>
+
+                  <hr>
+
+
+
+
+              </form>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col">
+        <div id="result" style="display: none;">
+          <h2>DETALLE DE OBRA</h2>
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Tipo de Trabajo</th>
+                  <th>Descripción</th>
+                  <th>Área</th>
+                  <th>Costo m2/ml/m3</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="budgetList"></tbody>
+
+            </table>
+
+
+            <div>
+
+
+              <div class="mt-3">Total :<span id="totalCost"></span></div>
+
+            </div>
+            <br>
+            <br>
+            <br>
+
+          </div>
+        </div>
+        <div class="d-grid gap-2">
+          <button id="vista-previa2" onclick="openPrintPage()" class="button-82-pushable" role="button">
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text">
+              Ver PRESUPUESTO
+            </span>
+          </button>
+        
+        </div>
+      
+        <br>
+        <br>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <script>
+      function abrirGoogleSheets() {
+        var url = "https://drive.google.com/file/d/1x4QWExxPhVBLrja5qsyhGgJW8nhE5Jz6/view?usp=sharing";
+        window.open(url, "_blank");
+      }
+      function abrirGoogleSheets2() {
+        var url = "https://drive.google.com/file/d/1-wS11LoUoF5Z8shaySeSukYfCa1EobGo/view?usp=sharing";
+        window.open(url, "_blank");
+      }
+    </script>
+
+    <script>
+
+
+     
+function mostrarContenido() {
+  var password = document.getElementById('password').value;
+
+  fetch('contraseña.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('No se pudo cargar el archivo de contraseñas');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Suponiendo que el JSON tiene esta estructura:
+      // { "contraseñas": ["pass1", "pass2"], "contraseñas_promocionales": ["promo1", "promo2"] }
+      const contraseñas = data.contraseñas || [];
+      const contraseñas_promocionales = data.contraseñas_promocionales || [];
+
+      if (contraseñas.includes(password) || contraseñas_promocionales.includes(password)) {
+        document.getElementById('ingreso').style.display = 'none';
+        document.getElementById('ingreso6').style.display = 'none';
+        document.getElementById('contenido-oculto').style.display = 'block';
+        document.getElementById('contenido-oculto2').style.display = 'block';
+        document.getElementById("contenido-oculto3").style.display = "block";
+        document.getElementById("version2").style.display = "block";
+        document.getElementById("indice1").style.display = "block";
+        document.getElementById('portada').style.display = 'none';
+      } else {
+        alert('El código es incorrecto o ha vencido. Consulte por WhatsApp');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Error al verificar la contraseña');
+    });
+}
+
+
+      //ocltar
+     function ocltarContenido() {
+  document.getElementById('ingreso').style.display = 'none';
+  document.getElementById('ingreso6').style.display = 'none';
+  document.getElementById('contenido-oculto').style.display = 'block';
+  document.getElementById('alert-precio-oculto').style.display = 'block';
+  document.getElementById('contenido-oculto2').style.display = 'block';
+  document.getElementById('provinciaSelect').disabled = true;
+  document.getElementById('zonaBloqueadaMensaje').style.display = 'block';
+  document.getElementById('mano-de-obra-button2').removeAttribute('onclick');
+  document.getElementById( 'BIBLIOTECA'  ).removeAttribute('onclick');
+  showNotification("algunas funciones están desactivadas en el modo de PRUEBA");
+  showNotification2("BIBLIOTECA y PDF de vivienda solo solo para usuarios con código");
+
+
+
+  var botonAgregar = document.getElementById('agregar');
+  var contador = 0;
+
+  // Verificar estado anterior en localStorage
+  var estado = JSON.parse(localStorage.getItem('estadoBotonAgregar'));
+  var ahora = Date.now();
+  var treintaDias = 30 * 24 * 60 * 60 * 1000;
+
+  if (estado && estado.bloqueado && (ahora - estado.timestamp < treintaDias)) {
+    // Si está bloqueado y no pasaron 30 días
+    botonAgregar.innerText = 'Necesitas 1 código de acceso';
+    botonAgregar.disabled = true;
+  } else if (estado && (ahora - estado.timestamp >= treintaDias)) {
+    // Si ya pasaron 30 días, limpiar estado
+    localStorage.removeItem('estadoBotonAgregar');
+  }
+
+  // Ocultar los precios
+  var elementos = document.getElementsByClassName("preciolista");
+  for (var i = 0; i < elementos.length; i++) {
+    elementos[i].textContent = "1234";
+  }
+
+  // Manejador del botón agregar
+  botonAgregar.addEventListener('click', function () {
+    contador++;
+
+    if (contador === 4) {
+      botonAgregar.innerText = 'Necesitas 1 código de acceso';
+      botonAgregar.disabled = true;
+
+      // Guardar bloqueo en localStorage
+      localStorage.setItem('estadoBotonAgregar', JSON.stringify({
+        bloqueado: true,
+        timestamp: Date.now()
+      }));
+
+  
+    }
+  });
+
+  // Cambio temporal del botón "mano-de-obra-button"
+  var boton = document.getElementById('mano-de-obra-button');
+  var textoOriginal = boton.innerText;
+
+  boton.innerText = 'necesitas 1 código  de acceso';
+  setTimeout(function () {
+    boton.innerText = textoOriginal;
+  }, 3000);
+
+
+
+
+
+}
+
+
+
+
+
+
+      function showNotification(message) {
+        var notification = document.getElementById('notification');
+        notification.innerText = message;
+        notification.style.display = 'block';
+        
+      
+      }
+      function showNotification2(message) {
+        var notification2 = document.getElementById('notification2');
+        notification2.innerText = message;
+        notification2.style.display = 'block';
+        
+      
+      }
+
+
+
+
+
+      ///desaparicion del cartel de ingreso.
+      setTimeout(function () {
+        var ingreso6 = document.getElementById('ingreso6');
+        ingreso6.style.display = 'none';
+      }, 10000); // 10 segundos
+
+
+      var budgetList = [];
+      var resultElement = document.getElementById('result');
+      var totalCostElement = document.getElementById('totalCost');
+      var successMessage = document.getElementById('successMessage');
+
+      document.getElementById('costCalculator').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var area = parseFloat(document.getElementById('area').value);
+        var type = document.getElementById('nombre-tarea').value;
+        var description = document.getElementById('description').value;
+        var cost = parseFloat(document.getElementById('cost').value);
+        var discount = parseFloat(document.getElementById('discount').value);
+
+
+
+        var totalCost = area * cost * (1 - discount / 100);
+
+
+        var budget = {
+          type: type,
+          description: description,
+          area: area,
+          cost: cost,
+          discount: discount,
+          totalCost: totalCost
+        };
+
+        budgetList.push(budget);
+
+        var resultHTML = '<h5>Tareas a realizar</h5>';
+        resultHTML += '<div class="table-responsive">';
+        resultHTML += '<table class="table table-bordered">';
+        resultHTML += '<thead><tr><th>Tipo de Trabajo</th><th>Descripción</th><th>Área (m²/m³)</th><th>Costo</th><th>Total</th></tr></thead>';
+        resultHTML += '<tbody>';
+
+        budgetList.forEach(function (budget, index) {
+          var typeHTML = '<td><button onclick="borrar(' + index + ')" class="btn btn-danger btn-sm" style= "border-radius: 50%;">X</button> ' + budget.type + '</td>';
+          var descriptionHTML = '<td>' + budget.description + '</td>';
+          var areaHTML = '<td>' + budget.area.toFixed(2) + '</td>';
+          var costHTML = '<td>$' + budget.cost.toFixed(2) + '</td>';
+          var totalCostHTML = '<td>$' + budget.totalCost.toFixed(2) + '</td>';
+
+          resultHTML += '<tr>' + typeHTML + descriptionHTML + areaHTML + costHTML + totalCostHTML + '</tr>';
+          resultHTML += '<tr>' + '</tr>';
+        });
+
+        resultHTML += '</tbody></table></div>';
+        resultHTML += '<div class="mt-3" style="font-size: 22px; padding: 8px ;margin-bottom: 20px; background-color: withe; box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;">Total: $' + calculateTotalCost().toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</div>';
+
+
+
+        resultElement.innerHTML = resultHTML;
+        resultElement.style.display = 'block';
+
+
+
+
+
+
+
+      });
+
+      function borrar(index) {
+        if (index >= 0 && index < budgetList.length) {
+          budgetList.splice(index, 1);
+          mostrarPresupuesto();
+
+        }
+      }
+
+
+
+
+
+
+      function calculateTotalCost() {
+        var totalCost = 0;
+
+        budgetList.forEach(function (budget) {
+          totalCost += budget.totalCost;
+        });
+
+        return totalCost;
+      }
+
+      function mostrarPresupuesto() {
+        var resultHTML = '<h5>Tareas a realizar</h5>';
+        resultHTML += '<div class="table-responsive">';
+        resultHTML += '<table class="table table-bordered">';
+        resultHTML += '<thead><tr><th>Tipo de Trabajo</th><th>Descripción</th><th>Área (m²)</th><th>Costo por m²</th><th>Total</th></tr></thead>';
+        resultHTML += '<tbody>';
+
+        budgetList.forEach(function (budget, index) {
+          var typeHTML = '<td><button onclick="borrar(' + index + ')" class="btn btn-danger btn-sm" style= "border-radius: 50px;">X</button> ' + budget.type + '</td>'; var descriptionHTML = '<td>' + budget.description + '</td>';
+          var areaHTML = '<td>' + budget.area.toFixed(2) + '</td>';
+          var costHTML = '<td>$' + budget.cost.toFixed(2) + '</td>';
+          var totalCostHTML = '<td>$' + budget.totalCost.toFixed(2) + '</td>';
+
+          resultHTML += '<tr>' + typeHTML + descriptionHTML + areaHTML + costHTML + totalCostHTML + '</tr>';
+        });
+
+        resultHTML += '</tbody></table></div>';
+        resultHTML += '<div class="mt-3" style="font-size: 22px; padding: 8px ;margin-bottom: 20px; background-color: withe; box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;">Total: $' + calculateTotalCost().toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</div>';
+
+
+
+        resultElement.innerHTML = resultHTML;
+        resultElement.style.display = 'block';
+      }
+
+      function calculateTotalCost() {
+        var totalCost = 0;
+        budgetList.forEach(function (budget) {
+          totalCost += budget.totalCost;
+        });
+        return totalCost;
+      }
+    </script>
+
+
+
+    <script>
+
+
+
+
+      function openPrintPage() {
+        var printWindow = window.open('', '_blank');
+        var printDocument = `
+      <html>
+        <head>
+          <title>Presupuesto Total</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+            }
+            .container {
+              box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+              max-width: 98%;
+             
+            }
+            .header {
+              box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+              background: #deecea;
+              color: #1d68ff;
+              padding: 20px;
+              border-radius: 10px;
+              margin-left: 15PX;
+              margin-right: 15PX;
+            }
+            .info-section {
+              color: #0b69a6;
+        background-image: linear-gradient(to right top, #f0f4fa, #e9f0fc, #cbdefa, #98c0f8, #67a5f6);
+              border-radius: 10px 10px 0px 0px;
+              box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+              padding: 20px;
+              margin-bottom: 30px;
+              margin: 15px;
+            }
+            .info-section p {
+              margin-bottom: 10px;
+            }
+            .table th {
+              background-color: #007bff;
+              color: white;
+            }
+            .table th, .table td {
+              padding: 10px;
+              text-align: center;
+            }
+            .table tbody tr:nth-child(odd) {
+              background-color: #f2f2f2;
+            }
+            .total {
+              font-weight: bold;
+              font-size: 18px;
+              text-align: end;
+              margin-top: 20px;
+            }
+          </style>
+        </head>
+         <body>
+      <div class="container">
+       
+        <div class="row">
+
+    
+
+          <div class="col-lg-12 info-section">
+            <div class="row align-items-start">
+                <div class="col">
+                  <div id="fixedIconContainer">
+                        <img id="fixedImageIcon2" src="" alt="Icono Empresa"
+                          style="max-width: 20%; max-height: 20%; border-radius: 50%; display: none;">
+                          <h2 class="font-weight-bold" ><span id="empresaNamePrint"></span></h2>
+                      </div>
+                    
+                </div>
+                <div class="col">
+                  
+                </div>
+                <div class="col">
+                    
+                </div>
+              </div>
+              
+            <div class="row">
+              <div class="col-lg-12" style="position: relative;">
+                <div style="display: inline-block; width: 70%;">
+                  
+                  <p>Tel: <span id="empresaPhonePrint"></span></p>
+                  <p>Email: <span id="empresaemailPrint"></span></p>
+                  <p><span id="additionalDetailsempresaPrint"></span></p>
+                </div>
+                <!-- Imagen alineada a la derecha -->
+                
+              </div>
+            </div>
+            <hr>
+            <h5 class="font-weight-bold">Cliente</h5>          
+            <H7 class="font-weight-bold" ><span id="clientNamePrint"></span></H7>
+            <p>Tel/cel.: <span id="contactPrint"></span></p>
+            <p>Fecha de este presupuesto: <span id="budgetDatePrint"></span></p>
+            <p>Detalles Adicionales: <span id="additionalDetailsPrint"></span></p>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Tipo de Trabajo</th>
+                    <th>Descripción</th>
+                    <th>Área (m²)</th>
+                    <th>Costo por m²</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="budgetListPrint"></tbody>
+              </table>
+            </div>
+            <p class="total">Total: <span id="totalCostPrint"></span></p>
+          </div>
+        </div>
+      </div>
+ 
+    </body>
+      </html>
+
+
+    `;
+        printWindow.document.open();
+        printWindow.document.write(printDocument);
+        printWindow.document.close();
+
+        printWindow.onload = function () {
+          const storedData = JSON.parse(localStorage.getItem('empresaData'));
+          if (storedData && storedData.image) {
+            const imgElement = printWindow.document.getElementById('fixedImageIcon2');
+            imgElement.src = storedData.image;
+            imgElement.style.display = 'block';
+          }
+
+
+
+          // Reemplazar los valores dinámicos
+          printWindow.document.getElementById('empresaNamePrint').innerText = document.getElementById('empresaName').value;
+          printWindow.document.getElementById('empresaPhonePrint').innerText = document.getElementById('empresaPhone').value;
+          printWindow.document.getElementById('empresaemailPrint').innerText = document.getElementById('empresaemail').value;
+          printWindow.document.getElementById('additionalDetailsempresaPrint').innerText = document.getElementById('additionalDetailsempresa').value;
+          printWindow.document.getElementById('clientNamePrint').innerText = document.getElementById('clientName').value;
+          printWindow.document.getElementById('contactPrint').innerText = document.getElementById('contact').value;
+          printWindow.document.getElementById('budgetDatePrint').innerText = document.getElementById('budgetDate').value;
+          printWindow.document.getElementById('additionalDetailsPrint').innerText = document.getElementById('additionalDetails').value;
+
+          // Rellenar la tabla con los datos del presupuesto
+          var budgetListPrintElement = printWindow.document.getElementById('budgetListPrint');
+          var totalCostPrintElement = printWindow.document.getElementById('totalCostPrint');
+
+          budgetList.forEach(function (budget) {
+            var typeHTML = `<td>${budget.type}</td>`;
+            var descriptionHTML = `<td>${budget.description}</td>`;
+            var areaHTML = `<td>${budget.area.toFixed(2)}</td>`;
+            var costHTML = `<td>$${budget.cost.toFixed(2)}</td>`;
+            var totalCostHTML = `<td>$${budget.totalCost.toFixed(2)}</td>`;
+
+            budgetListPrintElement.innerHTML += `<tr>${typeHTML}${descriptionHTML}${areaHTML}${costHTML}${totalCostHTML}</tr>`;
+          });
+
+          // Actualizar el total
+          totalCostPrintElement.innerText = `$${calculateTotalCost().toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+          // Crear el botón para descargar el presupuesto
+          const downloadButton = printWindow.document.createElement('a');
+          downloadButton.classList.add('btn', 'btn-primary', 'mt-4', 'my-sm-5', 'd-block', 'mx-auto');
+          downloadButton.innerText = 'Descargar Presupuesto';
+          downloadButton.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(printWindow.document.documentElement.outerHTML));
+          downloadButton.setAttribute('download', 'presupuesto.html');
+
+
+
+          // Añadir el botón al total
+          const totalCostContainer = printWindow.document.querySelector('.total');
+          totalCostContainer.appendChild(downloadButton);
+        }
+      }
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+    <script>
+
+
+      function buscar() {
+        var input = document.getElementById('busqueda');
+        var filter = input.value.toUpperCase().split(" ");
+        var table = document.getElementById('tabla');
+        var rows = table.getElementsByTagName('tr');
+        for (var i = 0; i < rows.length; i++) {
+          var cells = rows[i].getElementsByTagName('td');
+          var found = false;
+          for (var j = 0; j < cells.length; j++) {
+            var textValue = cells[j].textContent || cells[j].innerText;
+            var matchCount = 0;
+            for (var k = 0; k < filter.length; k++) {
+              if (textValue.toUpperCase().includes(filter[k])) {
+                matchCount++;
+              }
+            }
+            if (matchCount === filter.length) {
+              found = true;
+              break;
+            }
+          }
+          if (found) {
+            rows[i].style.display = '';
+          } else {
+            rows[i].style.display = 'none';
+          }
+        }
+      }
+
+      function enfocarTabla() {
+    var tablaContainer = document.getElementById('tabla-container');
+    if (tablaContainer) {
+        tablaContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        tablaContainer.style.transition = 'box-shadow 0.3s ease';
+        tablaContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+        setTimeout(() => tablaContainer.style.boxShadow = 'none', 1000);
+    }
+}
+
+
+      var celdaSeleccionada = null;
+
+      function seleccionar(fila) {
+        // Si la fila seleccionada es la misma, deseleccionarla
+        if (celdaSeleccionada === fila) {
+          celdaSeleccionada.cells[0].style.backgroundColor = "";
+          celdaSeleccionada.cells[1].style.backgroundColor = "";
+          celdaSeleccionada = null;
+          document.getElementById('nombre-tarea').value = '';
+          document.getElementById('cost').value = '';
+          return; // Salir de la función
+        }
+
+        // Si ya hay una celda seleccionada, deseleccionarla
+        if (celdaSeleccionada !== null) {
+          celdaSeleccionada.cells[0].style.backgroundColor = "";
+          celdaSeleccionada.cells[1].style.backgroundColor = "";
+        }
+
+        // Obtener el nombre de la tarea y el precio
+        var nombreTarea = fila.cells[0].innerText;
+        var precio = fila.cells[1].innerText;
+
+        // Eliminar los puntos del precio para evitar problemas
+        precio = precio.replace(/\./g, '');
+
+        // Asignar los valores a los campos del modal
+        document.getElementById('nombre-tarea').value = nombreTarea;
+        document.getElementById('cost').value = precio; // Asigna el precio al campo del modal
+
+        // Cambiar el estilo de la fila seleccionada
+        celdaSeleccionada = fila;
+        celdaSeleccionada.cells[0].style.backgroundColor = "#feaf46";
+        celdaSeleccionada.cells[1].style.backgroundColor = "#feaf46";
+
+        // Opcional: puedes usar esto para abrir el modal automáticamente si no quieres usar un botón
+        var modal = new bootstrap.Modal(document.getElementById('miModal'));
+        modal.show();
+      }
+
+
+
+
+      // Función para abrir el modal centrado
+
+
+
+
+      function mostrarCodigo2() {
+        const codigo = document.getElementById('codigo');
+
+        if (codigo.style.display === 'none') {
+          codigo.style.display = 'block';
+        } else {
+          codigo.style.display = 'none';
+        }
+      }
+
+    </script>
+
+<script>
+
+
+ // Define aumentos por zona
+ const aumentos = {
+    "A": 1,
+    "B": 1.11,
+    "C": 1.535,
+    "Austral": 2
+  };
+
+  // Función para cambiar la provincia
+  function cambiarProvincia() {
+    const select = document.getElementById("provinciaSelect");
+    const valor = select.value.split("|");
+    const zona = valor[0];
+    const provincia = valor[1];
+
+    localStorage.setItem("provinciaSeleccionada", provincia);
+    localStorage.setItem("zonaSeleccionada", zona);
+
+    actualizarValoresZona();
+  }
+
+  // Función para actualizar precios
+  function actualizarValoresZona() {
+    const zona = localStorage.getItem("zonaSeleccionada") || "A";
+    const factor = aumentos[zona];
+
+    document.querySelectorAll(".preciolista").forEach(td => {
+      const precioBase = td.getAttribute("data-base") || td.innerText.replace(",", ".");
+      td.setAttribute("data-base", precioBase);
+      td.innerText = (parseFloat(precioBase) * factor).toFixed(3);
+    });
+  }
+
+
+
+  window.onload = function () {
+    // Aplicar factor de zona si hay provincia guardada
+    if (localStorage.getItem("provinciaSeleccionada")) {
+      actualizarValoresZona();
+    }
+
+    // Restaurar selección de provincia en el <select>
+    const provinciaGuardada = localStorage.getItem("provinciaSeleccionada");
+    const zonaGuardada = localStorage.getItem("zonaSeleccionada");
+    const selectProvincia = document.getElementById("provinciaSelect");
+
+    if (provinciaGuardada && zonaGuardada && selectProvincia) {
+      const valorGuardado = `${zonaGuardada}|${provinciaGuardada}`;
+      for (let i = 0; i < selectProvincia.options.length; i++) {
+        if (selectProvincia.options[i].value === valorGuardado) {
+          selectProvincia.selectedIndex = i;
+          break;
+        }
+      }
+    }
+
+    // Restaurar código desde cookie
+    const input = document.getElementById("password");
+    if (input) {
+      const cookies = document.cookie.split(";");
+      for (const cookie of cookies) {
+        const [name, value] = cookie.trim().split("=");
+        if (name === "password") {
+          input.value = decodeURIComponent(value);
+          break;
+        }
+      }
+
+      // Guardar cookie al modificar el input
+      input.addEventListener("input", function () {
+        document.cookie = `password=${encodeURIComponent(input.value)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+      });
+    }
+  };
+
+
+  
+</script>
+
+    <script>
+
+      function mostrarAlerta(mensaje) {
+        // Crear elemento de alerta
+        var alerta = document.createElement("div");
+        alerta.className = "custom-alert";
+        alerta.innerHTML = mensaje;
+
+        // Agregar alerta al cuerpo del documento
+        document.body.appendChild(alerta);
+
+        // Eliminar la alerta después de 1 segundo
+        setTimeout(function () {
+          alerta.remove();
+        }, 6000);
+      }
+
+      function ajustarPrecios() {
+        event.preventDefault()
+        // Obtén el porcentaje ingresado por el usuario
+        var porcentaje = parseFloat(document.getElementById('porcentaje').value);
+
+        // Verifica si el porcentaje es válido
+        if (isNaN(porcentaje)) {
+          alert("Por favor, ingrese un porcentaje válido.");
+          return;
+        }
+
+        // Obtén la tabla
+        var tabla = document.getElementById('tabla');
+
+        // Itera sobre las filas de la tabla (comenzando desde la segunda fila, ya que la primera es el encabezado)
+        for (var i = 1; i < tabla.rows.length; i++) {
+          // Obtén el precio actual de la celda
+          var precioActual = parseFloat(tabla.rows[i].cells[1].innerText.replace(/\./g, '').replace(',', '.'));
+
+          // Calcula el nuevo precio con el ajuste porcentual
+          var nuevoPrecio = precioActual * (1 + porcentaje / 100);
+
+          // Formatea el nuevo precio sin decimales y con punto como separador de miles
+          var nuevoPrecioFormateado = nuevoPrecio.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+          // Actualiza el contenido de la celda con el nuevo precio formateado
+          tabla.rows[i].cells[1].innerText = nuevoPrecioFormateado;
+        }
+
+        // Limpiar el campo de porcentaje después de la actualización
+        document.getElementById('porcentaje').value = '';
+
+        mostrarAlerta("Toda la lista se aumentó un  " + porcentaje + "%");
+
+      }
+
+      document.addEventListener('DOMContentLoaded', (event) => {
+        let today = new Date();
+        let day = ("0" + today.getDate()).slice(-2);
+        let month = ("0" + (today.getMonth() + 1)).slice(-2);
+        let year = today.getFullYear();
+        let currentDate = year + "-" + month + "-" + day;
+        document.getElementById('budgetDate').value = currentDate;
+      });
+
+
+      function disminuirPrecios() {
+        event.preventDefault()
+        // Obtén el porcentaje ingresado por el usuario
+        var porcentaje = parseFloat(document.getElementById('porcentajeBajar').value);
+
+        // Verifica si el porcentaje es válido
+        if (isNaN(porcentaje)) {
+          alert("Por favor, ingrese un porcentaje válido.");
+          return;
+        }
+
+        // Obtén la tabla
+        var tabla = document.getElementById('tabla');
+
+        // Itera sobre las filas de la tabla (comenzando desde la segunda fila, ya que la primera es el encabezado)
+        for (var i = 1; i < tabla.rows.length; i++) {
+          // Obtén el precio actual de la celda
+          var precioActual = parseFloat(tabla.rows[i].cells[1].innerText.replace(/\./g, '').replace(',', '.'));
+
+          // Calcula el nuevo precio con el descuento porcentual
+          var nuevoPrecio = precioActual * (1 - porcentaje / 100);
+
+          // Formatea el nuevo precio sin decimales y con punto como separador de miles
+          var nuevoPrecioFormateado = nuevoPrecio.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+          // Actualiza el contenido de la celda con el nuevo precio formateado
+          tabla.rows[i].cells[1].innerText = nuevoPrecioFormateado;
+        }
+
+        // Limpiar el campo de porcentaje después de la actualización
+        document.getElementById('porcentajeBajar').value = '';
+        mostrarAlerta("Toda la lista se redujo un  " + porcentaje + "%");
+
+      }
+
+
+
+    </script>
+    <script>
+
+
+      function showSuccessAlert() {
+        const alertElement = document.getElementById('successAlert');
+        alertElement.style.display = 'block';
+
+        // Ocultar el alert después de 3 segundos
+        setTimeout(function () {
+          alertElement.style.display = 'none';
+        }, 2000);
+      }
+
+
+    </script>
+
+
+    <script>
+
+
+
+      function loadFormData() {
+        const savedData = localStorage.getItem('empresaData');
+        if (savedData) {
+          const formData = JSON.parse(savedData);
+
+          document.getElementById('empresaName').value = formData.empresaName || '';
+          document.getElementById('empresaPhone').value = formData.empresaPhone || '';
+          document.getElementById('empresaemail').value = formData.empresaemail || '';
+          document.getElementById('additionalDetailsempresa').value = formData.additionalDetailsempresa || '';
+
+          if (formData.image) {
+            const imagePreview = document.getElementById('imagePreview');
+            const imageIcon = document.getElementById('fixedImageIcon');
+            imageIcon.src = formData.image;
+            imageIcon.style.display = 'block';
+            imagePreview.src = formData.image;
+            imagePreview.style.display = 'block';
+          }
+        }
+      }
+
+
+
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS (para que el modal funcione) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      function validarCodigo() {
+        const codigoIngresado = document.getElementById('codigoDescuento').value;
+        const resultadoDiv = document.getElementById('resultado');
+        const resultadoDiv1 = document.getElementById('resultado1');
+        const codigoCorrecto = 'RODRI+METRO';
+
+        if (codigoIngresado === codigoCorrecto) {
+          resultadoDiv1.innerHTML = `<a href="https://mpago.la/1x3KJ8f" target="_blank">COMPRÁ TU PLAN METRO DE 3 MESES A $2.950 CON EL DESCUENTO DE MAXI</a>`;
+
+          resultadoDiv.innerHTML = `<a href="https://mpago.la/1ovADnu" target="_blank">COMPRÁ TU PLAN METRO DE 6 MESES A $4.050 CON EL DESCUENTO DE MAXI</a>`;
+
+          resultadoDiv.classList.add('mt-3');
+          resultadoDiv1.classList.add('mt-3');
+        } else {
+          resultadoDiv.innerHTML = '<p style="color: red;">El código es incorrecto.</p>';
+        }
+      }
+    </script>
+    
+
+    <script>
+      // Al hacer clic en el botón de guardar
+      document.getElementById('saveButton').addEventListener('click', function () {
+        // Mostrar el mensaje de "Datos guardados"
+        document.getElementById('confirmationMessage').style.display = 'block';
+
+        // Cerrar el modal después de un pequeño retraso para permitir ver el mensaje
+        setTimeout(function () {
+          // Cerrar el modal
+          var modal = bootstrap.Modal.getInstance(document.getElementById('clientModal'));
+          modal.hide();
+
+          // Ocultar el mensaje de "Datos guardados" después de 2 segundos
+          setTimeout(function () {
+            document.getElementById('confirmationMessage').style.display = 'none';
+          }, 2000);
+
+        }, 1000); // 1 segundo de retraso para ver el mensaje antes de cerrar el modal
+      });
+    </script>
+    <script>
+  document.getElementById("agregar").addEventListener("click", function () {
+    // Mostrar el alert
+    const successMessage = document.getElementById("successMessage");
+    successMessage.style.display = "block";
+
+    // Ocultarlo automáticamente a los 3 segundos
+    setTimeout(() => {
+      successMessage.style.display = "none";
+    }, 3000);
+  });
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+</body>
+
+</html>
